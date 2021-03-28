@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/python/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-03-28T22:43:51+09:00</updated>
+  <updated>2021-03-28T23:43:04+09:00</updated>
   <id>http://localhost:4000/tag/python/feed.xml</id>
 
   
@@ -37,7 +37,63 @@
       <published>2021-03-24T00:00:00+09:00</published>
       <updated>2021-03-24T00:00:00+09:00</updated>
       <id>http://localhost:4000/016-python</id>
-      <content type="html" xml:base="http://localhost:4000/016-python">&lt;h2 id=&quot;python-advanced&quot;&gt;Python Advanced&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/016-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;python-advanced&quot;&gt;Python Advanced&lt;/h2&gt;
 
 &lt;h3 id=&quot;list-comprehension&quot;&gt;list comprehension&lt;/h3&gt;
 
@@ -131,7 +187,7 @@
       
 
       
-        <summary type="html">Python Advanced</summary>
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       
@@ -144,7 +200,63 @@
       <published>2021-03-20T00:00:00+09:00</published>
       <updated>2021-03-20T00:00:00+09:00</updated>
       <id>http://localhost:4000/015-python</id>
-      <content type="html" xml:base="http://localhost:4000/015-python">&lt;h2 id=&quot;assignment-review49-58&quot;&gt;Assignment review(49-58)&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/015-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;assignment-review49-58&quot;&gt;Assignment review(49-58)&lt;/h2&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;문제 해결 중 고민한 내용 정리하는 글입니다
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -235,7 +347,7 @@
       
 
       
-        <summary type="html">Assignment review(49-58)</summary>
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       
@@ -248,7 +360,63 @@
       <published>2021-03-20T00:00:00+09:00</published>
       <updated>2021-03-20T00:00:00+09:00</updated>
       <id>http://localhost:4000/014-python</id>
-      <content type="html" xml:base="http://localhost:4000/014-python">&lt;h2 id=&quot;sysmodules&quot;&gt;sys.modules&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/014-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;sysmodules&quot;&gt;sys.modules&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;파이썬이 모듈이나 package를 찾기위해 가장 먼저 확인하는 곳&lt;/li&gt;
@@ -355,7 +523,7 @@
       
 
       
-        <summary type="html">sys.modules</summary>
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       
@@ -368,7 +536,63 @@
       <published>2021-03-18T00:00:00+09:00</published>
       <updated>2021-03-18T00:00:00+09:00</updated>
       <id>http://localhost:4000/013-python</id>
-      <content type="html" xml:base="http://localhost:4000/013-python">&lt;h2 id=&quot;assignment&quot;&gt;Assignment&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/013-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;assignment&quot;&gt;Assignment&lt;/h2&gt;
 
 &lt;h3 id=&quot;1&quot;&gt;1&lt;/h3&gt;
 
@@ -525,7 +749,7 @@
       
 
       
-        <summary type="html">Assignment</summary>
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       
@@ -538,7 +762,63 @@
       <published>2021-03-13T00:00:00+09:00</published>
       <updated>2021-03-13T00:00:00+09:00</updated>
       <id>http://localhost:4000/011-python</id>
-      <content type="html" xml:base="http://localhost:4000/011-python">&lt;h2 id=&quot;hash&quot;&gt;Hash&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/011-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;hash&quot;&gt;Hash&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;알고리즘 문제를 풀다가 나온 &lt;code class=&quot;highlighter-rouge&quot;&gt;hash&lt;/code&gt;에 대한 개념 정리와 사용법&lt;/li&gt;
@@ -576,7 +856,7 @@
       
 
       
-        <summary type="html">Hash</summary>
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       
@@ -589,7 +869,63 @@
       <published>2021-03-08T00:00:00+09:00</published>
       <updated>2021-03-08T00:00:00+09:00</updated>
       <id>http://localhost:4000/010-python</id>
-      <content type="html" xml:base="http://localhost:4000/010-python">&lt;h2 id=&quot;모듈&quot;&gt;모듈&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/010-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;모듈&quot;&gt;모듈&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;필요한 것을 모아둔 파일&lt;/li&gt;
@@ -934,7 +1270,7 @@
       
 
       
-        <summary type="html">모듈</summary>
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       
@@ -947,7 +1283,63 @@
       <published>2021-03-07T00:00:00+09:00</published>
       <updated>2021-03-07T00:00:00+09:00</updated>
       <id>http://localhost:4000/008-python</id>
-      <content type="html" xml:base="http://localhost:4000/008-python">&lt;h2 id=&quot;클래스&quot;&gt;클래스&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/008-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;클래스&quot;&gt;클래스&lt;/h2&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 마린 : 공격 유닛, 군인, 총을 쏠 수 있음.&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;마린&quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 유닛 이름&lt;/span&gt;
@@ -1374,7 +1766,7 @@
       
 
       
-        <summary type="html">클래스</summary>
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       
@@ -1387,7 +1779,63 @@
       <published>2021-03-07T00:00:00+09:00</published>
       <updated>2021-03-07T00:00:00+09:00</updated>
       <id>http://localhost:4000/009-python</id>
-      <content type="html" xml:base="http://localhost:4000/009-python">&lt;h2 id=&quot;예외처리&quot;&gt;예외처리&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/009-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;예외처리&quot;&gt;예외처리&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;어떤 에러가 발생했을 때 그에 대한 처리&lt;/li&gt;
@@ -1588,7 +2036,7 @@
       
 
       
-        <summary type="html">예외처리</summary>
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       
@@ -1601,7 +2049,63 @@
       <published>2021-03-06T00:00:00+09:00</published>
       <updated>2021-03-06T00:00:00+09:00</updated>
       <id>http://localhost:4000/006-python</id>
-      <content type="html" xml:base="http://localhost:4000/006-python">&lt;h2 id=&quot;학습-중-헷갈리는-내용-정리&quot;&gt;학습 중 헷갈리는 내용 정리&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/006-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;학습-중-헷갈리는-내용-정리&quot;&gt;학습 중 헷갈리는 내용 정리&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://livetodaykono.tistory.com/18&quot;&gt;참조링크&lt;/a&gt;
 &lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/84d95e4e-b797-4d93-8f27-4835ba9a1d57/parameter.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
@@ -1838,7 +2342,7 @@
       
 
       
-        <summary type="html">학습 중 헷갈리는 내용 정리</summary>
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       
@@ -1851,7 +2355,63 @@
       <published>2021-03-06T00:00:00+09:00</published>
       <updated>2021-03-06T00:00:00+09:00</updated>
       <id>http://localhost:4000/005-python</id>
-      <content type="html" xml:base="http://localhost:4000/005-python">&lt;h2 id=&quot;if조건문&quot;&gt;if(조건문)&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/005-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;if조건문&quot;&gt;if(조건문)&lt;/h2&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 예제1)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;weather&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;오늘 날씨는 어때요? &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -2034,7 +2594,7 @@
       
 
       
-        <summary type="html">if(조건문)</summary>
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       

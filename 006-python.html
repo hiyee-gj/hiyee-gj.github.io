@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-
+  <head>
     <!-- Document Settings -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,31 +10,61 @@
 
 
 
-    <title>006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수</title>
+    <title>
+      006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수
+    </title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/built/screen.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/built/screen.edited.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/built/syntax.css"
+    />
+
+    <!--web font-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css"
+    />
+
     <!-- highlight.js -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-    <style>.hljs { background: none; }</style>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"
+    />
+    <style>
+      .hljs {
+        background: none;
+      }
+    </style>
 
     <!--[if IE]>
-        <style>
-            p, ol, ul{
-                width: 100%;
-            }
-            blockquote{
-                width: 100%;
-            }
-        </style>
+      <style>
+        p,
+        ol,
+        ul {
+          width: 100%;
+        }
+        blockquote {
+          width: 100%;
+        }
+      </style>
     <![endif]-->
-    
+
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Developer with good Influence" />
-    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.png" type="image/png" />
     <link rel="canonical" href="http://localhost:4000/006-python" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -43,7 +72,7 @@
     <meta property="og:site_name" content="Hiyee Blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수" />
-    <meta property="og:description" content="학습 중 헷갈리는 내용 정리 참조링크 Parameter Vs Argument 간단하게 정리하면 Parameter는 함수가 받는 변수를, Argument는 함수에 실제로 들어가는 Input Value 한글로 번역하면 Parameter는 매개변수, Argument는 인자 # Parameter def multiply(num1, num2): return num1*num2 # Argument multiply(3,6) parameter는 정의한대로 함수가 받는 변수를 의미 즉, num1, num2가 multiply 함수의 Parameter Argument는" />
+    <meta property="og:description" content="Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006." />
     <meta property="og:url" content="http://localhost:4000/006-python" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/python.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -53,7 +82,7 @@
     <meta property="article:tag" content="Python" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수" />
-    <meta name="twitter:description" content="학습 중 헷갈리는 내용 정리 참조링크 Parameter Vs Argument 간단하게 정리하면 Parameter는 함수가 받는 변수를, Argument는 함수에 실제로 들어가는 Input Value 한글로 번역하면 Parameter는 매개변수, Argument는 인자 # Parameter def multiply(num1, num2): return num1*num2 # Argument multiply(3,6) parameter는 정의한대로 함수가 받는 변수를 의미 즉, num1, num2가 multiply 함수의 Parameter Argument는" />
+    <meta name="twitter:description" content="Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006." />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/python.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -85,7 +114,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/006-python"
     },
-    "description": "학습 중 헷갈리는 내용 정리 참조링크 Parameter Vs Argument 간단하게 정리하면 Parameter는 함수가 받는 변수를, Argument는 함수에 실제로 들어가는 Input Value 한글로 번역하면 Parameter는 매개변수, Argument는 인자 # Parameter def multiply(num1, num2): return num1*num2 # Argument multiply(3,6) parameter는 정의한대로 함수가 받는 변수를 의미 즉, num1, num2가 multiply 함수의 Parameter Argument는"
+    "description": "Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006."
 }
     </script>
 
@@ -100,13 +129,13 @@
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수" href="/feed.xml" />
 
-
-</head>
-<body class="post-template">
-
+  </head>
+  <body
+    class="post-template"
+  >
     <div class="site-wrapper">
-        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
-        <!-- default -->
+      <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+      <!-- default -->
 
 <!-- The tag above means: insert everything in this file
 into the {body} of the default.hbs template -->
@@ -201,7 +230,63 @@ into the {body} of the default.hbs template -->
 -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <h2 id="학습-중-헷갈리는-내용-정리">학습 중 헷갈리는 내용 정리</h2>
+                    <p><span class="table-of-contents-list">Python Basic </span></p>
+<ul class="table-of-contents-list">
+  <li>
+    <a href="./001-python">001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석</a>
+  </li>
+  <li>
+    <a href="./002-python">002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수</a>
+  </li>
+  <li>
+    <a href="./003-python">003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자</a>
+  </li>
+  <li>
+    <a href="./004-python">004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경</a>
+  </li>
+  <li>
+    <a href="./005-python">005. Python - if, for, while, continue와 break, 한 줄 for</a>
+  </li>
+  <li>
+    <a href="./006-python">006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수</a>
+  </li>
+  <li>
+    <a href="./007-python">007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with</a>
+  </li>
+  <li>
+    <a href="./008-python">008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super</a>
+  </li>
+  <li>
+    <a href="./009-python">009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally</a>
+  </li>
+  <li>
+    <a href="./010-python">010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수</a>
+  </li>
+  <li>
+    <a href="./011-python">011. Python - hash</a>
+  </li>
+  <li>
+    <a href="./012-python">012. Python - Argument</a>
+  </li>
+  <li>
+    <a href="./013-python">013. Python - Argument assignment</a>
+  </li>
+  <li>
+    <a href="./014-python">014. Python - sys.modules, sys.path / absolute path, relative path /
+      package</a>
+  </li>
+  <li>
+    <a href="./015-python">015. Python - Assignment 49-58</a>
+  </li>
+  <li>
+    <a href="./016-python">016. Python - list comprehensions, lambda expressions</a>
+  </li>
+</ul>
+
+<h2 id="학습-중-헷갈리는-내용-정리">학습 중 헷갈리는 내용 정리</h2>
 
 <p><a href="https://livetodaykono.tistory.com/18">참조링크</a>
 <img src="https://images.velog.io/images/hiyee-gj/post/84d95e4e-b797-4d93-8f27-4835ba9a1d57/parameter.jpeg" alt="" /></p>
@@ -874,36 +959,50 @@ into the {body} of the default.hbs template -->
 <!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
 
 
-        <!-- Previous/next page links - displayed on every page -->
-        
+      <!-- Previous/next page links - displayed on every page -->
+      
 
-        <!-- The footer at the very bottom of the screen -->
-        <footer class="site-footer outer">
-            <div class="site-footer-content inner">
-                <section class="copyright"><a href="http://localhost:4000/">Hiyee Blog</a> &copy; 2021</section>
-                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
-                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
-                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
-                <nav class="site-footer-nav">
-                    <a href="/">Latest Posts</a>
-                    
-                    
-                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
-                </nav>
-            </div>
-        </footer>
-
+      <!-- The footer at the very bottom of the screen -->
+      <footer class="site-footer outer">
+        <div class="site-footer-content inner">
+          <section class="copyright">
+            <a href="http://localhost:4000/">Hiyee Blog</a>
+            &copy; 2021
+          </section>
+          <section class="poweredby">
+            Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+            <a href="https://pages.github.com/" target="_blank" rel="noopener"
+              >GitHub Pages</a
+            >
+            using
+            <a
+              href="https://github.com/jekyller/jasper2"
+              target="_blank"
+              rel="noopener"
+              >Jasper2</a
+            >
+          </section>
+          <nav class="site-footer-nav">
+            <a href="/">Latest Posts</a>
+             
+            <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+          </nav>
+        </div>
+      </footer>
     </div>
 
     <!-- The big email subscribe modal content -->
     
-        <div id="subscribe" class="subscribe-overlay">
-            <a class="subscribe-overlay-close" href="#"></a>
-            <div class="subscribe-overlay-content">
-                
-                <h1 class="subscribe-overlay-title">Subscribe to Hiyee Blog</h1>
-                <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
-                <form method="post" action="/subscribe/" class="">
+    <div id="subscribe" class="subscribe-overlay">
+      <a class="subscribe-overlay-close" href="#"></a>
+      <div class="subscribe-overlay-content">
+        
+        <h1 class="subscribe-overlay-title">Subscribe to Hiyee Blog</h1>
+        <p class="subscribe-overlay-description">
+          Stay up to date! Get all the latest &amp; greatest posts delivered
+          straight to your inbox
+        </p>
+        <form method="post" action="/subscribe/" class="">
     <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
 
     <div class="form-group">
@@ -913,27 +1012,34 @@ into the {body} of the default.hbs template -->
     <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
 </form>
 
-            </div>
-        </div>
+      </div>
+    </div>
     
 
     <!-- highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
-    <script>$(document).ready(function() {
-      $('pre code').each(function(i, block) {
-        hljs.highlightBlock(block);
+    <script>
+      $(document).ready(function () {
+        $("pre code").each(function (i, block) {
+          hljs.highlightBlock(block);
+        });
       });
-    });</script>
+    </script>
 
     <!-- jQuery + Fitvids, which makes all video embeds responsive -->
     <script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous">
-    </script>
-    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
-
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/assets/js/jquery.fitvids.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"
+    ></script>
 
     <!-- Paginator increased to "infinit" in _config.yml -->
     <!-- if paginator.posts  -->
@@ -944,7 +1050,6 @@ into the {body} of the default.hbs template -->
     <!-- /endif -->
 
     
-
 
     <!-- Add Google Analytics  -->
     <!-- Google Analytics Tracking code -->
@@ -961,8 +1066,7 @@ into the {body} of the default.hbs template -->
 
 
     <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
-    
-        <script>
+     <script>
 
 // NOTE: Scroll performance is poor in Safari
 // - this appears to be due to the events firing much more slowly in Safari.
@@ -1025,11 +1129,9 @@ $(document).ready(function () {
     update();
 });
 </script>
-
-    
+ 
 
     <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
     <!-- ghost_foot -->
-
-</body>
+  </body>
 </html>
