@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/database/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2021-03-28T23:43:04+09:00</updated>
+  <id>http://localhost:4000/tag/database/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Hiyee Blog | </title>
+  
+
+  
+    <subtitle>Developer with good Influence</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">004. MySQL programmers 2단계 리뷰</title>
+      <link href="http://localhost:4000/004-mysql" rel="alternate" type="text/html" title="004. MySQL programmers 2단계 리뷰" />
+      <published>2021-03-24T00:00:00+09:00</published>
+      <updated>2021-03-24T00:00:00+09:00</updated>
+      <id>http://localhost:4000/004-mysql</id>
+      <content type="html" xml:base="http://localhost:4000/004-mysql">&lt;h2 id=&quot;mysql-2단계-리뷰&quot;&gt;MySQL 2단계 리뷰&lt;/h2&gt;
+
+&lt;h3 id=&quot;최솟값-구하기&quot;&gt;최솟값 구하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;order by&lt;/code&gt;를 통해서 정렬 시킨 후 &lt;code class=&quot;highlighter-rouge&quot;&gt;limit&lt;/code&gt;를 통해 맨 위의 값을 추출한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;갯수-구하기&quot;&gt;갯수 구하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;COUNT&lt;/code&gt;를 통해서 추출한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;null-처리하기&quot;&gt;NULL 처리하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;IFNULL&lt;/code&gt;을 사용해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;IFNULL(사용할 컬럼, &quot;NULL일 경우 표시할 값&quot;)&lt;/code&gt;의 형태로 추출한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;그룹-조건에-해당하는-값-추출하기&quot;&gt;그룹 조건에 해당하는 값 추출하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SELECT &lt;code class=&quot;highlighter-rouge&quot;&gt;추출하고자 하는 컬럼&lt;/code&gt;
+FROM &lt;code class=&quot;highlighter-rouge&quot;&gt;테이블명&lt;/code&gt;
+WHERE &lt;code class=&quot;highlighter-rouge&quot;&gt;조건&lt;/code&gt;
+GROUP BY &lt;code class=&quot;highlighter-rouge&quot;&gt;그룹할 컬럼&lt;/code&gt;
+HAVING &lt;code class=&quot;highlighter-rouge&quot;&gt;그룹에 적용할 조건&lt;/code&gt;
+ORDER BY &lt;code class=&quot;highlighter-rouge&quot;&gt;정렬 기준&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;hour시-추출하기&quot;&gt;HOUR(시) 추출하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HOUR&lt;/code&gt;(시간을 추출할 값)의 형태로 &lt;code class=&quot;highlighter-rouge&quot;&gt;시&lt;/code&gt; 추출&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;조건-in&quot;&gt;조건 IN&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;WHERE NAME IN (“Lucy”, “Ella”, “Pickle”, “Rogan”, “Sabrina”, “Mitty”)의 형태로 값 추출 가능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;조건-like&quot;&gt;조건 LIKE&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;WHERE (NAME like “%el%” OR NAME like “%EL%”) AND ANIMAL_TYPE = “Dog”
+    &lt;ul&gt;
+      &lt;li&gt;앞 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt;를 통해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;LIKE&lt;/code&gt;로 유사한 값을 모두 추출할 수 있음&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;case-함수&quot;&gt;CASE 함수&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CASE WHEN&lt;/code&gt;(조건) SEX_UPON_INTAKE(컬럼) LIKE “%Neutered%” or SEX_UPON_INTAKE LIKE “%Spayed%” &lt;code class=&quot;highlighter-rouge&quot;&gt;THEN(조건에 해당한다면)&lt;/code&gt; “O” &lt;code class=&quot;highlighter-rouge&quot;&gt;ELSE(그렇지 않다면)&lt;/code&gt; “X” &lt;code class=&quot;highlighter-rouge&quot;&gt;END(함수 종료)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;날짜-변환&quot;&gt;날짜 변환&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DATE_FORMAT&lt;/code&gt;(DATETIME(날짜 값), &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;%Y-%m-%d&quot;(원하는 값 형태)&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="database" />
+      
+
+      
+        <summary type="html">MySQL 2단계 리뷰</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">003. MySQL programmers 1단계 리뷰</title>
+      <link href="http://localhost:4000/003-mysql" rel="alternate" type="text/html" title="003. MySQL programmers 1단계 리뷰" />
+      <published>2021-03-24T00:00:00+09:00</published>
+      <updated>2021-03-24T00:00:00+09:00</updated>
+      <id>http://localhost:4000/003-mysql</id>
+      <content type="html" xml:base="http://localhost:4000/003-mysql">&lt;h2 id=&quot;1단계-테스트-리뷰&quot;&gt;1단계 테스트 리뷰&lt;/h2&gt;
+
+&lt;h3 id=&quot;sql-문법순서&quot;&gt;SQL 문법순서&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/b8eaa497-5219-4809-bcd0-d5b841843f13/sql%20%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8%20%E1%84%89%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;sql-실행순서&quot;&gt;SQL 실행순서&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/919212f9-9bf3-46f8-bda4-07ef84dc254c/sql.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt; 에서 테이블 확인 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt; 검색조건에 따라 데이터추출 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;GROUP BY&lt;/code&gt; 행의 고유값을 그룹으로 정리 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;HAVING&lt;/code&gt; 검색조건에 따라 추가로 제외 -&amp;gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; 에서 출력할 컬럼들을 확인한다 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;ORDER BY&lt;/code&gt; 정렬을 해준다음 출력&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;상위-n개-레코드&quot;&gt;상위 n개 레코드&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이 부분은 &lt;code class=&quot;highlighter-rouge&quot;&gt;ORACLE&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;의 문법이 다르다고 한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;의 문법으로 정리
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;의 경우 : 값을 조회하는데 가장 맨 위 행 1개만을 조회하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;LIMIT&lt;/code&gt; 구문을 사용해야 합니다.
+        &lt;ul&gt;
+          &lt;li&gt;LIMIT 1 : 맨 위에서부터 1개까지의 정보 조회&lt;/li&gt;
+          &lt;li&gt;LIMIT 3 : 맨 위에서부터 3개까지의 정보 조회&lt;/li&gt;
+          &lt;li&gt;LIMIT 2, 6 : 위에서 2번째부터 6번째까지의 정보 조회&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ORDER BY&lt;/code&gt;와 함께 활용해서 원하는 값 출력하는 문제 해결&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;sql-count&quot;&gt;SQL COUNT&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;전체 행 갯수 가져오기
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(*) FROM 테이블;&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컬럼 데이터 갯수 가져오기
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(컬럼) FROM 테이블;&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컬럼 네임 지정해서 가져오기
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(*) as cnt FROM hero_collection;&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cnt&lt;/code&gt;라는 이름의 컬럼명으로 자료를 가져오는 모습&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;나중에 나온 문제에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;DISTINCT&lt;/code&gt;와 함께 써서 해결하는 문제도 있었다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;null&quot;&gt;NULL&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;을 처리하기 위해선 &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt;을 사용한다
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM TEST WHERE NAME IS NULL&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt; 값인 &lt;code class=&quot;highlighter-rouge&quot;&gt;NAME&lt;/code&gt;을 불러오는 예제&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM TEST WHERE NAME IS NOT NULL&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM TEST WHERE NOT NAME IS NULL&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;위의 두 경우처럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;NOT NULL&lt;/code&gt;을 이용하거나 &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE NOT&lt;/code&gt;을 이용해 조건으로 해결할 수도 있다&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;distinct중복-제거&quot;&gt;DISTINCT(중복 제거)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;앞서 설명했던 &lt;code class=&quot;highlighter-rouge&quot;&gt;DISTINCT&lt;/code&gt; 사용법
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT DISTINCT * FROM TEST&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;중복 값만 해결하고 값을 가져오는 예제&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(DISTINCT *) FROM TEST&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;중복 값을 해결하고 값을 &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt; 하는 예제(&lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt;와 함께 쓸 때 문법이 헷갈려 예제로 넣어봅니다)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="database" />
+      
+
+      
+        <summary type="html">1단계 테스트 리뷰</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">002. Database - normalization</title>
+      <link href="http://localhost:4000/002-database" rel="alternate" type="text/html" title="002. Database - normalization" />
+      <published>2021-03-23T00:00:00+09:00</published>
+      <updated>2021-03-23T00:00:00+09:00</updated>
+      <id>http://localhost:4000/002-database</id>
+      <content type="html" xml:base="http://localhost:4000/002-database">&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/77666619-ba44-4a09-a078-ba81cb649e0a/%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%B2%E1%84%92%E1%85%AA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;UNF&lt;/code&gt;는 정규화가 진행되지 않은 데이터 상태이다&lt;/li&gt;
+  &lt;li&gt;각 정규화 단계에 해당하는 조건이 왼쪽에 조건으로 표기되어 있다&lt;/li&gt;
+  &lt;li&gt;주로 많이 쓰이는 정규화 3단계에 대해서 공부한 내용을 정리하는 글이다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;1-정규화&quot;&gt;1 정규화&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/ada33d55-e5b0-4854-932d-3b6f9d904da5/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;1 정규형&lt;/code&gt;의 조건은 &lt;code class=&quot;highlighter-rouge&quot;&gt;atomic columns&lt;/code&gt; - 각각의 컬럼이 하나의 값을 가지는 것이다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/d3f4f160-e233-4308-ad4a-c6a9cea3bb77/8.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;만약 위 상황에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;tag column&lt;/code&gt;를 정렬할 때 어떤 값으로 정렬할 것인가&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;join&lt;/code&gt;할 때도 어려움 발생
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/295f9782-6e19-45f9-baad-fcc2763fb7e7/2.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;이런식으로 해결하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;1 정규형&lt;/code&gt;은 만족하지만, &lt;code class=&quot;highlighter-rouge&quot;&gt;tag column&lt;/code&gt;을 제외한 다른 부분에서 정보가 중복되는 것을 확인할 수 있다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c7de2a3c-8f6e-4f11-b061-02b015083b91/4.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;위 방법또한 &lt;code class=&quot;highlighter-rouge&quot;&gt;1 정규형&lt;/code&gt;은 만족하지만, 만약 &lt;code class=&quot;highlighter-rouge&quot;&gt;tag&lt;/code&gt;가 추가되거나 하나가 삭제되면 낭비되는 부분이 발생한다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/dfda1e76-ab7f-442d-898b-e16c947b9bf4/3.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;1 정규화&lt;/code&gt;를 진행시킨 모습이다. &lt;code class=&quot;highlighter-rouge&quot;&gt;topic&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;tag&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;다대다 관계&lt;/code&gt;이므로 중간 테이블을 생성해서 연결해준다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-정규화&quot;&gt;2 정규화&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/954e96fe-77d3-433b-a581-309aff261acb/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;조건 : 테이블에 부분 종속되는 값이 없어야 한다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/110bdc7e-aa6c-4f14-af1a-bff29e0e6851/2.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;위 테이블을 보면 빨간부분의 정보가 중복되는 것을 알 수 있다&lt;/li&gt;
+  &lt;li&gt;중복된 부분은 &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt; 이라는 컬럼에 부분적으로 종속되고 있다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;price&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;에 따라서 달라진다&lt;/li&gt;
+  &lt;li&gt;부분적으로 종속되는 정보와 전체에 종속되는 정보를 나눈다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/16c1d79c-4e37-4f3b-8a3e-49963e206c6d/3.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;에 부분 종속되는 값을 테이블로 나누고 중복 값을 제거한 모습
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/98758d37-2190-45bb-ad6b-2bf741c58fd3/4.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;에 종속되는 &lt;code class=&quot;highlighter-rouge&quot;&gt;price&lt;/code&gt; 또한 테이블로 나눈 모습&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;제 2 정규형&lt;/code&gt;이 완성된 모습&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3-정규화&quot;&gt;3 정규화&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/317c1f43-8dfb-409f-8545-3a5c04249c5d/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;조건 : 이행적 종속성을 제거 해야 함
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/9ff1d09c-9ea5-488c-b516-ac69b342304e/2.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;author_name&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;author_profile&lt;/code&gt; 은 &lt;code class=&quot;highlighter-rouge&quot;&gt;author _id&lt;/code&gt; 에 의존하고 있다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;author_id&lt;/code&gt; 는 &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;에 의존하고 있다&lt;/li&gt;
+  &lt;li&gt;이 상황을 이행적 종속성이라고 한다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/30041b73-4f6d-40fe-9a1f-b131c509c695/3.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;중복된 값인 것을 볼 수 있다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fcf39504-e09a-4a4e-a7f0-c604f306102a/4.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;author&lt;/code&gt; 테이블을 형성해서 중복된 값을 삭제해준다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;topic&lt;/code&gt; 테이블을 형성해서 값들을 &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;과 관련된 값을 불러오고 각각의 &lt;code class=&quot;highlighter-rouge&quot;&gt;row&lt;/code&gt;가 &lt;code class=&quot;highlighter-rouge&quot;&gt;author&lt;/code&gt; 테이블의 어떤 &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt;인지 알려주는 &lt;code class=&quot;highlighter-rouge&quot;&gt;author_id&lt;/code&gt; 또한 가져온다&lt;/li&gt;
+  &lt;li&gt;제 3 정규형까지 만족하는 상태&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;정규화-파악-팁&quot;&gt;정규화 파악 팁&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;만약 &lt;code class=&quot;highlighter-rouge&quot;&gt;author_id&lt;/code&gt;가 없었다고 하더라도 중복된 값이 있었다면 내부적으로 이행적 종속성을 가졌다고 생각해서 분리한다&lt;/li&gt;
+  &lt;li&gt;그러지 않더라도 &lt;code class=&quot;highlighter-rouge&quot;&gt;column&lt;/code&gt; 이름에 중복된 앞 명칭(author)이 있을 경우 떨어뜨려야 한다고 가정하고 살펴본다&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="database" />
+      
+
+      
+        <summary type="html"></summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">001. Database - 기본 이론들과 스타벅스 모델링 리뷰</title>
+      <link href="http://localhost:4000/001-database" rel="alternate" type="text/html" title="001. Database - 기본 이론들과 스타벅스 모델링 리뷰" />
+      <published>2021-03-12T00:00:00+09:00</published>
+      <updated>2021-03-12T00:00:00+09:00</updated>
+      <id>http://localhost:4000/001-database</id>
+      <content type="html" xml:base="http://localhost:4000/001-database">&lt;h2 id=&quot;database&quot;&gt;Database&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터베이스란 일반적으로 컴퓨터 시스템에 저장된 정보 또는 데이터의 집합을 말한다&lt;/li&gt;
+  &lt;li&gt;데이터베이스는 보통 데이터베이스 관리 시스템(DBMS)로 제어한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Application&lt;/code&gt;에서는 데이터가 메모리 상에서 존재하며 메모리에 존재하는 데이터는 보존이 되지 않고, 애플리케이션이 종료하면 메모리에 있던 데이터들은 다시 읽어 들일 수 없다. 따라서, 데이터를 오랜 기간 저장 및 보존 하기 위해서 데이터 베이스를 사용하는 것&lt;/li&gt;
+  &lt;li&gt;일반적으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;database&lt;/code&gt;에는 크게 &lt;code class=&quot;highlighter-rouge&quot;&gt;관계형 데이터베이스(RDBMS)&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;NoSQL&lt;/code&gt;로 명칭되는 &lt;code class=&quot;highlighter-rouge&quot;&gt;비관계형(Non-relational) database&lt;/code&gt;가 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;rdbms&quot;&gt;RDBMS&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;관계형 데이터 모델&lt;/code&gt;에 기초를 둔 데이터베이스 시스템을 말한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;관계형 데이터&lt;/code&gt;는 데이터를 서로 상호관련성있는 형태로 표현한 데이터를 말한다&lt;/li&gt;
+  &lt;li&gt;테이블끼리 연결에는 세 가지 형태가 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;일-대-일-관계&quot;&gt;일 대 일 관계&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/624b70d7-7a1a-42a7-9a10-1c26ad8e3606/1%E1%84%83%E1%85%A21.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;일 대 일 관계는 정확하게 테이블의 로우들이 하나씩 관계를 이루는 것을 말한다&lt;/li&gt;
+  &lt;li&gt;쉽다고 생각할 수 도 있지만 &lt;code class=&quot;highlighter-rouge&quot;&gt;PK(primary key)&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;FK(foriegn key)&lt;/code&gt;를 설정할 때, 가장 헷갈리고 어려운 경우다&lt;/li&gt;
+  &lt;li&gt;일 대 일 관계에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;PK&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;FK&lt;/code&gt;를 설정할 땐, 두 테이블의 관계를 살펴보고 어떤 테이블이 다른 테이블에 종속되어 있는지 파악하는 것이 중요한 팁이다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;일-대-다-관계&quot;&gt;일 대 다 관계&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/2e91a7eb-f096-47a5-b11a-959f45618be8/1%E1%84%83%E1%85%A2%20%E1%84%83%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;한 테이블의 로우가 다른 테이블의 여러 로우와 연결되는 관계다&lt;/li&gt;
+  &lt;li&gt;일인 쪽의 테이블이 &lt;code class=&quot;highlighter-rouge&quot;&gt;PK&lt;/code&gt;를 가지고, 다인 쪽인 &lt;code class=&quot;highlighter-rouge&quot;&gt;FK&lt;/code&gt;를 가진다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;다-대-다-관계&quot;&gt;다 대 다 관계&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/ac115e11-9619-44f5-a6dd-8b818125f946/%E1%84%83%E1%85%A1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각 테이블의 로우가 서로 여러 로우와 연결되는 관계다&lt;/li&gt;
+  &lt;li&gt;이 경우 중간에서 연결을 도와주는 테이블을 하나 생성해 연결한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;테이블을-나누는-이유&quot;&gt;테이블을 나누는 이유&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;하나의 테이블에 모든 정보를 저장하면 불필요하게 중복되어 저장하는 데이터가 생긴다&lt;/li&gt;
+  &lt;li&gt;당연히 더 많은 디스크를 사용하게 되고, 잘못된 데이터가 저장될 가능성도 존재한다&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;테이블의 제목과 속성 이름을 짤 때는 &lt;code class=&quot;highlighter-rouge&quot;&gt;convention rule&lt;/code&gt;이 있는데 테이블 제목들은 &lt;code class=&quot;highlighter-rouge&quot;&gt;소문자+복수형&lt;/code&gt;으로 해야하고, 속성 이름은 &lt;code class=&quot;highlighter-rouge&quot;&gt;소문자&lt;/code&gt;로 작성해야 한다&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;nosql&quot;&gt;NoSQL&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;비관계형 타입의 데이터&lt;/code&gt;를 저장할때 주로 사용되는 데이터베이스 시스템&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;관계형 데이터베이스&lt;/code&gt;와 다르게 비관계형 이기 때문에 데이터들을 저장하기 전에 정의 할 필요가 없다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;관계형 데이터베이스&lt;/code&gt;는 데이터들을 저장하기 전에 어디에 어떻게 저장할것인지를 정의 해야한다(테이블 이름, 테이블과 다른 테이블의 관계, 각 컬럼의 타입 등등)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MongoDB&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Redis&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Cassandra&lt;/code&gt; 등이 가장 대표적인 NoSQL 데이터 베이스이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;transaction&quot;&gt;Transaction&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;여러작업들을 하나로 묶은 단위&lt;/li&gt;
+  &lt;li&gt;한 덩어리의 작업들은 모두 실행되거나, 모두 실행되지 않는다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;트랜젝션이-필요한-이유&quot;&gt;트랜젝션이 필요한 이유&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;만약 은행 시스템에서 A은행에서 출금은 진행되고 B은행에 입금이 진행되지 않은 상태에서 종료되면 안될 것이다&lt;/li&gt;
+  &lt;li&gt;트랜젝션을 통해서 이런 상황을 방지하고, 데이터의 유효성을 보장한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;acid&quot;&gt;ACID&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ACID는 데이터의 유효성을 보장하기 위한, 트랜젝션의 특징들의 앞글자를 딴 단어&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;atomicity원자성&quot;&gt;Atomicity(원자성)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;모든 작업이 반영되거나 모두 롤백되는 특성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;consistency일관성&quot;&gt;Consistency(일관성)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터는 미리 정의된 규칙에서만 수정이 가능한 특성을 의미한다. 예를 들어 숫자컬럼에 문자열값을 저장이 안되도록 보장해준다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;isolation고립성&quot;&gt;Isolation(고립성)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A와 B 두개의 트랜젝션이 실행되고 있을 때, A의 작업들이 B에게 보여지는 정도를 의미한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;durability영구성&quot;&gt;Durability(영구성)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;한번 반영(커밋)된 트랜젝션의 내용은 영원히 적용되는 특성을 의미한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;sqlrdbms-vs-nosql&quot;&gt;SQL(RDBMS) VS NoSQL&lt;/h2&gt;
+
+&lt;h3 id=&quot;sql&quot;&gt;SQL&lt;/h3&gt;
+
+&lt;h4 id=&quot;장점&quot;&gt;장점:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;관계형 데이터베이스&lt;/code&gt;는 데이터를 더 효율적으로 그리고 체계적으로 저장할 수 있고 관리 할 수 있다&lt;/li&gt;
+  &lt;li&gt;미리 저장하는 데이터들의 구조(&lt;code class=&quot;highlighter-rouge&quot;&gt;테이블 스키마&lt;/code&gt;)를 정의 함으로 데이터의 완전성이 보장할 수 있다&lt;/li&gt;
+  &lt;li&gt;트랜잭션(transaction)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;단점&quot;&gt;단점:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;테이블을 미리 정의해야 하므로 테이블 구조 변화 등에 덜 유연한다.&lt;/li&gt;
+  &lt;li&gt;확장성이 쉽지 않다&lt;/li&gt;
+  &lt;li&gt;역시 테이블 구조가 미리 정의 되어 있다보니 단순히 서버를 늘리는것 만으로 확장하기가 쉽지 않고 서버의 성능 자체도 높여야 한다&lt;/li&gt;
+  &lt;li&gt;서버를 늘려서 분산 저장 하는것도 쉽지 않다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Scale up(서버의 성능을 높이는것)&lt;/code&gt;으로 확장성이 됨&lt;/li&gt;
+  &lt;li&gt;정형화된 데이터들 그리고 데이터의 완전성이 중요한 데이터들을 저장하는데 유리하다
+    &lt;ul&gt;
+      &lt;li&gt;예) 전자상거래 정보. 은행 계좌 정보, 거래 정보 등등.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;nosql-1&quot;&gt;NoSQL&lt;/h3&gt;
+
+&lt;h4 id=&quot;장점-1&quot;&gt;장점:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;테이터 구조를 미리 정의하지 않아도 되므로 저장하는 데이터의 구조 변화에 유연하다&lt;/li&gt;
+  &lt;li&gt;확장하기가 비교적 쉽다. 그냥 서버 수를 늘리면 됨(&lt;code class=&quot;highlighter-rouge&quot;&gt;scale out&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;확장하기가 쉽고 테이터의 구조도 유연하다 보니 방대한 양의 데이터를 저장하는데 유리하다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;단점-1&quot;&gt;단점:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터의 완전성이 덜 보장된다&lt;/li&gt;
+  &lt;li&gt;트랜잭션이 안되거나 비교적 불안정하다&lt;/li&gt;
+  &lt;li&gt;주로 비정형화 데이터 그리고 완전성이 상대적으로 덜 유리한 데이터를 저장하는데 유리하다
+    &lt;ul&gt;
+      &lt;li&gt;예) 로그 데이타&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;스타벅스-데이터-모델링&quot;&gt;스타벅스 데이터 모델링&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/6f9d2575-720d-418b-8c99-b78862d6fbed/image.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;리뷰&quot;&gt;리뷰&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;메뉴를 생각하지 못하고 모델링에 포함하지 않았다;;&lt;/li&gt;
+  &lt;li&gt;테이블 형성할 때 &lt;code class=&quot;highlighter-rouge&quot;&gt;boolean&lt;/code&gt; 형태가 없기 때문에 0과 1을 주고 싶을 경우
+&lt;code class=&quot;highlighter-rouge&quot;&gt;TINYINT&lt;/code&gt;로 하면 되고, &lt;code class=&quot;highlighter-rouge&quot;&gt;isnew&lt;/code&gt; 같은 이름으로 boolean인줄 알게 해준다&lt;/li&gt;
+  &lt;li&gt;변수명은 줄여서 쓰지 말고 정보전달을 위해 풀네임을 적어주는 것이 좋다&lt;/li&gt;
+  &lt;li&gt;테이블은 무조건 pk가 존재해야 한다&lt;/li&gt;
+  &lt;li&gt;이미지는 url이 20글자를 넘어갈 확률이 높기 때문에 최소 2000 정도로 설정해주는 것이 좋다&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;type&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;text&lt;/code&gt; type은 보통 4000자 이상일 경우 사용&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;varchar&lt;/code&gt; str을 적을 때 쓰는 type&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DECIMAL&lt;/code&gt; float 보다 작은 데이터 값을 다루는 type&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;INT&lt;/code&gt; type은 정수&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TINYINT&lt;/code&gt; type은 INT보다 더 작은 범위의 type&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;테이블이 바라보는 방향과 관계 방향이 같다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;정참조&lt;/code&gt; 방향이 서로 반대된다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;역참조&lt;/code&gt;라고 한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;정참조&lt;/code&gt;일 경우 백엔드에서 데이터를 불러올 때 더 편함&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="database" />
+      
+
+      
+        <summary type="html">Database</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

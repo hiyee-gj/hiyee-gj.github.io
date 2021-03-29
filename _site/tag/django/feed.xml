@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/django/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2021-03-28T23:43:04+09:00</updated>
+  <id>http://localhost:4000/tag/django/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Hiyee Blog | </title>
+  
+
+  
+    <subtitle>Developer with good Influence</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">003. Django - view</title>
+      <link href="http://localhost:4000/003-django" rel="alternate" type="text/html" title="003. Django - view" />
+      <published>2021-03-26T00:00:00+09:00</published>
+      <updated>2021-03-26T00:00:00+09:00</updated>
+      <id>http://localhost:4000/003-django</id>
+      <content type="html" xml:base="http://localhost:4000/003-django">&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 웹의 로직을 담당&lt;/li&gt;
+  &lt;li&gt;웹에서 일어나는 데이터 저장, 파일 다운로드 등을 위해 코드 작성
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/0294252e-7f42-463b-a180-44ea5c29904e/view.py%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 명심해야 할 점&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt; 인자를 받고&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpResponse&lt;/code&gt;로 &lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt; 하기 전에 데이터 관련된 코드들이 중간에 들어가는 개념
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/74ae4f6b-50ce-482c-b62a-ad2c3e4b8317/view.py%20index%20%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;models.py&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;을 불러와서 출력&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;question&lt;/code&gt; 데이터에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;출판일자&lt;/code&gt;를 정렬하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;5개&lt;/code&gt;까지 가져오고 &lt;code class=&quot;highlighter-rouge&quot;&gt;5개&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;,&lt;/code&gt;로 연결하여 리스폰스 하겠다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/3b9e67b0-a737-45ed-ab86-e82821e5aa55/polls:urls.py%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;polls/urls.py&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 설정&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;에서는 해당 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt; 이 끝나는 지점의 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 작업을 수행하게 된다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;httpresponse&lt;/code&gt;를 리턴하거나 &lt;code class=&quot;highlighter-rouge&quot;&gt;http404&lt;/code&gt; 같은 예외를 리턴함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;template-필요성&quot;&gt;Template 필요성&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;지금까지 클라이언트에게 보여주는 페이지가 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 내에 있었음&lt;/li&gt;
+  &lt;li&gt;데이터를 추출해서 바로 &lt;code class=&quot;highlighter-rouge&quot;&gt;클라이언트&lt;/code&gt;에게 보여줌&lt;/li&gt;
+  &lt;li&gt;디자인 수정 시 너무 어려움, 디자인 수정을 위해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 내부를 수정해야 하기 때문에&lt;/li&gt;
+  &lt;li&gt;그래서 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;와 디자인 담당인 &lt;code class=&quot;highlighter-rouge&quot;&gt;template&lt;/code&gt;을 분리해야 함&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;수정이 편하고, 더 적게 수정하는 방안으로 빌드하는 것이 중요하다!!!!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">view는 django 웹의 로직을 담당 웹에서 일어나는 데이터 저장, 파일 다운로드 등을 위해 코드 작성 view 명심해야 할 점 view 에서는 request 인자를 받고 HttpResponse로 return response 하기 전에 데이터 관련된 코드들이 중간에 들어가는 개념 models.py에서 Question을 불러와서 출력 question 데이터에서 출판일자를 정렬하여 5개까지 가져오고 5개를 ,로 연결하여 리스폰스 하겠다 polls/urls.py에 path 설정 urls.py에서는 해당 url 이 끝나는 지점의 path 작업을 수행하게 된다 view에서는 httpresponse를 리턴하거나 http404 같은 예외를 리턴함</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">002. Django - tutorial 2 review</title>
+      <link href="http://localhost:4000/002-django-copy" rel="alternate" type="text/html" title="002. Django - tutorial 2 review" />
+      <published>2021-03-25T00:00:00+09:00</published>
+      <updated>2021-03-25T00:00:00+09:00</updated>
+      <id>http://localhost:4000/002-django%20copy</id>
+      <content type="html" xml:base="http://localhost:4000/002-django-copy">&lt;h2 id=&quot;tutorial-2-review&quot;&gt;tutorial 2 review&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt;는 기본적으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;SQLite&lt;/code&gt;를 제공하고 있다 하지만 나는 &lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;을 사용하기 위해 설정을 조금 변경하는 과정을 소개한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mysql에서-database-생성하기&quot;&gt;MySQL에서 DATABASE 생성하기&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mysql.server start&lt;/code&gt;로 서버를 열어주기&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mysql -u root -p&lt;/code&gt;를 통해 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysql&lt;/code&gt; 접속&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/98e314f9-5fc4-4330-bba2-f6d1a20200de/mysql%20data%20create.png&quot; alt=&quot;&quot; /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;DATABASE&lt;/code&gt; 생성 &lt;code class=&quot;highlighter-rouge&quot;&gt;testdata&lt;/code&gt;는 데이터베이스 이름임&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/6bc65df3-ef7e-48bc-aa14-89c9a5f6cbb7/mysql%20show%20databases;.png&quot; alt=&quot;&quot; /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;SHOW DATABASES&lt;/code&gt;를 통해서 생성됐는지 확인&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;mysitesettingspy에서-mysql로-변경해주기&quot;&gt;mysite/settings.py에서 MySQL로 변경해주기&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/0d8314e3-ac04-48bb-9e2e-d82dd9365f73/mysql%20settings.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;installed_apps&quot;&gt;INSTALLED_APPS&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/eb56ca39-d584-42f2-bf4f-fd188329ec77/2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mysite/settings.py&lt;/code&gt;에 확인하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;installed_apps&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt;에서 기본으로 제공하는 앱들을 확인할 수 있다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/482ae2e1-c2c4-4d28-9895-b951499dca2b/1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;앱들의 기능에 대한 내용이다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;기본 어플리케이션&lt;/code&gt;들 중 몇몇은 최소한 하나 이상의 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스 테이블&lt;/code&gt;을 사용한다&lt;/li&gt;
+  &lt;li&gt;그러기 위해선 데이터베이스에서 테이블을 미리 만들 필요가 있음&lt;/li&gt;
+  &lt;li&gt;다음 명령을 통해 테이블 생성 &lt;code class=&quot;highlighter-rouge&quot;&gt;python manage.py migrate&lt;/code&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/634521cc-efa3-48e3-9d58-7382a7444d58/migrate.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;model-작성하기&quot;&gt;model 작성하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Model&lt;/code&gt;이란 부가적인 메타데이터를 가진 데이터베이스의 구조를 말한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;Choice&lt;/code&gt;라는 모델을 작성
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/41b9c6ad-2827-48e0-991e-8d80b36f6726/3.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;question&lt;/code&gt; 에는 질문(문자 최대길이 200) 내용 생성 날짜(시간 타입)
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/8a0ebaf6-6b71-4bfd-bbaf-ad98f54af343/4.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;choice&lt;/code&gt;에는 선택지에 해당하는 질문(&lt;code class=&quot;highlighter-rouge&quot;&gt;외래키&lt;/code&gt;=&lt;code class=&quot;highlighter-rouge&quot;&gt;question&lt;/code&gt;의 내용을 참조하겠다, &lt;code class=&quot;highlighter-rouge&quot;&gt;CASCADE&lt;/code&gt; = &lt;code class=&quot;highlighter-rouge&quot;&gt;question&lt;/code&gt;이 삭제가 되면 &lt;code class=&quot;highlighter-rouge&quot;&gt;choice question&lt;/code&gt;도 삭제 하겠다), 투표수의 내용이 담겨 있음&lt;/li&gt;
+  &lt;li&gt;여기서 &lt;code class=&quot;highlighter-rouge&quot;&gt;외래키&lt;/code&gt;에 대해서 더 살펴보면 하나의 &lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;에 여러개의 &lt;code class=&quot;highlighter-rouge&quot;&gt;foreignkey&lt;/code&gt;를 갖기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;1대 다 관계&lt;/code&gt;인 것을 확인할 수 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;installed_apps에-pollsapp-추가하기&quot;&gt;INSTALLED_APPS에 polls.app 추가하기&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c2a60564-3394-443d-b802-08554bbaf8ed/settings%E1%84%8B%E1%85%A6%20app%20%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;makemigration&quot;&gt;makemigration&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;makemigration&lt;/code&gt; : &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt;을 작성해 놓은 것을 &lt;code class=&quot;highlighter-rouge&quot;&gt;mygration&lt;/code&gt;이라는 장소에 이 &lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt;들을 데이터베이스 내에 테이블을 생성할 수 있도록 설계도를 만드는 작업
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/5a50512d-3443-4240-a10d-ec003cc92cfe/makemigration%20%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;실행 결과(&lt;code class=&quot;highlighter-rouge&quot;&gt;migration&lt;/code&gt; 디렉토리 안에 생성된 것을 확인할수 있음)
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/f1130235-aef0-458a-b14a-0fc4eb3ee5a4/%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%E1%84%83%E1%85%A9.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;migrate&quot;&gt;migrate&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;migrate&lt;/code&gt;을 통해 실제 테이블 생성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;api-가지고-놀기&quot;&gt;API 가지고 놀기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;API&lt;/code&gt;란 &lt;code class=&quot;highlighter-rouge&quot;&gt;개발자&lt;/code&gt;가 필요로하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터&lt;/code&gt;를 뽑아낼 수 있도록 만들어 놓은 함수 또는 &lt;code class=&quot;highlighter-rouge&quot;&gt;서버&lt;/code&gt;에게 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스&lt;/code&gt;에게 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터&lt;/code&gt;를 입력할 수 있도록 만들어 놓은 함수&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shell&lt;/code&gt; 진입
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/ed889c19-4981-4d35-be11-a3a0eee1dd20/shell%20%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%8B%E1%85%B5%E1%86%B8.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shell&lt;/code&gt;에 만들어 놓은 &lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt; 추가
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/795fe633-6774-424a-bcf7-e837329a311f/shell%20model%20%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;의 모든 내용 불러오기&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Question.object.all()&lt;/code&gt; - 현재 퀘스쳔 내의 모든 데이터를 가져와라&lt;/li&gt;
+  &lt;li&gt;등록된 내용 없기 때문에 빈 내용 출력
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c1e4c2f2-c1fe-4216-a76e-8f4a4fa1ed55/question%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%B3%E1%86%AB%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%20%E1%84%87%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A5%E1%84%8B%E1%85%A9%E1%84%80%E1%85%B5.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;다음으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt; 내의 데이터 생성&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt; 내에는 질문내용과 발행일이 존재&lt;/li&gt;
+  &lt;li&gt;발행일 시간을 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;timezone&lt;/code&gt; 라이브러리 &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;q.id&lt;/code&gt; 는 함수에서 명시하지 않아도 장고에서 추가 해줌
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/de5489ad-869b-4d5c-8121-87b4b77555fc/question%E1%84%8B%E1%85%A6%20%E1%84%82%E1%85%A2%E1%84%8B%E1%85%AD%E1%86%BC%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;의 모든 내용 불러오기&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;object&lt;/code&gt;에 표시된 1로는 어떤 데이터인지 구분이 안감
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/ef171a9c-4f74-4da9-a651-90f1dc96049d/question%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%92%E1%85%AE%20object%20%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC%20%E1%84%80%E1%85%A7%E1%86%AF%E1%84%80%E1%85%AA.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;그렇기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;__str__()&lt;/code&gt; 메소드를 모델 내에 심어주면 보고 싶은 문구를 볼 수 있음&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt;안에 &lt;code class=&quot;highlighter-rouge&quot;&gt;__str__()&lt;/code&gt; 심어주기
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/463efce8-0a75-4fa7-b16e-322a60a5d504/__str__.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;저장하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;shell&lt;/code&gt;을 종료시킨 후 재실행해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt; 모든 내용을 불러오면
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c57e9c4c-f3bc-44e3-beb2-3adbb39c5d01/str%20%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC%E1%84%80%E1%85%A7%E1%86%AF%E1%84%80%E1%85%AA.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;str&lt;/code&gt; 결과를 볼 수 있다&lt;/li&gt;
+  &lt;li&gt;추후 여러 실행결과를 리뷰할 예정&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">tutorial 2 review</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">001. Django - Django의 기본 흐름과 tutorial 1 review</title>
+      <link href="http://localhost:4000/001-django" rel="alternate" type="text/html" title="001. Django - Django의 기본 흐름과 tutorial 1 review" />
+      <published>2021-03-25T00:00:00+09:00</published>
+      <updated>2021-03-25T00:00:00+09:00</updated>
+      <id>http://localhost:4000/001-django</id>
+      <content type="html" xml:base="http://localhost:4000/001-django">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;기본적으로 django, mysql이 설치되어 있는 상황 이후에 django에 대한
+흐름을 이해하기 위한 글입니다
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;django-참고영상&quot;&gt;Django &lt;a href=&quot;https://www.youtube.com/watch?v=9WctwW_Pe1o&amp;amp;list=PLi4xPOplIq7d1vDdLBAvS5PmQR-p6KwUz&amp;amp;index=2&quot;&gt;(참고영상)&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/48d6b494-94be-45d4-b6a1-33185322bb1d/django%201.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;django의-흐름&quot;&gt;django의 흐름&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;client&lt;/code&gt;가 &lt;code class=&quot;highlighter-rouge&quot;&gt;web application&lt;/code&gt;을 보기 위해서 요청&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Nginx&lt;/code&gt; 또는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Apache&lt;/code&gt;가 존재 이 둘은 흔히 &lt;strong&gt;상용 단계&lt;/strong&gt;에서 사용&lt;/li&gt;
+  &lt;li&gt;장고에서는 개발을 위해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;경량 개발 웹서버&lt;/code&gt;를 제공하고 있음&lt;/li&gt;
+  &lt;li&gt;개발할때는 &lt;code class=&quot;highlighter-rouge&quot;&gt;경량 개발 웹서버&lt;/code&gt;를 사용&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WSGI&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;웹서버&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;장고 프레임워크&lt;/code&gt;를 연결하기 위해 사용&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;가 넘어가고 사용자가 특정 주소를 요청하는데 &lt;code class=&quot;highlighter-rouge&quot;&gt;url 파일&lt;/code&gt;에서 요청한 주소를 잘게 나눠줌 이 작업을 &lt;code class=&quot;highlighter-rouge&quot;&gt;parsing&lt;/code&gt;이라고 함&lt;/li&gt;
+  &lt;li&gt;잘게 나눠진 주소들은 역할에 맞게 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;로 이동함&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;에는 &lt;code class=&quot;highlighter-rouge&quot;&gt;웹 어플리케이션&lt;/code&gt;에 각각 맞는 작업을 하기 위한 내가 만든 코드가 존재
+    &lt;ul&gt;
+      &lt;li&gt;EX) 요청받은 데이터를 저장, 데이터베이스에서 꺼내오는 데이터베이스 작업, pdf를 생성하는 작업이라던지 등등&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 작업이 끝나면 디자인 작업인 &lt;code class=&quot;highlighter-rouge&quot;&gt;template&lt;/code&gt;으로 이동하고 사용자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt;를 받게 된다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;프로젝트와-앱의-차이&quot;&gt;프로젝트와 앱의 차이&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;프로젝트는 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysite&lt;/code&gt;와 같은 &lt;code class=&quot;highlighter-rouge&quot;&gt;앱&lt;/code&gt;의 묶음&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;앱&lt;/code&gt;은 특정한 기능을 수행하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;웹 어플리케이션&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;EX) 아이스크림 가게를 위한 앱을 만든다고 한다면, 1. 아이스크림 관리를 위한 관리 앱 2. 주문을 위한 주문 앱 3. 이벤트를 위한 이벤트 앱
+특정 기능만 수행하는 앱을 각각 만들어서 프로젝트를 구성&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;django-tutorial-1&quot;&gt;django tutorial 1&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/eba56302-eab9-4943-b5ff-decfe3776cb2/django%202.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;라는 앱 생성(투표를 담당하는 앱)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view.py&lt;/code&gt;를 작성하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;view.py&lt;/code&gt;를 호출하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;를 만들고, 경로?? 입력&lt;/li&gt;
+  &lt;li&gt;최상위 &lt;code class=&quot;highlighter-rouge&quot;&gt;URLconf&lt;/code&gt;에 방금 만든 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 연결&lt;/li&gt;
+  &lt;li&gt;최상위 &lt;code class=&quot;highlighter-rouge&quot;&gt;URLconf&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysite&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;에 있음&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;iclude&lt;/code&gt; 함수는 다른 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 참조할 수 있게 해줌&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;여기까지-흐름&quot;&gt;여기까지 흐름&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;현재 최상위 &lt;code class=&quot;highlighter-rouge&quot;&gt;URLconf&lt;/code&gt;에 내가 만든 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt; 앱의 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 연결함&lt;/li&gt;
+  &lt;li&gt;예를 들어 &lt;code class=&quot;highlighter-rouge&quot;&gt;127.0.0.1/polls/&lt;/code&gt;라는 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;이 있다면 이 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 &lt;code class=&quot;highlighter-rouge&quot;&gt;parsing&lt;/code&gt;해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;라는 해당 경로를 잡아내고 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls.urls&lt;/code&gt;로 연결시켜줌&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/polls/&lt;/code&gt; 앱 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls&lt;/code&gt;는 전달받고 이후에 아무것도 없기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 내에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;view.index&lt;/code&gt;라는 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 내부로 연결 시켜줌&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 내부의 &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; 함수에서는 내가 작성한 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;hello world&quot;&lt;/code&gt;라는 &lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;client&lt;/code&gt;에게 전달 해줌&lt;/li&gt;
+&lt;/ol&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">기본적으로 django, mysql이 설치되어 있는 상황 이후에 django에 대한 흐름을 이해하기 위한 글입니다</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
