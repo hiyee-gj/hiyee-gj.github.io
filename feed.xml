@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-28T23:43:04+09:00</updated><id>http://localhost:4000/</id><title type="html">Hiyee Blog</title><subtitle>Developer with good Influence</subtitle><entry><title type="html">004. HTTP</title><link href="http://localhost:4000/004-http" rel="alternate" type="text/html" title="004. HTTP" /><published>2021-03-28T00:00:00+09:00</published><updated>2021-03-28T00:00:00+09:00</updated><id>http://localhost:4000/004-http</id><content type="html" xml:base="http://localhost:4000/004-http">&lt;h2 id=&quot;http-특징&quot;&gt;HTTP 특징&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-29T15:46:00+09:00</updated><id>http://localhost:4000/</id><title type="html">Hiyee Blog</title><subtitle>Developer with good Influence</subtitle><entry><title type="html">004. Django - C.R.U.D 1 review</title><link href="http://localhost:4000/004-django" rel="alternate" type="text/html" title="004. Django - C.R.U.D 1 review" /><published>2021-03-29T00:00:00+09:00</published><updated>2021-03-29T00:00:00+09:00</updated><id>http://localhost:4000/004-django</id><content type="html" xml:base="http://localhost:4000/004-django">&lt;h2 id=&quot;django-crud-1-review&quot;&gt;Django C.R.U.D 1 review&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Assignment
+    &lt;ul&gt;
+      &lt;li&gt;저번에 팀으로 스타벅스 모델링을 진행한 것을 바탕으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 모델을 완성하는 작업
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fa1e9a78-5e80-4f94-a3c5-32a947bb5bb1/modeling.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;모델링을 보면 &lt;code class=&quot;highlighter-rouge&quot;&gt;menu&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;category&lt;/code&gt;가 서로 1 대 다 관계이고, &lt;code class=&quot;highlighter-rouge&quot;&gt;category&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt; 또한 1 대 다 관계인 것을 확인했다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;field type&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;ForeignKey&lt;/code&gt;를 다의 위치에 있는 테이블에 명시하고, 1의 관계인 테이블을 연결해서 구현할 수 있었다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/edad700f-5329-4b6d-b705-9675622e7661/1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;결과물 중 &lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;images&lt;/code&gt; 또한 같은 방식으로 구현함&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;allergy&lt;/code&gt; 테이블의 관계는 다 대 다 관계인 것을 확인&lt;/li&gt;
+  &lt;li&gt;다 대 다 관계를 구현하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; docs를 찾았고, &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;field&lt;/code&gt;를 확인함
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/d189b858-256a-4391-91db-e3e45dd3eaa6/%E1%84%83%E1%85%A1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1%E1%84%80%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A8.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt; 필드를 관계를 가진 테이블끼리 설정하면, 중간 테이블이 자동으로 생성된다&lt;/li&gt;
+  &lt;li&gt;나는 내가 원하는 테이블을 중간 테이블로 지정하고 싶어서 좀 더 찾아보니 &lt;code class=&quot;highlighter-rouge&quot;&gt;through&lt;/code&gt;를 사용해, 내가 원하는 테이블로 지정할 수 있는 것을 찾아냄&lt;/li&gt;
+  &lt;li&gt;위 사진처럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt;로 관계를 설정하고, 중간 테이블에 연결된 외래키를 설정해서 구현&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python manage.py shell&lt;/code&gt;을 통해서 테이블에 값을 입력해서 과제 제출
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/805331fd-50fe-43f3-ba2a-cb75ffa92492/menu.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fff759ee-178c-4236-8ba2-f240b7430e36/category.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/bbe69a3e-9d95-4c23-b340-97a07afed3ea/product.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/92ada7d2-cde2-46ad-a762-d2a02e50409f/allergy.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c1d78a4d-cea7-41e1-9942-68863b14f480/allergydrink.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/3e4097a0-a48b-44d6-a78e-87d7c97db54a/image.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>hiyee</name></author><category term="django" /><summary type="html">Django C.R.U.D 1 review</summary></entry><entry><title type="html">022. 시저 암호</title><link href="http://localhost:4000/022-algorithm" rel="alternate" type="text/html" title="022. 시저 암호" /><published>2021-03-29T00:00:00+09:00</published><updated>2021-03-29T00:00:00+09:00</updated><id>http://localhost:4000/022-algorithm</id><content type="html" xml:base="http://localhost:4000/022-algorithm">&lt;h2 id=&quot;question&quot;&gt;Question&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/db884de3-b4e4-4243-b0bd-964cce5b947f/%E1%84%89%E1%85%B5%E1%84%8C%E1%85%A5%E1%84%8B%E1%85%A1%E1%86%B7%E1%84%92%E1%85%A9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;내-풀이정답&quot;&gt;내 풀이(정답)&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;big&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ZYXWVUTSRQPONMLKJIHGFEDCBA&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;small&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;big&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;big&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;big&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;big&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;small&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;small&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;대문자와 소문자의 리스트를 가지고 밀어낼 값을 알 수 있도록 대문자 리스트와 소문자 리스트를 만들었다&lt;/li&gt;
+  &lt;li&gt;리스트를 만들 때, 알파벳 역순으로 만들면 &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; 값을 더해줄 때, 따로 계산해 줄 필요가 없기 때문에 역순으로 만들었다
+    &lt;ul&gt;
+      &lt;li&gt;예시) a의 인덱스 값은 -1 이므로 n이 1일경우 -1 + 1 = 0으로 자연스럽게 인덱스 0인 z값을 출력하게 됨&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt;문으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt;의 값을 비교하는데 &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;로 &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt;가 공백일 경우, 문자열 &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;에 추가만 해주고 넘어가고, &lt;code class=&quot;highlighter-rouge&quot;&gt;else&lt;/code&gt;의 경우에서 또 &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;로 대문자일 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;big&lt;/code&gt; 리스트에서 진행 &lt;code class=&quot;highlighter-rouge&quot;&gt;else&lt;/code&gt;의 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;small&lt;/code&gt; 리스트에서 진행되도록 구현했다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;다른-풀이&quot;&gt;다른 풀이&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;caesar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;islower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;완전히 새로운 방식이라서 가져온 코드, 추후 분석해서 리뷰하겠습니다&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>hiyee</name></author><category term="algorithm" /><summary type="html">Question</summary></entry><entry><title type="html">004. HTTP</title><link href="http://localhost:4000/004-http" rel="alternate" type="text/html" title="004. HTTP" /><published>2021-03-28T00:00:00+09:00</published><updated>2021-03-28T00:00:00+09:00</updated><id>http://localhost:4000/004-http</id><content type="html" xml:base="http://localhost:4000/004-http">&lt;h2 id=&quot;http-특징&quot;&gt;HTTP 특징&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/bce8f6e5-d075-4d7f-ac79-30bf7e5cc55d/http.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -641,272 +718,4 @@ ORDER BY &lt;code class=&quot;highlighter-rouge&quot;&gt;정렬 기준&lt;/code&
 &lt;ul&gt;
   &lt;li&gt;만약 &lt;code class=&quot;highlighter-rouge&quot;&gt;author_id&lt;/code&gt;가 없었다고 하더라도 중복된 값이 있었다면 내부적으로 이행적 종속성을 가졌다고 생각해서 분리한다&lt;/li&gt;
   &lt;li&gt;그러지 않더라도 &lt;code class=&quot;highlighter-rouge&quot;&gt;column&lt;/code&gt; 이름에 중복된 앞 명칭(author)이 있을 경우 떨어뜨려야 한다고 가정하고 살펴본다&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>hiyee</name></author><category term="database" /><summary type="html"></summary></entry><entry><title type="html">015. Python - Assignment 49-58</title><link href="http://localhost:4000/015-python" rel="alternate" type="text/html" title="015. Python - Assignment 49-58" /><published>2021-03-20T00:00:00+09:00</published><updated>2021-03-20T00:00:00+09:00</updated><id>http://localhost:4000/015-python</id><content type="html" xml:base="http://localhost:4000/015-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
-      지역변수와 전역변수&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
-      오버라이딩, pass, super&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
-      pip install, 내장함수, 외장함수&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
-      package&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;assignment-review49-58&quot;&gt;Assignment review(49-58)&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;문제 해결 중 고민한 내용 정리하는 글입니다
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;49&quot;&gt;49&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/afaf9e6d-58c2-4b58-88a0-6693e5614fa7/while%20%E1%84%81%E1%85%AE%E1%86%AF%E1%84%90%E1%85%B5%E1%86%B8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;해결하는 과정에서 논리적인 사고는 끝을 냈는데 구현한 대로 값이 나오질 않아서 고생했다(두 가지 문제더라)&lt;/li&gt;
-  &lt;li&gt;첫 번째 &lt;code class=&quot;highlighter-rouge&quot;&gt;while&lt;/code&gt; 구문에서 반복되는 값 &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt;에 대해서 계속 값을 더해주는 변환식을 꼼꼼히 넣어줘야 한다&lt;/li&gt;
-  &lt;li&gt;두 번째 &lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt; 값 위치 좀 잘봐라 제발;;; 이상한 곳에서 시간 쓰더라&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;50&quot;&gt;50&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/a6693614-4ede-449e-8e6f-d29b3aa87422/50.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;본래 의도는 &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt;문을 중첩시켜서 해결하는 것일 수도 있지만, 내가 하던 방식대로 해결함&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;51&quot;&gt;51&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dictionary&lt;/code&gt; 안에 &lt;code class=&quot;highlighter-rouge&quot;&gt;dictionary&lt;/code&gt;를 덧씌워 값을 찾기 쉽게 하는 방법이다&lt;/li&gt;
-  &lt;li&gt;문제해결은 어렵지 않았으나, 자료를 입력하는게 더 힘들다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;52&quot;&gt;52&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/aab1cbaf-9e79-43f0-bd90-04d31299bf2d/52.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;엄청 고생한 문제다(두 번째 함수에서)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dictionary&lt;/code&gt; 값을 키워드 가변인자로 받은 후 처리하는 모습이다&lt;/li&gt;
-  &lt;li&gt;원하는 키와 값을 받아낼 &lt;code class=&quot;highlighter-rouge&quot;&gt;compile&lt;/code&gt;을 선언한 후 &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt;문으로 처리한다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt;문을 빠져나와!!!!!!!!(여기서 실수했다 &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt;문 안에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;를 처리해서 자꾸 값이 하나만 나옴;;)&lt;/li&gt;
-  &lt;li&gt;마지막 실수는 &lt;code class=&quot;highlighter-rouge&quot;&gt;dictionary&lt;/code&gt;에서 키에 해당하는 값 빼올때 키가 &lt;code class=&quot;highlighter-rouge&quot;&gt;str&lt;/code&gt; 형태였는데 그냥 써서 오류났다(주의하자!!!!!)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;53&quot;&gt;53&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;중첩함수에 대한 내용이다(문제 해결은 어렵지 않으나, 구현 과정에 대해서 다시 복습해 보자)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;54&quot;&gt;54&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;scope&lt;/code&gt;에 대한 문제였다(뒤의 문제에서도 이걸 해결하려고 함부로 전역함수로 전환했다가 오류가 발생했다..흠… 원인은 아직 파악하지 못한 상태이다)&lt;/li&gt;
-  &lt;li&gt;어렵지 않은 내용이지만 기본중에 기본인 내용이라 생각한다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;55&quot;&gt;55&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/3a3fc231-bb64-4650-ae9d-f39b29b6f75d/55.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;앞서 말했던 전역함수를 함부로 써서 고생한 문제다&lt;/li&gt;
-  &lt;li&gt;원리에 대해선 여러번 반복 사고한 끝에 이해했지만, 구현 과정에서 디테일이 필요한 기술이다&lt;/li&gt;
-  &lt;li&gt;내가 계속 오류를 범한 과정은 받아온 값 중 원하는 값에 대한 처리과정이었다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;를 잘 활용해서 해결해야 한다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;58&quot;&gt;58&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;예외처리에 대한 내용이었다&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>hiyee</name></author><category term="python" /><summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary></entry><entry><title type="html">014. Python - sys.modules, sys.path / absolute path, relative path / package</title><link href="http://localhost:4000/014-python" rel="alternate" type="text/html" title="014. Python - sys.modules, sys.path / absolute path, relative path / package" /><published>2021-03-20T00:00:00+09:00</published><updated>2021-03-20T00:00:00+09:00</updated><id>http://localhost:4000/014-python</id><content type="html" xml:base="http://localhost:4000/014-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
-      지역변수와 전역변수&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
-      오버라이딩, pass, super&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
-      pip install, 내장함수, 외장함수&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
-      package&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;sysmodules&quot;&gt;sys.modules&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;파이썬이 모듈이나 package를 찾기위해 가장 먼저 확인하는 곳&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sys.modules&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;dictionary&lt;/code&gt; 형태&lt;/li&gt;
-  &lt;li&gt;한 번 실행된 &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;된 &lt;code class=&quot;highlighter-rouge&quot;&gt;module&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;package&lt;/code&gt;들을 저장(한 번 실행된 &lt;code class=&quot;highlighter-rouge&quot;&gt;module&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;package&lt;/code&gt;들을 다시 찾지 않도록 하는 기능)&lt;/li&gt;
-  &lt;li&gt;로 import 하는 모듈은 &lt;code class=&quot;highlighter-rouge&quot;&gt;sys.modules&lt;/code&gt; 에서 찾을 수 없음&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;syspath&quot;&gt;sys.path&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sys.path&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;string&lt;/code&gt; 요소들을 가지고 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt; 형태&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;string&lt;/code&gt; 요소들은 경로를 나타냄&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
- &lt;span class=&quot;s&quot;&gt;'/Users/song-eun-u/anaconda3/bin'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
- &lt;span class=&quot;s&quot;&gt;'/Users/song-eun-u/anaconda3/lib/python36.zip'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
- &lt;span class=&quot;s&quot;&gt;'/Users/song-eun-u/anaconda3/lib/python3.6'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
- &lt;span class=&quot;s&quot;&gt;'/Users/song-eun-u/anaconda3/lib/python3.6/lib-dynload'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
- &lt;span class=&quot;s&quot;&gt;'/Users/song-eun-u/anaconda3/lib/python3.6/site-packages'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
- &lt;span class=&quot;s&quot;&gt;'/Users/song-eun-u/anaconda3/lib/python3.6/site-packages/aeosa'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
- &lt;span class=&quot;s&quot;&gt;'/Users/song-eun-u/anaconda3/lib/python3.6/site-packages/IPython/extensions'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
- &lt;span class=&quot;s&quot;&gt;'/Users/song-eun-u/.ipython'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt;의 각 경로를 하나 하나 확인하면서 해당 경로에 &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; 하고자 하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;package&lt;/code&gt;가 위치해 있는지 확인&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;1-sysmodules-syspath-차이&quot;&gt;1. sys.modules sys.path 차이&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sys.modules&lt;/code&gt;는 한번도 실행하지 못한 &lt;code class=&quot;highlighter-rouge&quot;&gt;module&lt;/code&gt;이나 &lt;code class=&quot;highlighter-rouge&quot;&gt;package&lt;/code&gt;의 정보를 가지고 있지 않지만 &lt;code class=&quot;highlighter-rouge&quot;&gt;sys.path&lt;/code&gt;는 경로에 저장되어 있다면 찾아낼 수 있다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;2-sys-도-import-해야하는-모듈입니다-파이썬은-sys-모듈의-위치를-어떻게-찾을-수-있을까요&quot;&gt;2. sys 도 import 해야하는 모듈입니다. 파이썬은 sys 모듈의 위치를 어떻게 찾을 수 있을까요?&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sys&lt;/code&gt; 모듈은 파이썬에 내장되어 있는 모듈로 파이썬 내부에 저장되어있다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;builtin_module_names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;builtin module&lt;/code&gt;의 목록을 불러와서 확인할 수 있다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3-absolute-path와-relative-path의-차이점을-서술해-주세요&quot;&gt;3. Absolute path와 relative path의 차이점을 서술해 주세요.&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Absolute path&lt;/code&gt;의 경우 나의 위치와 관계없이 원하는 곳이 어떤 경로 안에 위치해 있는지 지정해서 움직이는 방면, &lt;code class=&quot;highlighter-rouge&quot;&gt;relative path&lt;/code&gt;는 현재 나의 위치를 기준으로 이동하고 싶은 위치로 이동하는 방법이기 때문에, 아무래도 &lt;code class=&quot;highlighter-rouge&quot;&gt;Absolute path&lt;/code&gt; 보다는 헷갈릴 가능성이 존재한다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;4-calculator-패키지-만들기&quot;&gt;4. calculator 패키지 만들기&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/a3452df2-807f-47d1-b5f9-22462c5269bc/calculator.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;5-mainpy에서-상대경로로-add_and_mutiply-를-임포트-했을-때-발생하는-에러를-확인하고-다음의-파이썬-공식-문서를-참고해서-main-module-에서는-패키지의-모듈을-어떻게-임포트-해야하는지-블로깅-해주세요&quot;&gt;5. main.py에서 상대경로로 add_and_mutiply 를 임포트 했을 때 발생하는 에러를 확인하고, 다음의 파이썬 공식 문서를 참고해서 main module 에서는 패키지의 모듈을 어떻게 임포트 해야하는지 블로깅 해주세요.&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/44ec503c-158d-4aeb-a1a9-71b697caca57/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%83%E1%85%A2%20%E1%84%80%E1%85%A7%E1%86%BC%E1%84%85%E1%85%A9.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/f195b31e-4d8b-4095-9b7d-8c4cf350efd9/%E1%84%80%E1%85%A7%E1%86%BC%E1%84%85%E1%85%A9%20%E1%84%8B%E1%85%A6%E1%84%85%E1%85%A5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;참고 자료를 살펴 보니 &lt;code class=&quot;highlighter-rouge&quot;&gt;relative path&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;는 현재의 모듈을 기반으로 이루어진다. 직접 실행하는 모듈(메인 모듈)의 이름은 항상 “__main__“이고, 파이썬에서 메인 모듈은 항상 &lt;code class=&quot;highlighter-rouge&quot;&gt;absolute path&lt;/code&gt;를 사용해야하기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;relative path&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;absolute path&lt;/code&gt;로 설정해주면 된다
-&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/b19ee538-bd2e-4f57-84d8-feac4826b35d/%E1%84%8C%E1%85%A5%E1%86%AF%E1%84%83%E1%85%A2%20%E1%84%80%E1%85%A7%E1%86%BC%E1%84%85%E1%85%A9.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;값이 5로 잘 출력되는 상황이다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;6-add_and_multiplypy에서-multiply함수를-절대경로와-상대경로도-각각-임포트-해보고-main-모듈과-차이점을-생각해보고-결과를-출력해-보세요&quot;&gt;6. add_and_multiply.py에서 multiply함수를 절대경로와 상대경로도 각각 임포트 해보고 main 모듈과 차이점을 생각해보고 결과를 출력해 보세요.&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;상대 경로와 절대 경로 모두 결과를 잘 출력해 준다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;add_and_multiply.py&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;\__main__.py&lt;/code&gt;가 아니기 때문에 절대 경로든 상대 경로든 문제 없이 동작한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;7-initpy-파일의-역할에-대해서도-정리해서-블로깅-해주세요&quot;&gt;7. &lt;strong&gt;init&lt;/strong&gt;.py 파일의 역할에 대해서도 정리해서 블로깅 해주세요.&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\__init__.py&lt;/code&gt;가 존재하는 디렉토리는 패키지의 일부임을 알려주는 역할을 한다&lt;/li&gt;
-  &lt;li&gt;package 초기 설정을 할 수 있는 역할을 한다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\__init__.py&lt;/code&gt; 파일이 존재하지 않는다면 패키지의 일부인지 인식을 하지 못해 속성을 가지고 있지 않는다는 에러가 발생&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;package&lt;/code&gt; 실행 시 설정해주고 싶은 초기 설정이 있다면 이 파일에 초기 설정에 관련된 코드들을 작성하면 작성 한 코드의 내용대로 &lt;code class=&quot;highlighter-rouge&quot;&gt;package&lt;/code&gt; 실행 시 자동으로 실행&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>hiyee</name></author><category term="python" /><summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>hiyee</name></author><category term="database" /><summary type="html"></summary></entry></feed>

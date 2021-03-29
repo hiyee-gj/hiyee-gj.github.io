@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/django/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-03-28T23:43:04+09:00</updated>
+  <updated>2021-03-29T15:46:00+09:00</updated>
   <id>http://localhost:4000/tag/django/feed.xml</id>
 
   
@@ -30,6 +30,66 @@
   
   
 
+  
+    <entry>
+      <title type="html">004. Django - C.R.U.D 1 review</title>
+      <link href="http://localhost:4000/004-django" rel="alternate" type="text/html" title="004. Django - C.R.U.D 1 review" />
+      <published>2021-03-29T00:00:00+09:00</published>
+      <updated>2021-03-29T00:00:00+09:00</updated>
+      <id>http://localhost:4000/004-django</id>
+      <content type="html" xml:base="http://localhost:4000/004-django">&lt;h2 id=&quot;django-crud-1-review&quot;&gt;Django C.R.U.D 1 review&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Assignment
+    &lt;ul&gt;
+      &lt;li&gt;저번에 팀으로 스타벅스 모델링을 진행한 것을 바탕으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 모델을 완성하는 작업
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fa1e9a78-5e80-4f94-a3c5-32a947bb5bb1/modeling.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;모델링을 보면 &lt;code class=&quot;highlighter-rouge&quot;&gt;menu&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;category&lt;/code&gt;가 서로 1 대 다 관계이고, &lt;code class=&quot;highlighter-rouge&quot;&gt;category&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt; 또한 1 대 다 관계인 것을 확인했다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;field type&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;ForeignKey&lt;/code&gt;를 다의 위치에 있는 테이블에 명시하고, 1의 관계인 테이블을 연결해서 구현할 수 있었다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/edad700f-5329-4b6d-b705-9675622e7661/1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;결과물 중 &lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;images&lt;/code&gt; 또한 같은 방식으로 구현함&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;allergy&lt;/code&gt; 테이블의 관계는 다 대 다 관계인 것을 확인&lt;/li&gt;
+  &lt;li&gt;다 대 다 관계를 구현하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; docs를 찾았고, &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;field&lt;/code&gt;를 확인함
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/d189b858-256a-4391-91db-e3e45dd3eaa6/%E1%84%83%E1%85%A1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1%E1%84%80%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A8.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt; 필드를 관계를 가진 테이블끼리 설정하면, 중간 테이블이 자동으로 생성된다&lt;/li&gt;
+  &lt;li&gt;나는 내가 원하는 테이블을 중간 테이블로 지정하고 싶어서 좀 더 찾아보니 &lt;code class=&quot;highlighter-rouge&quot;&gt;through&lt;/code&gt;를 사용해, 내가 원하는 테이블로 지정할 수 있는 것을 찾아냄&lt;/li&gt;
+  &lt;li&gt;위 사진처럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt;로 관계를 설정하고, 중간 테이블에 연결된 외래키를 설정해서 구현&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python manage.py shell&lt;/code&gt;을 통해서 테이블에 값을 입력해서 과제 제출
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/805331fd-50fe-43f3-ba2a-cb75ffa92492/menu.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fff759ee-178c-4236-8ba2-f240b7430e36/category.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/bbe69a3e-9d95-4c23-b340-97a07afed3ea/product.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/92ada7d2-cde2-46ad-a762-d2a02e50409f/allergy.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c1d78a4d-cea7-41e1-9942-68863b14f480/allergydrink.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/3e4097a0-a48b-44d6-a78e-87d7c97db54a/image.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">Django C.R.U.D 1 review</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">003. Django - view</title>

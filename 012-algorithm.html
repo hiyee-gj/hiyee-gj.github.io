@@ -11,7 +11,7 @@
 
 
     <title>
-      021. 수박수박수박수박수박수?
+      012. 나누어 떨어지는 숫자 배열
     </title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -71,18 +71,18 @@
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Hiyee Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="021. 수박수박수박수박수박수?" />
-    <meta property="og:description" content="문제 내 풀이(정답) def solution(n): answer = '' for i in range(0, n): # i가 0부터 시작하니까 n+1 안해야 n만큼 출력 if i % 2 == 0: answer += "수" else: answer += "박" return answer 다른 사람 풀이 def water_melon(n): s = "수박" * n return s[:n] 흠….엄청 깔끔하게" />
+    <meta property="og:title" content="012. 나누어 떨어지는 숫자 배열" />
+    <meta property="og:description" content="문제 내 풀이 1(오답) def solution(arr, divisor): answer = [] for number in arr: if number%divisor == 0: answer.append(number) answer.sort() if answer == []: answer.append(-1) answer.sort() return answer answer 값이 없을 경우를 for문 안에 배치해서 오류 발생 내 풀이 2(정답) def solution(arr, divisor): answer = [] for number in arr:" />
     <meta property="og:url" content="http://localhost:4000/012-algorithm" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/algorithm.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2021-03-17T00:00:00+09:00" />
-    <meta property="article:modified_time" content="2021-03-17T00:00:00+09:00" />
+    <meta property="article:published_time" content="2021-03-11T00:00:00+09:00" />
+    <meta property="article:modified_time" content="2021-03-11T00:00:00+09:00" />
     <meta property="article:tag" content="Algorithm" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="021. 수박수박수박수박수박수?" />
-    <meta name="twitter:description" content="문제 내 풀이(정답) def solution(n): answer = '' for i in range(0, n): # i가 0부터 시작하니까 n+1 안해야 n만큼 출력 if i % 2 == 0: answer += "수" else: answer += "박" return answer 다른 사람 풀이 def water_melon(n): s = "수박" * n return s[:n] 흠….엄청 깔끔하게" />
+    <meta name="twitter:title" content="012. 나누어 떨어지는 숫자 배열" />
+    <meta name="twitter:description" content="문제 내 풀이 1(오답) def solution(arr, divisor): answer = [] for number in arr: if number%divisor == 0: answer.append(number) answer.sort() if answer == []: answer.append(-1) answer.sort() return answer answer 값이 없을 경우를 for문 안에 배치해서 오류 발생 내 풀이 2(정답) def solution(arr, divisor): answer = [] for number in arr:" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/algorithm.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -114,7 +114,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/012-algorithm"
     },
-    "description": "문제 내 풀이(정답) def solution(n): answer = '' for i in range(0, n): # i가 0부터 시작하니까 n+1 안해야 n만큼 출력 if i % 2 == 0: answer += "수" else: answer += "박" return answer 다른 사람 풀이 def water_melon(n): s = "수박" * n return s[:n] 흠….엄청 깔끔하게"
+    "description": "문제 내 풀이 1(오답) def solution(arr, divisor): answer = [] for number in arr: if number%divisor == 0: answer.append(number) answer.sort() if answer == []: answer.append(-1) answer.sort() return answer answer 값이 없을 경우를 for문 안에 배치해서 오류 발생 내 풀이 2(정답) def solution(arr, divisor): answer = [] for number in arr:"
 }
     </script>
 
@@ -127,7 +127,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="021. 수박수박수박수박수박수?" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="012. 나누어 떨어지는 숫자 배열" href="/feed.xml" />
 
   </head>
   <body
@@ -210,7 +210,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="17 March 2021">17 March 2021</time>
+                    <time class="post-full-meta-date" datetime="11 March 2021">11 March 2021</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -220,7 +220,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">021. 수박수박수박수박수박수?</h1>
+                <h1 class="post-full-title">012. 나누어 떨어지는 숫자 배열</h1>
             </header>
 <!--
             
@@ -232,32 +232,51 @@ into the {body} of the default.hbs template -->
                 <div class="kg-card-markdown">
                     <h2 id="문제">문제</h2>
 
-<p><img src="https://images.velog.io/images/hiyee-gj/post/5f612db6-8691-4cd3-a2f6-677927de3f9b/algorithm.png" alt="" /></p>
+<p><img src="https://images.velog.io/images/hiyee-gj/post/ea85c250-5de2-4c40-9694-60ab017aa685/Screen%20Shot%202021-03-11%20at%203.57.03%20PM.png" alt="" /></p>
 
-<h2 id="내-풀이정답">내 풀이(정답)</h2>
+<h2 id="내-풀이-1오답">내 풀이 1(오답)</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="s">''</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">divisor</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="c"># i가 0부터 시작하니까 n+1 안해야 n만큼 출력</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">answer</span> <span class="o">+=</span> <span class="s">"수"</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">answer</span> <span class="o">+=</span> <span class="s">"박"</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">number</span><span class="o">%</span><span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">answer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+            <span class="n">answer</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="p">[]:</span>
+            <span class="n">answer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">answer</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">answer</code> 값이 없을 경우를 <code class="highlighter-rouge">for</code>문 안에 배치해서 오류 발생</li>
+</ul>
+
+<h2 id="내-풀이-2정답">내 풀이 2(정답)</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">divisor</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">number</span><span class="o">%</span><span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">answer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+            <span class="n">answer</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="p">[]:</span>
+        <span class="n">answer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">answer</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div></div>
 
 <h2 id="다른-사람-풀이">다른 사람 풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">water_melon</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="s">"수박"</span> <span class="o">*</span> <span class="n">n</span>
-    <span class="k">return</span> <span class="n">s</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">divisor</span><span class="p">):</span> <span class="k">return</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span> <span class="ow">or</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div></div>
 
 <ul>
-  <li>흠….엄청 깔끔하게 푸셨는데…음….나는 수학적 사고가 모자라서 이해가 안가는 부분이있다</li>
-  <li>n이 증가할텐데 “수박”을 묶어서 리턴하면 홀수일 경우에도 짝수개로 나오지 않나…??</li>
+  <li>와우… 아직도 <code class="highlighter-rouge">for</code>문과 <code class="highlighter-rouge">if</code>문을 한 줄로 쓰는게 익숙하지 않다 좀 더 쉽게 생각해보려고 노력해야겠다</li>
 </ul>
 
                 </div>
@@ -316,7 +335,7 @@ into the {body} of the default.hbs template -->
                         var disqus_config = function () {
                             this.page.url = 'http://localhost:4000/012-algorithm';
                             this.page.identifier = '/012-algorithm';
-                            this.page.title = '021. 수박수박수박수박수박수?';
+                            this.page.title = '012. 나누어 떨어지는 숫자 배열';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -362,7 +381,12 @@ into the {body} of the default.hbs template -->
                                     
                                 
                                     
-                                
+                                    
+                                        
+                                        
+                                            <li><a href="/022-algorithm">022. 시저 암호</a></li>
+                                        
+                                    
                                     
                                 
                                     
@@ -386,6 +410,17 @@ into the {body} of the default.hbs template -->
                                     
                                 
                                     
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                    
+                                        
+                                        
+                                            <li><a href="/021-algorithm">021. 수박수박수박수박수박수?</a></li>
+                                        
                                     
                                     
                                 
@@ -416,17 +451,6 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/019-algorithm">019. 서울에서 김서방 찾기</a></li>
-                                        
-                                    
-                                    
-                                
-                                    
-                                    
-                                        
-                                        
-                                            <li><a href="/018-algorithm">018. 문자열 다루기 기본</a></li>
-                                        
                                     
                                     
                                 
@@ -469,6 +493,10 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
+                                    
+                                    
+                                
+                                    
                                     
                                     
                                 
@@ -590,7 +618,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/algorithm/">
                                 
-                                    See all 20 posts  →
+                                    See all 21 posts  →
                                 
                             </a>
                         </footer>
@@ -604,22 +632,22 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/008-css">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/html.png)"></div>
+            <a class="post-card-image-link" href="/013-algorithm">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/algorithm.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/008-css">
+            <a class="post-card-content-link" href="/013-algorithm">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Html-css</span>
+                                <span class="post-card-tags">Algorithm</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">008. CSS - position, inline&block 되새김과 float</h2>
+                    <h2 class="post-card-title">013. 두 정수 사이의 합</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -656,22 +684,22 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/007-html">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/html.png)"></div>
+            <a class="post-card-image-link" href="/011-algorithm">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/algorithm.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/007-html">
+            <a class="post-card-content-link" href="/011-algorithm">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Html-css</span>
+                                <span class="post-card-tags">Algorithm</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">007. HTML&CSS - html, css, img태그 되새김// semantic web과 semantic tag 정리// 이미지 넣는 방식에 대한 질문과 답변</h2>
+                    <h2 class="post-card-title">011. 같은 숫자는 싫어</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -715,13 +743,13 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">021. 수박수박수박수박수박수?</div>
+    <div class="floating-header-title">012. 나누어 떨어지는 숫자 배열</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=021.+%EC%88%98%EB%B0%95%EC%88%98%EB%B0%95%EC%88%98%EB%B0%95%EC%88%98%EB%B0%95%EC%88%98%EB%B0%95%EC%88%98%3F&amp;url=https://hiyee-gj.github.io/012-algorithm"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=012.+%EB%82%98%EB%88%84%EC%96%B4+%EB%96%A8%EC%96%B4%EC%A7%80%EB%8A%94+%EC%88%AB%EC%9E%90+%EB%B0%B0%EC%97%B4&amp;url=https://hiyee-gj.github.io/012-algorithm"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
