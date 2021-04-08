@@ -1,0 +1,1837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> - Articles</title>
+    <description>Developer with good Influence</description>
+    <link>
+    http://localhost:4000</link>
+    
+      
+      <item>
+        <title>006. Django - C.R.U.D 2 review</title>
+        
+          <description>&lt;h2 id=&quot;crud-2-review&quot;&gt;C.R.U.D 2 review&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Sat, 03 Apr 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/006-django</link>
+        <guid isPermaLink="true">http://localhost:4000/006-django</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>005. Django - model method, 정참조, 역참조</title>
+        
+          <description>&lt;h2 id=&quot;queryset&quot;&gt;Queryset&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 31 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/005-django</link>
+        <guid isPermaLink="true">http://localhost:4000/005-django</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>004. Django - C.R.U.D 1 review</title>
+        
+          <description>&lt;h2 id=&quot;django-crud-1-review&quot;&gt;Django C.R.U.D 1 review&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Mon, 29 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/004-django</link>
+        <guid isPermaLink="true">http://localhost:4000/004-django</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>022. 시저 암호</title>
+        
+          <description>&lt;h2 id=&quot;question&quot;&gt;Question&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Mon, 29 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/022-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/022-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>004. HTTP</title>
+        
+          <description>&lt;h2 id=&quot;http-특징&quot;&gt;HTTP 특징&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Sun, 28 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/004-http</link>
+        <guid isPermaLink="true">http://localhost:4000/004-http</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>003. Django - view</title>
+        
+          <description>&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 웹의 로직을 담당&lt;/li&gt;
+  &lt;li&gt;웹에서 일어나는 데이터 저장, 파일 다운로드 등을 위해 코드 작성
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/0294252e-7f42-463b-a180-44ea5c29904e/view.py%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 명심해야 할 점&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt; 인자를 받고&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpResponse&lt;/code&gt;로 &lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt; 하기 전에 데이터 관련된 코드들이 중간에 들어가는 개념
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/74ae4f6b-50ce-482c-b62a-ad2c3e4b8317/view.py%20index%20%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;models.py&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;을 불러와서 출력&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;question&lt;/code&gt; 데이터에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;출판일자&lt;/code&gt;를 정렬하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;5개&lt;/code&gt;까지 가져오고 &lt;code class=&quot;highlighter-rouge&quot;&gt;5개&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;,&lt;/code&gt;로 연결하여 리스폰스 하겠다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/3b9e67b0-a737-45ed-ab86-e82821e5aa55/polls:urls.py%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;polls/urls.py&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 설정&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;에서는 해당 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt; 이 끝나는 지점의 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 작업을 수행하게 된다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;httpresponse&lt;/code&gt;를 리턴하거나 &lt;code class=&quot;highlighter-rouge&quot;&gt;http404&lt;/code&gt; 같은 예외를 리턴함&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Fri, 26 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/003-django</link>
+        <guid isPermaLink="true">http://localhost:4000/003-django</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>002. Django - tutorial 2 review</title>
+        
+          <description>&lt;h2 id=&quot;tutorial-2-review&quot;&gt;tutorial 2 review&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Thu, 25 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/002-django-copy</link>
+        <guid isPermaLink="true">http://localhost:4000/002-django-copy</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>001. Django - Django의 기본 흐름과 tutorial 1 review</title>
+        
+          <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;기본적으로 django, mysql이 설치되어 있는 상황 이후에 django에 대한
+흐름을 이해하기 위한 글입니다
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        
+        <pubDate>Thu, 25 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/001-django</link>
+        <guid isPermaLink="true">http://localhost:4000/001-django</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>016. Python - list comprehensions, lambda expressions</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Wed, 24 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/016-python</link>
+        <guid isPermaLink="true">http://localhost:4000/016-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>004. MySQL programmers 2단계 리뷰</title>
+        
+          <description>&lt;h2 id=&quot;mysql-2단계-리뷰&quot;&gt;MySQL 2단계 리뷰&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 24 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/004-mysql</link>
+        <guid isPermaLink="true">http://localhost:4000/004-mysql</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>003. MySQL programmers 1단계 리뷰</title>
+        
+          <description>&lt;h2 id=&quot;1단계-테스트-리뷰&quot;&gt;1단계 테스트 리뷰&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 24 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/003-mysql</link>
+        <guid isPermaLink="true">http://localhost:4000/003-mysql</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>002. Database - normalization</title>
+        
+          <description>&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/77666619-ba44-4a09-a078-ba81cb649e0a/%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%B2%E1%84%92%E1%85%AA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 23 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/002-database</link>
+        <guid isPermaLink="true">http://localhost:4000/002-database</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>015. Python - Assignment 49-58</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sat, 20 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/015-python</link>
+        <guid isPermaLink="true">http://localhost:4000/015-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>014. Python - sys.modules, sys.path / absolute path, relative path / package</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sat, 20 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/014-python</link>
+        <guid isPermaLink="true">http://localhost:4000/014-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>013. Python - Argument assignment</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Thu, 18 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/013-python</link>
+        <guid isPermaLink="true">http://localhost:4000/013-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>012. Python - Argument</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Wed, 17 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/012-python</link>
+        <guid isPermaLink="true">http://localhost:4000/012-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>008. CSS - position, inline&amp;block 되새김과 float</title>
+        
+          <description>&lt;h2 id=&quot;position&quot;&gt;Position&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 17 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/008-css</link>
+        <guid isPermaLink="true">http://localhost:4000/008-css</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>021. 수박수박수박수박수박수?</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 17 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/021-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/021-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>007. HTML&amp;CSS - html, css, img태그 되새김// semantic web과 semantic tag 정리// 이미지 넣는 방식에 대한 질문과 답변</title>
+        
+          <description>&lt;h2 id=&quot;html&quot;&gt;HTML&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Mon, 15 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/007-html</link>
+        <guid isPermaLink="true">http://localhost:4000/007-html</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>011. Python - hash</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sat, 13 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/011-python</link>
+        <guid isPermaLink="true">http://localhost:4000/011-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>003. Web - port, DHCP</title>
+        
+          <description>&lt;h2 id=&quot;router공유기&quot;&gt;Router(공유기)&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/003-web</link>
+        <guid isPermaLink="true">http://localhost:4000/003-web</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>002. Web - DNS</title>
+        
+          <description>&lt;h2 id=&quot;dns&quot;&gt;DNS&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/002-web</link>
+        <guid isPermaLink="true">http://localhost:4000/002-web</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>001. Web - internet과 web</title>
+        
+          <description>&lt;h2 id=&quot;internet-vs-web&quot;&gt;Internet vs Web&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/001-web</link>
+        <guid isPermaLink="true">http://localhost:4000/001-web</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>005. CSS transition 학습 내용</title>
+        
+          <description>&lt;h3 id=&quot;css-transition&quot;&gt;CSS transition&lt;/h3&gt;
+
+</description>
+        
+        <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/005-css</link>
+        <guid isPermaLink="true">http://localhost:4000/005-css</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>001. Database - 기본 이론들과 스타벅스 모델링 리뷰</title>
+        
+          <description>&lt;h2 id=&quot;database&quot;&gt;Database&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/001-database</link>
+        <guid isPermaLink="true">http://localhost:4000/001-database</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>020. 소수 찾기</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/020-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/020-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>019. 서울에서 김서방 찾기</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/019-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/019-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>018. 문자열 다루기 기본</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/018-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/018-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>017. 문자열 내림차순으로 배치하기</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/017-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/017-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>016. 문자열 내 p와 y의 개수</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/016-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/016-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>015. 폰켓몬</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/015-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/015-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>014. 문자열 내 마음대로 정렬하기</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/014-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/014-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>013. 두 정수 사이의 합</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/013-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/013-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>012. 나누어 떨어지는 숫자 배열</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/012-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/012-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>011. 같은 숫자는 싫어</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/011-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/011-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>010. 가운데 글자 가져오기</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/010-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/010-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>009. 3진법 뒤집기</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 10 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/009-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/009-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>008. 2016</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 10 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/008-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/008-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>007. K번째수</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 10 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/007-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/007-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>006. 체육복</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 10 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/006-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/006-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>005. 모의고사</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 10 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/005-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/005-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>004. 신규아이디 추천</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Tue, 09 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/004-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/004-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Mon, 08 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/010-python</link>
+        <guid isPermaLink="true">http://localhost:4000/010-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>003. 완주하지 못한 선수</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Mon, 08 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/003-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/003-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>002. 크레인 인형뽑기</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Mon, 08 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/002-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/002-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>001. 두 개 뽑아서 더하기</title>
+        
+          <description>&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Mon, 08 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/001-algorithm</link>
+        <guid isPermaLink="true">http://localhost:4000/001-algorithm</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sun, 07 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/009-python</link>
+        <guid isPermaLink="true">http://localhost:4000/009-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sun, 07 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/008-python</link>
+        <guid isPermaLink="true">http://localhost:4000/008-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sat, 06 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/006-python</link>
+        <guid isPermaLink="true">http://localhost:4000/006-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>005. Python - if, for, while, continue와 break, 한 줄 for</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sat, 06 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/005-python</link>
+        <guid isPermaLink="true">http://localhost:4000/005-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Fri, 05 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/004-python</link>
+        <guid isPermaLink="true">http://localhost:4000/004-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Wed, 03 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/007-python</link>
+        <guid isPermaLink="true">http://localhost:4000/007-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Wed, 03 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/003-python</link>
+        <guid isPermaLink="true">http://localhost:4000/003-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Wed, 03 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/002-python</link>
+        <guid isPermaLink="true">http://localhost:4000/002-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Wed, 03 Mar 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/001-python</link>
+        <guid isPermaLink="true">http://localhost:4000/001-python</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>003. 코코아톡 클론 마지막 글</title>
+        
+          <description>&lt;h3 id=&quot;kokoa-talk-clone-종료&quot;&gt;kokoa talk clone 종료&lt;br /&gt;&lt;/h3&gt;
+
+</description>
+        
+        <pubDate>Mon, 22 Feb 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/003-kokoa</link>
+        <guid isPermaLink="true">http://localhost:4000/003-kokoa</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>002. transition, transform, animation, media query 학습내용</title>
+        
+          <description>&lt;h3 id=&quot;transition&quot;&gt;Transition&lt;/h3&gt;
+
+</description>
+        
+        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/002-kokoa</link>
+        <guid isPermaLink="true">http://localhost:4000/002-kokoa</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>001. Kokoatalk</title>
+        
+          <description>&lt;h4 id=&quot;pseudo-selector&quot;&gt;Pseudo Selector&lt;/h4&gt;
+
+</description>
+        
+        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/001-kokoa</link>
+        <guid isPermaLink="true">http://localhost:4000/001-kokoa</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>006. CSS Flexbox 학습내용</title>
+        
+          <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://heropy.blog/2018/11/24/css-flexible-box/의 블로그에서 flexbox에 대한 자료를 토대로 한 이해를 바탕으로 작성한 글입니다. 자세한 내용은 해당 블로그에 더 상세하게표기되어 있습니다!!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Feb 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/006-css</link>
+        <guid isPermaLink="true">http://localhost:4000/006-css</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>004. CSS 학습하기</title>
+        
+          <description>&lt;h3 id=&quot;css-가상-클래스&quot;&gt;CSS 가상 클래스&lt;/h3&gt;
+
+</description>
+        
+        <pubDate>Thu, 11 Feb 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/004-css</link>
+        <guid isPermaLink="true">http://localhost:4000/004-css</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>003. CSS Font</title>
+        
+          <description>&lt;h1 id=&quot;css-학습하기&quot;&gt;CSS 학습하기&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/003-css</link>
+        <guid isPermaLink="true">http://localhost:4000/003-css</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>002. CSS 학습 내용 정리</title>
+        
+          <description>&lt;h1 id=&quot;css-학습하기&quot;&gt;CSS 학습하기&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/002-css</link>
+        <guid isPermaLink="true">http://localhost:4000/002-css</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>001. HTML 학습하기</title>
+        
+          <description>&lt;h1 id=&quot;html-학습하기&quot;&gt;HTML 학습하기&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Mon, 08 Feb 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/001-html</link>
+        <guid isPermaLink="true">http://localhost:4000/001-html</guid>
+      </item>
+      
+    
+  </channel>
+</rss>

@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>
+      002. Django - tutorial 2 review
+    </title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/built/screen.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/built/screen.edited.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/built/syntax.css"
+    />
+
+    <!--web font-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css"
+    />
+
+    <!-- highlight.js -->
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"
+    />
+    <style>
+      .hljs {
+        background: none;
+      }
+    </style>
+
+    <!--[if IE]>
+      <style>
+        p,
+        ol,
+        ul {
+          width: 100%;
+        }
+        blockquote {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Developer with good Influence" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon32.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/002-django-copy" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Hiyee Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="002. Django - tutorial 2 review" />
+    <meta property="og:description" content="tutorial 2 review django는 기본적으로 SQLite를 제공하고 있다 하지만 나는 MySQL을 사용하기 위해 설정을 조금 변경하는 과정을 소개한다 MySQL에서 DATABASE 생성하기 mysql.server start로 서버를 열어주기 mysql -u root -p를 통해 mysql 접속 DATABASE 생성 testdata는 데이터베이스 이름임 SHOW DATABASES를 통해서 생성됐는지 확인 mysite/settings.py에서 MySQL로 변경해주기 INSTALLED_APPS mysite/settings.py에 확인하면 installed_apps에 django에서" />
+    <meta property="og:url" content="http://localhost:4000/002-django-copy" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/django.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2021-03-25T00:00:00+09:00" />
+    <meta property="article:modified_time" content="2021-03-25T00:00:00+09:00" />
+    <meta property="article:tag" content="Django" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="002. Django - tutorial 2 review" />
+    <meta name="twitter:description" content="tutorial 2 review django는 기본적으로 SQLite를 제공하고 있다 하지만 나는 MySQL을 사용하기 위해 설정을 조금 변경하는 과정을 소개한다 MySQL에서 DATABASE 생성하기 mysql.server start로 서버를 열어주기 mysql -u root -p를 통해 mysql 접속 DATABASE 생성 testdata는 데이터베이스 이름임 SHOW DATABASES를 통해서 생성됐는지 확인 mysite/settings.py에서 MySQL로 변경해주기 INSTALLED_APPS mysite/settings.py에 확인하면 installed_apps에 django에서" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/django.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Hiyee Blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Django" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Hiyee Blog",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/002-django-copy",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/django.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/002-django-copy"
+    },
+    "description": "tutorial 2 review django는 기본적으로 SQLite를 제공하고 있다 하지만 나는 MySQL을 사용하기 위해 설정을 조금 변경하는 과정을 소개한다 MySQL에서 DATABASE 생성하기 mysql.server start로 서버를 열어주기 mysql -u root -p를 통해 mysql 접속 DATABASE 생성 testdata는 데이터베이스 이름임 SHOW DATABASES를 통해서 생성됐는지 확인 mysite/settings.py에서 MySQL로 변경해주기 INSTALLED_APPS mysite/settings.py에 확인하면 installed_apps에 django에서"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="002. Django - tutorial 2 review" href="/feed.xml" />
+
+  </head>
+  <body
+    class="post-template"
+  >
+    <div class="site-wrapper">
+      <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+      <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000/">Hiyee Blog</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+  <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+  <li class="nav-about" role="menuitem">
+    <a href="/about/">About</a>
+  </li>
+  <li class="nav-python" role="menuitem">
+    <a href="/tag/python/">Python</a>
+  </li>
+  <li class="nav-django" role="menuitem">
+    <a href="/tag/django/">Django</a>
+  </li>
+  <li class="nav-algorithm" role="menuitem">
+    <a href="/tag/algorithm/">Algorithm</a>
+  </li>
+  <li class="nav-database" role="menuitem">
+    <a href="/tag/database/">Database</a>
+  </li>
+  <li class="nav-html-css" role="menuitem">
+    <a href="/tag/html-css/">Html&CSS</a>
+  </li>
+  <li class="nav-kokoatalk" role="menuitem">
+    <a href="/tag/kokoatalk/">Kokoatalk</a>
+  </li>
+  <li class="nav-web" role="menuitem">
+    <a href="/tag/web/">Web</a>
+  </li>
+  <li class="nav-archive" role="menuitem">
+    <a href="/archive.html">All Posts</a>
+  </li>
+  <li class="nav-archive" role="menuitem">
+    <a href="/author_archive.html">Tag별 Posts</a>
+  </li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Subscribe</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-django post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="25 March 2021">25 March 2021</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/django/'>DJANGO</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">002. Django - tutorial 2 review</h1>
+            </header>
+<!--
+            
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/django.png)">
+            </figure>
+            
+-->
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h2 id="tutorial-2-review">tutorial 2 review</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">django</code>는 기본적으로 <code class="highlighter-rouge">SQLite</code>를 제공하고 있다 하지만 나는 <code class="highlighter-rouge">MySQL</code>을 사용하기 위해 설정을 조금 변경하는 과정을 소개한다</li>
+</ul>
+
+<h3 id="mysql에서-database-생성하기">MySQL에서 DATABASE 생성하기</h3>
+
+<ol>
+  <li><code class="highlighter-rouge">mysql.server start</code>로 서버를 열어주기</li>
+  <li><code class="highlighter-rouge">mysql -u root -p</code>를 통해 <code class="highlighter-rouge">mysql</code> 접속</li>
+  <li><img src="https://images.velog.io/images/hiyee-gj/post/98e314f9-5fc4-4330-bba2-f6d1a20200de/mysql%20data%20create.png" alt="" /> <code class="highlighter-rouge">DATABASE</code> 생성 <code class="highlighter-rouge">testdata</code>는 데이터베이스 이름임</li>
+  <li><img src="https://images.velog.io/images/hiyee-gj/post/6bc65df3-ef7e-48bc-aa14-89c9a5f6cbb7/mysql%20show%20databases;.png" alt="" /> <code class="highlighter-rouge">SHOW DATABASES</code>를 통해서 생성됐는지 확인</li>
+</ol>
+
+<h3 id="mysitesettingspy에서-mysql로-변경해주기">mysite/settings.py에서 MySQL로 변경해주기</h3>
+
+<p><img src="https://images.velog.io/images/hiyee-gj/post/0d8314e3-ac04-48bb-9e2e-d82dd9365f73/mysql%20settings.png" alt="" /></p>
+
+<h3 id="installed_apps">INSTALLED_APPS</h3>
+
+<p><img src="https://images.velog.io/images/hiyee-gj/post/eb56ca39-d584-42f2-bf4f-fd188329ec77/2.png" alt="" /></p>
+
+<ul>
+  <li><code class="highlighter-rouge">mysite/settings.py</code>에 확인하면 <code class="highlighter-rouge">installed_apps</code>에 <code class="highlighter-rouge">django</code>에서 기본으로 제공하는 앱들을 확인할 수 있다
+<img src="https://images.velog.io/images/hiyee-gj/post/482ae2e1-c2c4-4d28-9895-b951499dca2b/1.png" alt="" /></li>
+  <li>앱들의 기능에 대한 내용이다</li>
+  <li><code class="highlighter-rouge">기본 어플리케이션</code>들 중 몇몇은 최소한 하나 이상의 <code class="highlighter-rouge">데이터베이스 테이블</code>을 사용한다</li>
+  <li>그러기 위해선 데이터베이스에서 테이블을 미리 만들 필요가 있음</li>
+  <li>다음 명령을 통해 테이블 생성 <code class="highlighter-rouge">python manage.py migrate</code>
+<img src="https://images.velog.io/images/hiyee-gj/post/634521cc-efa3-48e3-9d58-7382a7444d58/migrate.png" alt="" /></li>
+</ul>
+
+<h3 id="model-작성하기">model 작성하기</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">Model</code>이란 부가적인 메타데이터를 가진 데이터베이스의 구조를 말한다</li>
+  <li><code class="highlighter-rouge">Question</code>과 <code class="highlighter-rouge">Choice</code>라는 모델을 작성
+<img src="https://images.velog.io/images/hiyee-gj/post/41b9c6ad-2827-48e0-991e-8d80b36f6726/3.png" alt="" /></li>
+  <li><code class="highlighter-rouge">question</code> 에는 질문(문자 최대길이 200) 내용 생성 날짜(시간 타입)
+<img src="https://images.velog.io/images/hiyee-gj/post/8a0ebaf6-6b71-4bfd-bbaf-ad98f54af343/4.png" alt="" /></li>
+  <li><code class="highlighter-rouge">choice</code>에는 선택지에 해당하는 질문(<code class="highlighter-rouge">외래키</code>=<code class="highlighter-rouge">question</code>의 내용을 참조하겠다, <code class="highlighter-rouge">CASCADE</code> = <code class="highlighter-rouge">question</code>이 삭제가 되면 <code class="highlighter-rouge">choice question</code>도 삭제 하겠다), 투표수의 내용이 담겨 있음</li>
+  <li>여기서 <code class="highlighter-rouge">외래키</code>에 대해서 더 살펴보면 하나의 <code class="highlighter-rouge">Question</code>에 여러개의 <code class="highlighter-rouge">foreignkey</code>를 갖기 때문에 <code class="highlighter-rouge">1대 다 관계</code>인 것을 확인할 수 있다</li>
+</ul>
+
+<h3 id="installed_apps에-pollsapp-추가하기">INSTALLED_APPS에 polls.app 추가하기</h3>
+
+<p><img src="https://images.velog.io/images/hiyee-gj/post/c2a60564-3394-443d-b802-08554bbaf8ed/settings%E1%84%8B%E1%85%A6%20app%20%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1.png" alt="" /></p>
+
+<h3 id="makemigration">makemigration</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">makemigration</code> : <code class="highlighter-rouge">polls</code>에 <code class="highlighter-rouge">model</code>을 작성해 놓은 것을 <code class="highlighter-rouge">mygration</code>이라는 장소에 이 <code class="highlighter-rouge">model</code>들을 데이터베이스 내에 테이블을 생성할 수 있도록 설계도를 만드는 작업
+<img src="https://images.velog.io/images/hiyee-gj/post/5a50512d-3443-4240-a10d-ec003cc92cfe/makemigration%20%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC.png" alt="" /></li>
+  <li>실행 결과(<code class="highlighter-rouge">migration</code> 디렉토리 안에 생성된 것을 확인할수 있음)
+<img src="https://images.velog.io/images/hiyee-gj/post/f1130235-aef0-458a-b14a-0fc4eb3ee5a4/%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%E1%84%83%E1%85%A9.png" alt="" /></li>
+</ul>
+
+<h3 id="migrate">migrate</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">migrate</code>을 통해 실제 테이블 생성</li>
+</ul>
+
+<h3 id="api-가지고-놀기">API 가지고 놀기</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">API</code>란 <code class="highlighter-rouge">개발자</code>가 필요로하는 <code class="highlighter-rouge">데이터</code>를 뽑아낼 수 있도록 만들어 놓은 함수 또는 <code class="highlighter-rouge">서버</code>에게 <code class="highlighter-rouge">데이터베이스</code>에게 <code class="highlighter-rouge">데이터</code>를 입력할 수 있도록 만들어 놓은 함수</li>
+  <li><code class="highlighter-rouge">shell</code> 진입
+<img src="https://images.velog.io/images/hiyee-gj/post/ed889c19-4981-4d35-be11-a3a0eee1dd20/shell%20%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%8B%E1%85%B5%E1%86%B8.png" alt="" /></li>
+  <li><code class="highlighter-rouge">shell</code>에 만들어 놓은 <code class="highlighter-rouge">model</code> 추가
+<img src="https://images.velog.io/images/hiyee-gj/post/795fe633-6774-424a-bcf7-e837329a311f/shell%20model%20%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1.png" alt="" /></li>
+  <li><code class="highlighter-rouge">Question</code>의 모든 내용 불러오기</li>
+  <li><code class="highlighter-rouge">Question.object.all()</code> - 현재 퀘스쳔 내의 모든 데이터를 가져와라</li>
+  <li>등록된 내용 없기 때문에 빈 내용 출력
+<img src="https://images.velog.io/images/hiyee-gj/post/c1e4c2f2-c1fe-4216-a76e-8f4a4fa1ed55/question%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%B3%E1%86%AB%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%20%E1%84%87%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A5%E1%84%8B%E1%85%A9%E1%84%80%E1%85%B5.png" alt="" /></li>
+  <li>다음으로 <code class="highlighter-rouge">Question</code> 내의 데이터 생성</li>
+  <li><code class="highlighter-rouge">Question</code> 내에는 질문내용과 발행일이 존재</li>
+  <li>발행일 시간을 위해 <code class="highlighter-rouge">timezone</code> 라이브러리 <code class="highlighter-rouge">import</code></li>
+  <li><code class="highlighter-rouge">q.id</code> 는 함수에서 명시하지 않아도 장고에서 추가 해줌
+<img src="https://images.velog.io/images/hiyee-gj/post/de5489ad-869b-4d5c-8121-87b4b77555fc/question%E1%84%8B%E1%85%A6%20%E1%84%82%E1%85%A2%E1%84%8B%E1%85%AD%E1%86%BC%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png" alt="" /></li>
+  <li><code class="highlighter-rouge">Question</code>의 모든 내용 불러오기</li>
+  <li><code class="highlighter-rouge">object</code>에 표시된 1로는 어떤 데이터인지 구분이 안감
+<img src="https://images.velog.io/images/hiyee-gj/post/ef171a9c-4f74-4da9-a651-90f1dc96049d/question%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%92%E1%85%AE%20object%20%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC%20%E1%84%80%E1%85%A7%E1%86%AF%E1%84%80%E1%85%AA.png" alt="" /></li>
+  <li>그렇기 때문에 <code class="highlighter-rouge">__str__()</code> 메소드를 모델 내에 심어주면 보고 싶은 문구를 볼 수 있음</li>
+  <li><code class="highlighter-rouge">model</code>안에 <code class="highlighter-rouge">__str__()</code> 심어주기
+<img src="https://images.velog.io/images/hiyee-gj/post/463efce8-0a75-4fa7-b16e-322a60a5d504/__str__.png" alt="" /></li>
+  <li>저장하고 <code class="highlighter-rouge">shell</code>을 종료시킨 후 재실행해서 <code class="highlighter-rouge">Question</code> 모든 내용을 불러오면
+<img src="https://images.velog.io/images/hiyee-gj/post/c57e9c4c-f3bc-44e3-beb2-3adbb39c5d01/str%20%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC%E1%84%80%E1%85%A7%E1%86%AF%E1%84%80%E1%85%AA.png" alt="" /></li>
+  <li><code class="highlighter-rouge">str</code> 결과를 볼 수 있다</li>
+  <li>추후 여러 실행결과를 리뷰할 예정</li>
+</ul>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!--
+            
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Hiyee Blog</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+                </section>
+            
+        -->
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/author-image.png" alt="hiyee" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/hiyee">hiyee</a></h4>
+                                
+                                    <p>Read <a href="/author/hiyee">more posts</a> by this author.</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/hiyee">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'http://localhost:4000/002-django-copy';
+                            this.page.identifier = '/002-django copy';
+                            this.page.title = '002. Django - tutorial 2 review';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://hiyee-gj-github-io.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover1.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Hiyee Blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/django/">Django</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                    
+                                    
+                                        
+                                        
+                                            <li><a href="/006-django">006. Django - C.R.U.D 2 review</a></li>
+                                        
+                                    
+                                    
+                                
+                                    
+                                    
+                                        
+                                        
+                                            <li><a href="/005-django">005. Django - model method, 정참조, 역참조</a></li>
+                                        
+                                    
+                                    
+                                
+                                    
+                                    
+                                        
+                                        
+                                            <li><a href="/004-django">004. Django - C.R.U.D 1 review</a></li>
+                                        
+                                    
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                    
+                                        
+                                        
+                                    
+                                    
+                                
+                                    
+                                    
+                                    
+                                
+                                    
+                                    
+                                        
+                                        
+                                    
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/django/">
+                                
+                                    See all 5 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/003-django">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/django.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/003-django">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Django</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">003. Django - view</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/author-image.png" alt="hiyee" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/hiyee/">hiyee</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/001-django">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/django.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/001-django">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Django</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">001. Django - Django의 기본 흐름과 tutorial 1 review</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/author-image.png" alt="hiyee" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/hiyee/">hiyee</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>Hiyee Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">002. Django - tutorial 2 review</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=002.+Django+-+tutorial+2+review&amp;url=https://hiyee-gj.github.io/002-django-copy"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://hiyee-gj.github.io/002-django-copy"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+      <!-- Previous/next page links - displayed on every page -->
+      
+
+      <!-- The footer at the very bottom of the screen -->
+      <footer class="site-footer outer">
+        <div class="site-footer-content inner">
+          <section class="copyright">
+            <a href="http://localhost:4000/">Hiyee Blog</a>
+            &copy; 2021
+          </section>
+          <section class="poweredby">
+            Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+            <a href="https://pages.github.com/" target="_blank" rel="noopener"
+              >GitHub Pages</a
+            >
+            using
+            <a
+              href="https://github.com/jekyller/jasper2"
+              target="_blank"
+              rel="noopener"
+              >Jasper2</a
+            >
+          </section>
+          <nav class="site-footer-nav">
+            <a href="/">Latest Posts</a>
+             
+            <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+      <a class="subscribe-overlay-close" href="#"></a>
+      <div class="subscribe-overlay-content">
+        
+        <h1 class="subscribe-overlay-title">Subscribe to Hiyee Blog</h1>
+        <p class="subscribe-overlay-description">
+          Stay up to date! Get all the latest &amp; greatest posts delivered
+          straight to your inbox
+        </p>
+        <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+      </div>
+    </div>
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("pre code").each(function (i, block) {
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/assets/js/jquery.fitvids.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"
+    ></script>
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-xxxxxxxx-x', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+     <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+ 
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+  </body>
+</html>

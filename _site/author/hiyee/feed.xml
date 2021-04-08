@@ -1,0 +1,1246 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/author/hiyee/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2021-04-08T16:53:34+09:00</updated>
+  <id>http://localhost:4000/author/hiyee/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Hiyee Blog | </title>
+  
+
+  
+    <subtitle>Developer with good Influence</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">006. Django - C.R.U.D 2 review</title>
+      <link href="http://localhost:4000/006-django" rel="alternate" type="text/html" title="006. Django - C.R.U.D 2 review" />
+      <published>2021-04-03T00:00:00+09:00</published>
+      <updated>2021-04-03T00:00:00+09:00</updated>
+      <id>http://localhost:4000/006-django</id>
+      <content type="html" xml:base="http://localhost:4000/006-django">&lt;h2 id=&quot;crud-2-review&quot;&gt;C.R.U.D 2 review&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;C.R.U.D 1 때 &lt;code class=&quot;highlighter-rouge&quot;&gt;models.py&lt;/code&gt;를 작성하고, &lt;code class=&quot;highlighter-rouge&quot;&gt;mysql&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;migrate&lt;/code&gt;해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;django shell&lt;/code&gt;을 이용해 데이터를 입력하고, 삭제하고, 업데이트 하는 등 조작을 해 봤다&lt;/li&gt;
+  &lt;li&gt;C.R.U.D 2 에서는 프로젝트 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;와 앱 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;를 작성하고, &lt;code class=&quot;highlighter-rouge&quot;&gt;views.py&lt;/code&gt;를 작성해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;httpie&lt;/code&gt;를 통해 &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt; 온 내용을 처리하는 과정을 학습한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;flow&quot;&gt;flow&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;review&lt;/code&gt;에 앞서 흐름에 대해 이해하고 넘어가려한다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c6d4f984-c848-4120-ac5d-e7e64d9b2dc5/flow.jpg&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;위 그림에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;client&lt;/code&gt;가 &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;를 보내면 프로젝트 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;에서 분류하여 앱의 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;로 보내준다, 앱 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;는 여기서 한번 더 분류해서 일치하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;views.py&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt;로 보내주게 되고, &lt;code class=&quot;highlighter-rouge&quot;&gt;views.py&lt;/code&gt;는 해당 로직을 완수한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;modelspy&quot;&gt;models.py&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c91a402b-faf9-4815-af42-973d4573c5b1/%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%86%E1%85%A9%E1%84%83%E1%85%A6%E1%86%AF%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;환경설정과 기초 세팅에 관해서는 생략하고 모델부터 살펴보겠다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Owner&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Dog&lt;/code&gt;클래스가 있고, 1대다 관계를 형성하고 있는 모델이다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;viewspy&quot;&gt;views.py&lt;/h2&gt;
+
+&lt;h3 id=&quot;post&quot;&gt;post&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;먼저 &lt;code class=&quot;highlighter-rouge&quot;&gt;POST&lt;/code&gt; 메소드를 처리할 부분을 살펴보겠다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/53fd4d59-bb53-4d1c-8301-7b73ca5b6f7f/%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%87%E1%85%B2%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/b6458e38-4445-44c8-9202-9eeac2f8e267/%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%87%E1%85%B2%E1%84%83%E1%85%A9%E1%84%80%E1%85%B3.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;두 클래스의 메소드 이름이 모두 &lt;code class=&quot;highlighter-rouge&quot;&gt;post&lt;/code&gt;인 것에 집중해야 한다&lt;/li&gt;
+  &lt;li&gt;프로젝트 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;에서 앱 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;로 온 후에 각 뷰에 &lt;code class=&quot;highlighter-rouge&quot;&gt;as_view()&lt;/code&gt;를 적용해 주었다, &lt;code class=&quot;highlighter-rouge&quot;&gt;as_view()&lt;/code&gt; 부분이 &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;에 담긴 메소드를 따라서 &lt;code class=&quot;highlighter-rouge&quot;&gt;views.py&lt;/code&gt;안의 클래스 안에 있는 여러 메소드 중 일치하는 메소드의 로직을 따르도록 하는 부분이다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;get&quot;&gt;get&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;다음은 &lt;code class=&quot;highlighter-rouge&quot;&gt;get&lt;/code&gt; 메소드를 처리할 부분이다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/35d12b23-ba75-47fd-8e9d-abef174f04a2/%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5%E1%84%80%E1%85%A6%E1%86%BA.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/bf8bc6cb-dacc-4052-a806-7cdabc06bb67/%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%83%E1%85%A9%E1%84%80%E1%85%B3%E1%84%80%E1%85%A6%E1%86%BA.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Owner&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;get&lt;/code&gt;을 처리할 때, 한번에 정보를 출력하기 위해서 코드를 설계하다보니 많이 지저분한 모습이다&lt;/li&gt;
+  &lt;li&gt;이후 C.R.U.D 2 세션에서 더 깔끔한 모습을 봤으니 다음 &lt;code class=&quot;highlighter-rouge&quot;&gt;westagram&lt;/code&gt; 과제에서 사용하게 된다면 더 깔끔하게 구현하도록 노력해야겠다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;프로젝트-urlspy&quot;&gt;프로젝트 urls.py&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/1f4c0824-3f8d-4683-bbf4-2f3132b596cc/%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B2%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%8B%E1%85%A6%E1%86%AF%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ownerdogs&lt;/code&gt; 부분이 &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;로 들어오면 &lt;code class=&quot;highlighter-rouge&quot;&gt;include&lt;/code&gt;안의 앱의 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;로 보내게 처리한 내용이다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;앱-urlspy&quot;&gt;앱 urls.py&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/736a8ab2-a53d-4386-9acd-002e88a71bc7/%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%B2%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%8B%E1%85%A6%E1%86%AF.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;프로젝트 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;에서 분류되어 들어와서 &lt;code class=&quot;highlighter-rouge&quot;&gt;/owner&lt;/code&gt; 나 &lt;code class=&quot;highlighter-rouge&quot;&gt;/dog&lt;/code&gt;로 분류되어 원하는 클래스로 분류하는 부분이다&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">C.R.U.D 2 review</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">005. Django - model method, 정참조, 역참조</title>
+      <link href="http://localhost:4000/005-django" rel="alternate" type="text/html" title="005. Django - model method, 정참조, 역참조" />
+      <published>2021-03-31T00:00:00+09:00</published>
+      <updated>2021-03-31T00:00:00+09:00</updated>
+      <id>http://localhost:4000/005-django</id>
+      <content type="html" xml:base="http://localhost:4000/005-django">&lt;h2 id=&quot;queryset&quot;&gt;Queryset&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Queryset&lt;/code&gt;은 전달받은 &lt;code class=&quot;highlighter-rouge&quot;&gt;Model&lt;/code&gt;의 객체 목록을 의미한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Database&lt;/code&gt;로부터 데이터를 읽고, 필터를 걸거나 정렬 등을 할 수 있다&lt;/li&gt;
+  &lt;li&gt;리스트와 같은 구조를 지니고 있지만, 파이썬 기본 자료구조가 아니기 때문에 읽고, 쓰기 위해서는 자료형 변환을 해줘야 한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Queryset&lt;/code&gt;은 &lt;code class=&quot;highlighter-rouge&quot;&gt;Database&lt;/code&gt;의 여러 레코드(row)를 나타낸다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;objects&quot;&gt;objects&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/cd58ffbb-1a27-4d1b-ab23-68438e05ffe6/%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8E%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A91.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;여기서 보이는 &lt;code class=&quot;highlighter-rouge&quot;&gt;objects&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;ModelManager&lt;/code&gt;로 일종의 매니저 역할을 한다고 생각하면 된다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Database&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 사이에서 의사소통을 할 수 있도록 돕는 역할을 한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Product.objects&lt;/code&gt;를 보면 &lt;code class=&quot;highlighter-rouge&quot;&gt;objects&lt;/code&gt;라는 이름의 매니저가 &lt;code class=&quot;highlighter-rouge&quot;&gt;Product&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;DB&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;Queryset&lt;/code&gt; 형태로 변환시킨다는 뜻이다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;model-method&quot;&gt;Model method&lt;/h2&gt;
+
+&lt;h3 id=&quot;methods-that-dont-return-querysets&quot;&gt;Methods That Don’t Return QuerySets&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;create()
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Table&lt;/code&gt;에 데이터를 추가(&lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT&lt;/code&gt;) 해주는 &lt;code class=&quot;highlighter-rouge&quot;&gt;method&lt;/code&gt;로, 생성된 &lt;code class=&quot;highlighter-rouge&quot;&gt;인스턴스&lt;/code&gt;를 반환해준다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/8ca59b94-aaa7-4239-8618-f9be93b1a721/create.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;get()
+    &lt;ul&gt;
+      &lt;li&gt;지정된 조회 매개 변수와 일치하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;인스턴스&lt;/code&gt;를 반환합니다&lt;/li&gt;
+      &lt;li&gt;매개 변수는 필드 조회에 설명된 형식이어야합니다&lt;/li&gt;
+      &lt;li&gt;하나의 값만 가능!! 둘 이상이라면 오류 발생
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/61001b22-2042-4e89-940b-380ee5d21def/get.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;update()
+    &lt;ul&gt;
+      &lt;li&gt;지정된 필드에 대해 업데이트 쿼리를 수행하고 수행한 행 수를 반환&lt;/li&gt;
+      &lt;li&gt;일부 행에 이미 업데이트 하려던 값이있는 경우 업데이트 된 행 수와 일치하지 않을 수 있다&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;update()&lt;/code&gt;를 사용하려면 &lt;code class=&quot;highlighter-rouge&quot;&gt;queryset&lt;/code&gt; 형태에만 적용할 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;delete()
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;QuerySet&lt;/code&gt;의 모든 행에 대해 SQL 삭제 쿼리를 수행하고 삭제 된 개체 수와 개체 유형별 삭제 횟수가 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;dictionary&lt;/code&gt;를 반환한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;save()
+    &lt;ul&gt;
+      &lt;li&gt;저장&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;exists()
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;filter()&lt;/code&gt;와 함께 사용해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt; 조건에 맞는 데이터가 있는지 조회, 존재하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt; 존재하지 않으면 &lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt;를 반환한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;get_or_create()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk_create()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;count()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;first()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;last()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;aggregate()&lt;/code&gt; 등등(사용해보고 리뷰 올리겠습니다!!)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;methods-that-return-querysets&quot;&gt;Methods That Return QuerySets&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;all()
+    &lt;ul&gt;
+      &lt;li&gt;한 테이블의 모든 레코드를 가져오려면 &lt;code class=&quot;highlighter-rouge&quot;&gt;all() method&lt;/code&gt;를 사용한다&lt;/li&gt;
+      &lt;li&gt;그 결과로 &lt;code class=&quot;highlighter-rouge&quot;&gt;QuerySet&lt;/code&gt; 을 반환한다&lt;/li&gt;
+      &lt;li&gt;이때, &lt;code class=&quot;highlighter-rouge&quot;&gt;QuerySet&lt;/code&gt; 안에는 각각 &lt;code class=&quot;highlighter-rouge&quot;&gt;인스턴스&lt;/code&gt;가 포함되어 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;exclude()
+    &lt;ul&gt;
+      &lt;li&gt;조건에 맞지 않는 값을 조회&lt;/li&gt;
+      &lt;li&gt;IS NOT, NOT IN&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;filter()
+    &lt;ul&gt;
+      &lt;li&gt;한 테이블의 특정 레코드를 가져올 때 사용&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;filter() method&lt;/code&gt;는 가장 자주 사용하는 기능&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;filter(**kwargs)&lt;/code&gt; : 키워드 인자로 주어진 조건에 일치하는 레코드들의 &lt;code class=&quot;highlighter-rouge&quot;&gt;QuerySet&lt;/code&gt;을 반환한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;values()
+    &lt;ul&gt;
+      &lt;li&gt;쿼리셋의 값을 딕셔너리 형태로 반환한다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/ad3ad797-e731-4e71-aac2-129cdbc8afb6/vlaues.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;values_list()
+    &lt;ul&gt;
+      &lt;li&gt;쿼리셋의 값을 튜플 형태로 반환한다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/5987791f-374f-4581-9ffb-a11ea3529c2f/values_list.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;manytomany-field&quot;&gt;ManytoMany field&lt;/h2&gt;
+
+&lt;h3 id=&quot;foreignkey-field로-이어주는-것과-차이점&quot;&gt;Foreignkey Field로 이어주는 것과 차이점&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/52654c86-a6e0-40ba-86ba-c96aaa89d1ba/%E1%84%83%E1%85%A1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1%E1%84%80%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;중간 테이블 &lt;code class=&quot;highlighter-rouge&quot;&gt;AllergyDrink&lt;/code&gt;를 만들어주고 &lt;code class=&quot;highlighter-rouge&quot;&gt;Allergy&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Product&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;FK&lt;/code&gt;로 연결해줘도 사실 문제는 없다&lt;/li&gt;
+  &lt;li&gt;그런데 굳이 &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany field&lt;/code&gt;로 설정해주는 이유는 뭘까?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;데이터를 삽입할 때 차이 (create)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Product&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Allergy&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt;로 연결해준 경우에는 굳이 ` AllergyDrink&lt;code class=&quot;highlighter-rouge&quot;&gt;를 거치지 않고 &lt;/code&gt;Product&lt;code class=&quot;highlighter-rouge&quot;&gt;를 통해 바로 &lt;/code&gt;Allery`에 접근 할 수 있다&lt;/li&gt;
+  &lt;li&gt;만약 &lt;code class=&quot;highlighter-rouge&quot;&gt;AllergyDrink&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;FK&lt;/code&gt;를 통해 &lt;code class=&quot;highlighter-rouge&quot;&gt;Product&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Allergy&lt;/code&gt;를 연결해주면 데이터 추가할때 항상 중간테이블을 거쳐야한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;데이터를 불러올 때 차이 (get)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Many to Many&lt;/code&gt;로 연결한 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;Product&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Allergy&lt;/code&gt; 정보(&lt;strong&gt;정참조&lt;/strong&gt;)를 바로 가져올 수도 있고, &lt;code class=&quot;highlighter-rouge&quot;&gt;Allergy&lt;/code&gt;에서도 &lt;code class=&quot;highlighter-rouge&quot;&gt;Product&lt;/code&gt;정보(&lt;strong&gt;역참조&lt;/strong&gt;, 장고에서 붙여준 매니저 &lt;code class=&quot;highlighter-rouge&quot;&gt;_set&lt;/code&gt;을 통해)를 바로 가져올 수 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;정참조&quot;&gt;정참조&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;products.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'콜드 브루'&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'콜드 브루'&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allergy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# mtm 관계, 정참조라서 바로 접근해서 가져오는 모습&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Allergy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Allergy&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allergy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QuerySet&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'우유'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allergy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'우유'&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QuerySet&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allergy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QuerySet&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'대두'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'우유'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'난류'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'밀'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allergy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'대두'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'우유'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'난류'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'밀'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;대두&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;우유&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;난류&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;밀&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;역참조&quot;&gt;역참조&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;related name&lt;/code&gt;을 설정해주지 않았으면 &lt;code class=&quot;highlighter-rouge&quot;&gt;_set&lt;/code&gt;이 붙으면 역참조 데이터임을 알 수 있다&lt;/li&gt;
+  &lt;li&gt;하지만 함부로 설정했을 경우, 역참조를 도와주는 매니저인지 모를 경우가 있을 수도 있으니, 초창기에는 &lt;code class=&quot;highlighter-rouge&quot;&gt;_set&lt;/code&gt;인 상황에서 익숙해지는 걸 추천&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product_set&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;django&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;related_descriptors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create_reverse_many_to_one_manager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;locals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RelatedManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x7fa3cfe7a5e0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product_set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QuerySet&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product_set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;나이트로&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;바닐라&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;크림&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;나이트로&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;쇼콜라&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;클라우드&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Allergy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product_set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QuerySet&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'나이트로 쇼콜라 클라우드'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'나이트로 바닐라 크림'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'딸기 요거트 블렌디드'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'트리플 미니 스콘'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'보니밤 몽블랑 데니쉬'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'밀당 에그 타르트'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'밀당 초코 타르트'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Allergy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product_set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'나이트로 쇼콜라 클라우드'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'나이트로 바닐라 크림'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'딸기 요거트 블렌디드'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'트리플 미니 스콘'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'보니밤 몽블랑 데니쉬'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'밀당 에그 타르트'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'밀당 초코 타르트'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'category_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;나이트로&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;쇼콜라&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;클라우드&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;나이트로&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;바닐라&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;크림&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;딸기&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;요거트&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;블렌디드&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;트리플&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;미니&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;스콘&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;보니밤&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;몽블랑&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;데니쉬&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;밀당&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;에그&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;타르트&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;밀당&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;초코&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;타르트&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">Queryset</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">004. Django - C.R.U.D 1 review</title>
+      <link href="http://localhost:4000/004-django" rel="alternate" type="text/html" title="004. Django - C.R.U.D 1 review" />
+      <published>2021-03-29T00:00:00+09:00</published>
+      <updated>2021-03-29T00:00:00+09:00</updated>
+      <id>http://localhost:4000/004-django</id>
+      <content type="html" xml:base="http://localhost:4000/004-django">&lt;h2 id=&quot;django-crud-1-review&quot;&gt;Django C.R.U.D 1 review&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Assignment
+    &lt;ul&gt;
+      &lt;li&gt;저번에 팀으로 스타벅스 모델링을 진행한 것을 바탕으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 모델을 완성하는 작업
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fa1e9a78-5e80-4f94-a3c5-32a947bb5bb1/modeling.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;모델링을 보면 &lt;code class=&quot;highlighter-rouge&quot;&gt;menu&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;category&lt;/code&gt;가 서로 1 대 다 관계이고, &lt;code class=&quot;highlighter-rouge&quot;&gt;category&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt; 또한 1 대 다 관계인 것을 확인했다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;field type&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;ForeignKey&lt;/code&gt;를 다의 위치에 있는 테이블에 명시하고, 1의 관계인 테이블을 연결해서 구현할 수 있었다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/edad700f-5329-4b6d-b705-9675622e7661/1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;결과물 중 &lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;images&lt;/code&gt; 또한 같은 방식으로 구현함&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;allergy&lt;/code&gt; 테이블의 관계는 다 대 다 관계인 것을 확인&lt;/li&gt;
+  &lt;li&gt;다 대 다 관계를 구현하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; docs를 찾았고, &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;field&lt;/code&gt;를 확인함
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/d189b858-256a-4391-91db-e3e45dd3eaa6/%E1%84%83%E1%85%A1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1%E1%84%80%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A8.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt; 필드를 관계를 가진 테이블끼리 설정하면, 중간 테이블이 자동으로 생성된다&lt;/li&gt;
+  &lt;li&gt;나는 내가 원하는 테이블을 중간 테이블로 지정하고 싶어서 좀 더 찾아보니 &lt;code class=&quot;highlighter-rouge&quot;&gt;through&lt;/code&gt;를 사용해, 내가 원하는 테이블로 지정할 수 있는 것을 찾아냄&lt;/li&gt;
+  &lt;li&gt;위 사진처럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt;로 관계를 설정하고, 중간 테이블에 연결된 외래키를 설정해서 구현&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python manage.py shell&lt;/code&gt;을 통해서 테이블에 값을 입력해서 과제 제출
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/805331fd-50fe-43f3-ba2a-cb75ffa92492/menu.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fff759ee-178c-4236-8ba2-f240b7430e36/category.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/bbe69a3e-9d95-4c23-b340-97a07afed3ea/product.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/92ada7d2-cde2-46ad-a762-d2a02e50409f/allergy.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c1d78a4d-cea7-41e1-9942-68863b14f480/allergydrink.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/3e4097a0-a48b-44d6-a78e-87d7c97db54a/image.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">Django C.R.U.D 1 review</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">022. 시저 암호</title>
+      <link href="http://localhost:4000/022-algorithm" rel="alternate" type="text/html" title="022. 시저 암호" />
+      <published>2021-03-29T00:00:00+09:00</published>
+      <updated>2021-03-29T00:00:00+09:00</updated>
+      <id>http://localhost:4000/022-algorithm</id>
+      <content type="html" xml:base="http://localhost:4000/022-algorithm">&lt;h2 id=&quot;question&quot;&gt;Question&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/db884de3-b4e4-4243-b0bd-964cce5b947f/%E1%84%89%E1%85%B5%E1%84%8C%E1%85%A5%E1%84%8B%E1%85%A1%E1%86%B7%E1%84%92%E1%85%A9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;내-풀이정답&quot;&gt;내 풀이(정답)&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;big&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ZYXWVUTSRQPONMLKJIHGFEDCBA&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;small&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;big&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;big&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;big&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;big&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;small&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;small&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;대문자와 소문자의 리스트를 가지고 밀어낼 값을 알 수 있도록 대문자 리스트와 소문자 리스트를 만들었다&lt;/li&gt;
+  &lt;li&gt;리스트를 만들 때, 알파벳 역순으로 만들면 &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; 값을 더해줄 때, 따로 계산해 줄 필요가 없기 때문에 역순으로 만들었다
+    &lt;ul&gt;
+      &lt;li&gt;예시) a의 인덱스 값은 -1 이므로 n이 1일경우 -1 + 1 = 0으로 자연스럽게 인덱스 0인 z값을 출력하게 됨&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt;문으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt;의 값을 비교하는데 &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;로 &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt;가 공백일 경우, 문자열 &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;에 추가만 해주고 넘어가고, &lt;code class=&quot;highlighter-rouge&quot;&gt;else&lt;/code&gt;의 경우에서 또 &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;로 대문자일 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;big&lt;/code&gt; 리스트에서 진행 &lt;code class=&quot;highlighter-rouge&quot;&gt;else&lt;/code&gt;의 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;small&lt;/code&gt; 리스트에서 진행되도록 구현했다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;다른-풀이&quot;&gt;다른 풀이&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;caesar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;islower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;완전히 새로운 방식이라서 가져온 코드, 추후 분석해서 리뷰하겠습니다&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="algorithm" />
+      
+
+      
+        <summary type="html">Question</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">004. HTTP</title>
+      <link href="http://localhost:4000/004-http" rel="alternate" type="text/html" title="004. HTTP" />
+      <published>2021-03-28T00:00:00+09:00</published>
+      <updated>2021-03-28T00:00:00+09:00</updated>
+      <id>http://localhost:4000/004-http</id>
+      <content type="html" xml:base="http://localhost:4000/004-http">&lt;h2 id=&quot;http-특징&quot;&gt;HTTP 특징&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/bce8f6e5-d075-4d7f-ac79-30bf7e5cc55d/http.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Request&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;Response&lt;/code&gt; (요청/ 응답)&lt;/li&gt;
+  &lt;li&gt;소통의 핵심은 요청과 응답&lt;/li&gt;
+  &lt;li&gt;인간의 소통방식이 컴퓨터끼리의 소통방식에 적용된 것&lt;/li&gt;
+  &lt;li&gt;http 요청과 응답은 그저 메세지에 불과함&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;stateless&lt;/code&gt; = &lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;(상태) + &lt;code class=&quot;highlighter-rouge&quot;&gt;less&lt;/code&gt;(없음)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt; 통신은 과거의 &lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt; 통신에 대한 내용을 전혀 알지 못함
+매 통신마다 필요한 모든 정보를 담아서 요청을 보낸다!!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;http-메시지-구조&quot;&gt;HTTP 메시지 구조&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HTTP 메시지는 구조를 이루고 있는데 이 구조를 보면서 어떤 의미인지 파악하는 게 중요하다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;START LINE(요청일 때) / STATUS LINE(응답일 때)
+
+- 요청과 응답의 상태를 표시해 줌(메소드, url, 버전, 상태)
+  - post/users/login HTTP/1.1 (start line)
+  - HTTP/1.1 200 SUCCESS (status line)
+
+Headers
+
+- 요청과 응답에 대한 추가 정보(메타 데이터)
+  - host, user-agent, content-length, content-type 등
+
+Body
+
+- 요청과 응답의 실제 정보
+  - 'username':'wecode' 'password':&quot;wecode!123&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;request-massage-구조&quot;&gt;Request massage 구조&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/be05041e-e462-4573-8d7b-5e1bc6e1f186/http%20request%20message%20desc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;http-request-메소드&quot;&gt;http request 메소드&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP&lt;/code&gt;는 요청 &lt;code class=&quot;highlighter-rouge&quot;&gt;메서드&lt;/code&gt;를 정의하여, 주어진 리소스에 &lt;strong&gt;수행하길 원하는 행동을 나타낸다&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;간혹 요청 메서드를 “&lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP 동사&lt;/code&gt;“라고 부르기도 한다&lt;/li&gt;
+  &lt;li&gt;각각의 메서드는 서로 다른 의미를 구현하지만, 일부 기능은 메서드 집합 간에 서로 공유하기도 함&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;예시&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;GET
+데이터 받아오기만 할때
+웹페이지에 접속해서 필요한 데이터를 불러올 때&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;POST
+데이터를 생성/ 수정할때 사용
+Body에 담는 내용이 핵심!!&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;DELETE
+서버에 저장된 특정 데이터를 삭제할 때&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;등 더 많은 메소드들이 존재
+&amp;lt;/br&amp;gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;메소드&lt;/code&gt;를 정의했으니, &lt;code class=&quot;highlighter-rouge&quot;&gt;Request massage&lt;/code&gt;를 다시 살펴보면, &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Line&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;메소드&lt;/code&gt;와, &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;버전&lt;/code&gt;이 표시되어 있는 것을 볼 수 있다&lt;/li&gt;
+  &lt;li&gt;그 아래 &lt;code class=&quot;highlighter-rouge&quot;&gt;Header&lt;/code&gt;에는 요청과 대한 추가 정보가 표시되어 있고, 마지막에 위치한 &lt;code class=&quot;highlighter-rouge&quot;&gt;Body&lt;/code&gt;에는 실제 요청하는 내용이 담겨 있는 것을 볼 수 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;response-massage-구조&quot;&gt;Response massage 구조&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/f36e7449-c5c8-4cc2-8e39-1ecc5b986fdd/http%20response%20message%20desc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Response massage&lt;/code&gt;의 구조도 비슷한 형태를 이루고 있으나, 처음 정보가 &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Line&lt;/code&gt;이 아닌 &lt;code class=&quot;highlighter-rouge&quot;&gt;Status Line&lt;/code&gt;으로 명칭되고, &lt;code class=&quot;highlighter-rouge&quot;&gt;메소드&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;이 사라지고, &lt;code class=&quot;highlighter-rouge&quot;&gt;버전&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;상태코드&lt;/code&gt;가 표시되어 있는 것을 볼 수 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;http-상태코드&quot;&gt;HTTP 상태코드&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;응답 상태 코드&lt;/code&gt;는 특정 &lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP 요청&lt;/code&gt;이 성공적으로 완료되었는지 알려준다&lt;/li&gt;
+  &lt;li&gt;응답은 5개의 그룹으로 나누어 짐
+    &lt;ul&gt;
+      &lt;li&gt;1XX : &lt;code class=&quot;highlighter-rouge&quot;&gt;조건부 응답&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;클라이언트가 데이터를 일부만 포함해 보내어 서버가 데이터를 더 보내라고 하는 응답 코드&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;2XX : &lt;code class=&quot;highlighter-rouge&quot;&gt;성공&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;서버가 클라이언트로부터의 요청을 성공적으로 처리한 후 반환하는 응답 코드&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;3XX : &lt;code class=&quot;highlighter-rouge&quot;&gt;리다이렉션 완료&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;클라이언트가 요청을 완료하기 위해 작업이 남아있는 코드. 보통 새로고침을 한 경우 반환하는 응답 코드&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;4XX : &lt;code class=&quot;highlighter-rouge&quot;&gt;요청 오류&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;클라이언트의 요청이 잘못됐을 때 반환하는 응답 코드. 즉, 문제 발생 원인이 클라이언트에 있다는 뜻&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;500 : &lt;code class=&quot;highlighter-rouge&quot;&gt;서버 오류&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;서버의 설정, 코드 등의 문제로 오류가 났을 때 반환되는 코드
+&amp;lt;/br&amp;gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;그 외의 &lt;code class=&quot;highlighter-rouge&quot;&gt;Header&lt;/code&gt;부터 &lt;code class=&quot;highlighter-rouge&quot;&gt;Body&lt;/code&gt;는 같은 형태로 출력되는 모습&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="web" />
+      
+
+      
+        <summary type="html">HTTP 특징</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">003. Django - view</title>
+      <link href="http://localhost:4000/003-django" rel="alternate" type="text/html" title="003. Django - view" />
+      <published>2021-03-26T00:00:00+09:00</published>
+      <updated>2021-03-26T00:00:00+09:00</updated>
+      <id>http://localhost:4000/003-django</id>
+      <content type="html" xml:base="http://localhost:4000/003-django">&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 웹의 로직을 담당&lt;/li&gt;
+  &lt;li&gt;웹에서 일어나는 데이터 저장, 파일 다운로드 등을 위해 코드 작성
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/0294252e-7f42-463b-a180-44ea5c29904e/view.py%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 명심해야 할 점&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt; 인자를 받고&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpResponse&lt;/code&gt;로 &lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt; 하기 전에 데이터 관련된 코드들이 중간에 들어가는 개념
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/74ae4f6b-50ce-482c-b62a-ad2c3e4b8317/view.py%20index%20%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;models.py&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;을 불러와서 출력&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;question&lt;/code&gt; 데이터에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;출판일자&lt;/code&gt;를 정렬하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;5개&lt;/code&gt;까지 가져오고 &lt;code class=&quot;highlighter-rouge&quot;&gt;5개&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;,&lt;/code&gt;로 연결하여 리스폰스 하겠다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/3b9e67b0-a737-45ed-ab86-e82821e5aa55/polls:urls.py%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;polls/urls.py&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 설정&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;에서는 해당 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt; 이 끝나는 지점의 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 작업을 수행하게 된다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;httpresponse&lt;/code&gt;를 리턴하거나 &lt;code class=&quot;highlighter-rouge&quot;&gt;http404&lt;/code&gt; 같은 예외를 리턴함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;template-필요성&quot;&gt;Template 필요성&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;지금까지 클라이언트에게 보여주는 페이지가 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 내에 있었음&lt;/li&gt;
+  &lt;li&gt;데이터를 추출해서 바로 &lt;code class=&quot;highlighter-rouge&quot;&gt;클라이언트&lt;/code&gt;에게 보여줌&lt;/li&gt;
+  &lt;li&gt;디자인 수정 시 너무 어려움, 디자인 수정을 위해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 내부를 수정해야 하기 때문에&lt;/li&gt;
+  &lt;li&gt;그래서 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;와 디자인 담당인 &lt;code class=&quot;highlighter-rouge&quot;&gt;template&lt;/code&gt;을 분리해야 함&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;수정이 편하고, 더 적게 수정하는 방안으로 빌드하는 것이 중요하다!!!!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">view는 django 웹의 로직을 담당 웹에서 일어나는 데이터 저장, 파일 다운로드 등을 위해 코드 작성 view 명심해야 할 점 view 에서는 request 인자를 받고 HttpResponse로 return response 하기 전에 데이터 관련된 코드들이 중간에 들어가는 개념 models.py에서 Question을 불러와서 출력 question 데이터에서 출판일자를 정렬하여 5개까지 가져오고 5개를 ,로 연결하여 리스폰스 하겠다 polls/urls.py에 path 설정 urls.py에서는 해당 url 이 끝나는 지점의 path 작업을 수행하게 된다 view에서는 httpresponse를 리턴하거나 http404 같은 예외를 리턴함</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">002. Django - tutorial 2 review</title>
+      <link href="http://localhost:4000/002-django-copy" rel="alternate" type="text/html" title="002. Django - tutorial 2 review" />
+      <published>2021-03-25T00:00:00+09:00</published>
+      <updated>2021-03-25T00:00:00+09:00</updated>
+      <id>http://localhost:4000/002-django%20copy</id>
+      <content type="html" xml:base="http://localhost:4000/002-django-copy">&lt;h2 id=&quot;tutorial-2-review&quot;&gt;tutorial 2 review&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt;는 기본적으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;SQLite&lt;/code&gt;를 제공하고 있다 하지만 나는 &lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;을 사용하기 위해 설정을 조금 변경하는 과정을 소개한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mysql에서-database-생성하기&quot;&gt;MySQL에서 DATABASE 생성하기&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mysql.server start&lt;/code&gt;로 서버를 열어주기&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mysql -u root -p&lt;/code&gt;를 통해 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysql&lt;/code&gt; 접속&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/98e314f9-5fc4-4330-bba2-f6d1a20200de/mysql%20data%20create.png&quot; alt=&quot;&quot; /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;DATABASE&lt;/code&gt; 생성 &lt;code class=&quot;highlighter-rouge&quot;&gt;testdata&lt;/code&gt;는 데이터베이스 이름임&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/6bc65df3-ef7e-48bc-aa14-89c9a5f6cbb7/mysql%20show%20databases;.png&quot; alt=&quot;&quot; /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;SHOW DATABASES&lt;/code&gt;를 통해서 생성됐는지 확인&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;mysitesettingspy에서-mysql로-변경해주기&quot;&gt;mysite/settings.py에서 MySQL로 변경해주기&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/0d8314e3-ac04-48bb-9e2e-d82dd9365f73/mysql%20settings.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;installed_apps&quot;&gt;INSTALLED_APPS&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/eb56ca39-d584-42f2-bf4f-fd188329ec77/2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mysite/settings.py&lt;/code&gt;에 확인하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;installed_apps&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt;에서 기본으로 제공하는 앱들을 확인할 수 있다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/482ae2e1-c2c4-4d28-9895-b951499dca2b/1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;앱들의 기능에 대한 내용이다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;기본 어플리케이션&lt;/code&gt;들 중 몇몇은 최소한 하나 이상의 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스 테이블&lt;/code&gt;을 사용한다&lt;/li&gt;
+  &lt;li&gt;그러기 위해선 데이터베이스에서 테이블을 미리 만들 필요가 있음&lt;/li&gt;
+  &lt;li&gt;다음 명령을 통해 테이블 생성 &lt;code class=&quot;highlighter-rouge&quot;&gt;python manage.py migrate&lt;/code&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/634521cc-efa3-48e3-9d58-7382a7444d58/migrate.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;model-작성하기&quot;&gt;model 작성하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Model&lt;/code&gt;이란 부가적인 메타데이터를 가진 데이터베이스의 구조를 말한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;Choice&lt;/code&gt;라는 모델을 작성
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/41b9c6ad-2827-48e0-991e-8d80b36f6726/3.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;question&lt;/code&gt; 에는 질문(문자 최대길이 200) 내용 생성 날짜(시간 타입)
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/8a0ebaf6-6b71-4bfd-bbaf-ad98f54af343/4.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;choice&lt;/code&gt;에는 선택지에 해당하는 질문(&lt;code class=&quot;highlighter-rouge&quot;&gt;외래키&lt;/code&gt;=&lt;code class=&quot;highlighter-rouge&quot;&gt;question&lt;/code&gt;의 내용을 참조하겠다, &lt;code class=&quot;highlighter-rouge&quot;&gt;CASCADE&lt;/code&gt; = &lt;code class=&quot;highlighter-rouge&quot;&gt;question&lt;/code&gt;이 삭제가 되면 &lt;code class=&quot;highlighter-rouge&quot;&gt;choice question&lt;/code&gt;도 삭제 하겠다), 투표수의 내용이 담겨 있음&lt;/li&gt;
+  &lt;li&gt;여기서 &lt;code class=&quot;highlighter-rouge&quot;&gt;외래키&lt;/code&gt;에 대해서 더 살펴보면 하나의 &lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;에 여러개의 &lt;code class=&quot;highlighter-rouge&quot;&gt;foreignkey&lt;/code&gt;를 갖기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;1대 다 관계&lt;/code&gt;인 것을 확인할 수 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;installed_apps에-pollsapp-추가하기&quot;&gt;INSTALLED_APPS에 polls.app 추가하기&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c2a60564-3394-443d-b802-08554bbaf8ed/settings%E1%84%8B%E1%85%A6%20app%20%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;makemigration&quot;&gt;makemigration&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;makemigration&lt;/code&gt; : &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt;을 작성해 놓은 것을 &lt;code class=&quot;highlighter-rouge&quot;&gt;mygration&lt;/code&gt;이라는 장소에 이 &lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt;들을 데이터베이스 내에 테이블을 생성할 수 있도록 설계도를 만드는 작업
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/5a50512d-3443-4240-a10d-ec003cc92cfe/makemigration%20%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;실행 결과(&lt;code class=&quot;highlighter-rouge&quot;&gt;migration&lt;/code&gt; 디렉토리 안에 생성된 것을 확인할수 있음)
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/f1130235-aef0-458a-b14a-0fc4eb3ee5a4/%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%E1%84%83%E1%85%A9.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;migrate&quot;&gt;migrate&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;migrate&lt;/code&gt;을 통해 실제 테이블 생성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;api-가지고-놀기&quot;&gt;API 가지고 놀기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;API&lt;/code&gt;란 &lt;code class=&quot;highlighter-rouge&quot;&gt;개발자&lt;/code&gt;가 필요로하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터&lt;/code&gt;를 뽑아낼 수 있도록 만들어 놓은 함수 또는 &lt;code class=&quot;highlighter-rouge&quot;&gt;서버&lt;/code&gt;에게 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스&lt;/code&gt;에게 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터&lt;/code&gt;를 입력할 수 있도록 만들어 놓은 함수&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shell&lt;/code&gt; 진입
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/ed889c19-4981-4d35-be11-a3a0eee1dd20/shell%20%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%8B%E1%85%B5%E1%86%B8.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shell&lt;/code&gt;에 만들어 놓은 &lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt; 추가
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/795fe633-6774-424a-bcf7-e837329a311f/shell%20model%20%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;의 모든 내용 불러오기&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Question.object.all()&lt;/code&gt; - 현재 퀘스쳔 내의 모든 데이터를 가져와라&lt;/li&gt;
+  &lt;li&gt;등록된 내용 없기 때문에 빈 내용 출력
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c1e4c2f2-c1fe-4216-a76e-8f4a4fa1ed55/question%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%B3%E1%86%AB%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%20%E1%84%87%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A5%E1%84%8B%E1%85%A9%E1%84%80%E1%85%B5.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;다음으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt; 내의 데이터 생성&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt; 내에는 질문내용과 발행일이 존재&lt;/li&gt;
+  &lt;li&gt;발행일 시간을 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;timezone&lt;/code&gt; 라이브러리 &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;q.id&lt;/code&gt; 는 함수에서 명시하지 않아도 장고에서 추가 해줌
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/de5489ad-869b-4d5c-8121-87b4b77555fc/question%E1%84%8B%E1%85%A6%20%E1%84%82%E1%85%A2%E1%84%8B%E1%85%AD%E1%86%BC%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt;의 모든 내용 불러오기&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;object&lt;/code&gt;에 표시된 1로는 어떤 데이터인지 구분이 안감
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/ef171a9c-4f74-4da9-a651-90f1dc96049d/question%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%92%E1%85%AE%20object%20%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC%20%E1%84%80%E1%85%A7%E1%86%AF%E1%84%80%E1%85%AA.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;그렇기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;__str__()&lt;/code&gt; 메소드를 모델 내에 심어주면 보고 싶은 문구를 볼 수 있음&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt;안에 &lt;code class=&quot;highlighter-rouge&quot;&gt;__str__()&lt;/code&gt; 심어주기
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/463efce8-0a75-4fa7-b16e-322a60a5d504/__str__.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;저장하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;shell&lt;/code&gt;을 종료시킨 후 재실행해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Question&lt;/code&gt; 모든 내용을 불러오면
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c57e9c4c-f3bc-44e3-beb2-3adbb39c5d01/str%20%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC%E1%84%80%E1%85%A7%E1%86%AF%E1%84%80%E1%85%AA.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;str&lt;/code&gt; 결과를 볼 수 있다&lt;/li&gt;
+  &lt;li&gt;추후 여러 실행결과를 리뷰할 예정&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">tutorial 2 review</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">001. Django - Django의 기본 흐름과 tutorial 1 review</title>
+      <link href="http://localhost:4000/001-django" rel="alternate" type="text/html" title="001. Django - Django의 기본 흐름과 tutorial 1 review" />
+      <published>2021-03-25T00:00:00+09:00</published>
+      <updated>2021-03-25T00:00:00+09:00</updated>
+      <id>http://localhost:4000/001-django</id>
+      <content type="html" xml:base="http://localhost:4000/001-django">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;기본적으로 django, mysql이 설치되어 있는 상황 이후에 django에 대한
+흐름을 이해하기 위한 글입니다
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;django-참고영상&quot;&gt;Django &lt;a href=&quot;https://www.youtube.com/watch?v=9WctwW_Pe1o&amp;amp;list=PLi4xPOplIq7d1vDdLBAvS5PmQR-p6KwUz&amp;amp;index=2&quot;&gt;(참고영상)&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/48d6b494-94be-45d4-b6a1-33185322bb1d/django%201.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;django의-흐름&quot;&gt;django의 흐름&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;client&lt;/code&gt;가 &lt;code class=&quot;highlighter-rouge&quot;&gt;web application&lt;/code&gt;을 보기 위해서 요청&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Nginx&lt;/code&gt; 또는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Apache&lt;/code&gt;가 존재 이 둘은 흔히 &lt;strong&gt;상용 단계&lt;/strong&gt;에서 사용&lt;/li&gt;
+  &lt;li&gt;장고에서는 개발을 위해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;경량 개발 웹서버&lt;/code&gt;를 제공하고 있음&lt;/li&gt;
+  &lt;li&gt;개발할때는 &lt;code class=&quot;highlighter-rouge&quot;&gt;경량 개발 웹서버&lt;/code&gt;를 사용&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WSGI&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;웹서버&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;장고 프레임워크&lt;/code&gt;를 연결하기 위해 사용&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;가 넘어가고 사용자가 특정 주소를 요청하는데 &lt;code class=&quot;highlighter-rouge&quot;&gt;url 파일&lt;/code&gt;에서 요청한 주소를 잘게 나눠줌 이 작업을 &lt;code class=&quot;highlighter-rouge&quot;&gt;parsing&lt;/code&gt;이라고 함&lt;/li&gt;
+  &lt;li&gt;잘게 나눠진 주소들은 역할에 맞게 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;로 이동함&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;에는 &lt;code class=&quot;highlighter-rouge&quot;&gt;웹 어플리케이션&lt;/code&gt;에 각각 맞는 작업을 하기 위한 내가 만든 코드가 존재
+    &lt;ul&gt;
+      &lt;li&gt;EX) 요청받은 데이터를 저장, 데이터베이스에서 꺼내오는 데이터베이스 작업, pdf를 생성하는 작업이라던지 등등&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 작업이 끝나면 디자인 작업인 &lt;code class=&quot;highlighter-rouge&quot;&gt;template&lt;/code&gt;으로 이동하고 사용자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt;를 받게 된다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;프로젝트와-앱의-차이&quot;&gt;프로젝트와 앱의 차이&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;프로젝트는 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysite&lt;/code&gt;와 같은 &lt;code class=&quot;highlighter-rouge&quot;&gt;앱&lt;/code&gt;의 묶음&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;앱&lt;/code&gt;은 특정한 기능을 수행하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;웹 어플리케이션&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;EX) 아이스크림 가게를 위한 앱을 만든다고 한다면, 1. 아이스크림 관리를 위한 관리 앱 2. 주문을 위한 주문 앱 3. 이벤트를 위한 이벤트 앱
+특정 기능만 수행하는 앱을 각각 만들어서 프로젝트를 구성&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;django-tutorial-1&quot;&gt;django tutorial 1&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/eba56302-eab9-4943-b5ff-decfe3776cb2/django%202.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;라는 앱 생성(투표를 담당하는 앱)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view.py&lt;/code&gt;를 작성하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;view.py&lt;/code&gt;를 호출하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;를 만들고, 경로?? 입력&lt;/li&gt;
+  &lt;li&gt;최상위 &lt;code class=&quot;highlighter-rouge&quot;&gt;URLconf&lt;/code&gt;에 방금 만든 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 연결&lt;/li&gt;
+  &lt;li&gt;최상위 &lt;code class=&quot;highlighter-rouge&quot;&gt;URLconf&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysite&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;에 있음&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;iclude&lt;/code&gt; 함수는 다른 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 참조할 수 있게 해줌&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;여기까지-흐름&quot;&gt;여기까지 흐름&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;현재 최상위 &lt;code class=&quot;highlighter-rouge&quot;&gt;URLconf&lt;/code&gt;에 내가 만든 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt; 앱의 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 연결함&lt;/li&gt;
+  &lt;li&gt;예를 들어 &lt;code class=&quot;highlighter-rouge&quot;&gt;127.0.0.1/polls/&lt;/code&gt;라는 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;이 있다면 이 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 &lt;code class=&quot;highlighter-rouge&quot;&gt;parsing&lt;/code&gt;해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;라는 해당 경로를 잡아내고 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls.urls&lt;/code&gt;로 연결시켜줌&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/polls/&lt;/code&gt; 앱 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls&lt;/code&gt;는 전달받고 이후에 아무것도 없기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 내에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;view.index&lt;/code&gt;라는 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 내부로 연결 시켜줌&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 내부의 &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; 함수에서는 내가 작성한 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;hello world&quot;&lt;/code&gt;라는 &lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;client&lt;/code&gt;에게 전달 해줌&lt;/li&gt;
+&lt;/ol&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">기본적으로 django, mysql이 설치되어 있는 상황 이후에 django에 대한 흐름을 이해하기 위한 글입니다</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">003. MySQL programmers 1단계 리뷰</title>
+      <link href="http://localhost:4000/003-mysql" rel="alternate" type="text/html" title="003. MySQL programmers 1단계 리뷰" />
+      <published>2021-03-24T00:00:00+09:00</published>
+      <updated>2021-03-24T00:00:00+09:00</updated>
+      <id>http://localhost:4000/003-mysql</id>
+      <content type="html" xml:base="http://localhost:4000/003-mysql">&lt;h2 id=&quot;1단계-테스트-리뷰&quot;&gt;1단계 테스트 리뷰&lt;/h2&gt;
+
+&lt;h3 id=&quot;sql-문법순서&quot;&gt;SQL 문법순서&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/b8eaa497-5219-4809-bcd0-d5b841843f13/sql%20%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8%20%E1%84%89%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;sql-실행순서&quot;&gt;SQL 실행순서&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/919212f9-9bf3-46f8-bda4-07ef84dc254c/sql.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt; 에서 테이블 확인 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt; 검색조건에 따라 데이터추출 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;GROUP BY&lt;/code&gt; 행의 고유값을 그룹으로 정리 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;HAVING&lt;/code&gt; 검색조건에 따라 추가로 제외 -&amp;gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; 에서 출력할 컬럼들을 확인한다 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;ORDER BY&lt;/code&gt; 정렬을 해준다음 출력&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;상위-n개-레코드&quot;&gt;상위 n개 레코드&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이 부분은 &lt;code class=&quot;highlighter-rouge&quot;&gt;ORACLE&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;의 문법이 다르다고 한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;의 문법으로 정리
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;의 경우 : 값을 조회하는데 가장 맨 위 행 1개만을 조회하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;LIMIT&lt;/code&gt; 구문을 사용해야 합니다.
+        &lt;ul&gt;
+          &lt;li&gt;LIMIT 1 : 맨 위에서부터 1개까지의 정보 조회&lt;/li&gt;
+          &lt;li&gt;LIMIT 3 : 맨 위에서부터 3개까지의 정보 조회&lt;/li&gt;
+          &lt;li&gt;LIMIT 2, 6 : 위에서 2번째부터 6번째까지의 정보 조회&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ORDER BY&lt;/code&gt;와 함께 활용해서 원하는 값 출력하는 문제 해결&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;sql-count&quot;&gt;SQL COUNT&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;전체 행 갯수 가져오기
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(*) FROM 테이블;&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컬럼 데이터 갯수 가져오기
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(컬럼) FROM 테이블;&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컬럼 네임 지정해서 가져오기
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(*) as cnt FROM hero_collection;&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cnt&lt;/code&gt;라는 이름의 컬럼명으로 자료를 가져오는 모습&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;나중에 나온 문제에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;DISTINCT&lt;/code&gt;와 함께 써서 해결하는 문제도 있었다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;null&quot;&gt;NULL&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;을 처리하기 위해선 &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt;을 사용한다
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM TEST WHERE NAME IS NULL&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt; 값인 &lt;code class=&quot;highlighter-rouge&quot;&gt;NAME&lt;/code&gt;을 불러오는 예제&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM TEST WHERE NAME IS NOT NULL&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM TEST WHERE NOT NAME IS NULL&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;위의 두 경우처럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;NOT NULL&lt;/code&gt;을 이용하거나 &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE NOT&lt;/code&gt;을 이용해 조건으로 해결할 수도 있다&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;distinct중복-제거&quot;&gt;DISTINCT(중복 제거)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;앞서 설명했던 &lt;code class=&quot;highlighter-rouge&quot;&gt;DISTINCT&lt;/code&gt; 사용법
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT DISTINCT * FROM TEST&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;중복 값만 해결하고 값을 가져오는 예제&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(DISTINCT *) FROM TEST&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;중복 값을 해결하고 값을 &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt; 하는 예제(&lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt;와 함께 쓸 때 문법이 헷갈려 예제로 넣어봅니다)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="database" />
+      
+
+      
+        <summary type="html">1단계 테스트 리뷰</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">016. Python - list comprehensions, lambda expressions</title>
+      <link href="http://localhost:4000/016-python" rel="alternate" type="text/html" title="016. Python - list comprehensions, lambda expressions" />
+      <published>2021-03-24T00:00:00+09:00</published>
+      <updated>2021-03-24T00:00:00+09:00</updated>
+      <id>http://localhost:4000/016-python</id>
+      <content type="html" xml:base="http://localhost:4000/016-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
+      지역변수와 전역변수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
+      오버라이딩, pass, super&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
+      pip install, 내장함수, 외장함수&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
+      package&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;python-advanced&quot;&gt;Python Advanced&lt;/h2&gt;
+
+&lt;h3 id=&quot;list-comprehension&quot;&gt;list comprehension&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[ 표현식 for 원소 in 반복 가능한 객체 ]&lt;/li&gt;
+  &lt;li&gt;[ 표현식 for 원소 in 반복 가능한 객체 if문 ]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;assignment-1&quot;&gt;Assignment 1&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;다음과 같은 도시목록의 리스트가 주어졌을때, 도시이름이 S로 시작하지 않는 도시만 리스트로 만들 때 리스트 컴프리헨션을 사용하여 함수를 작성해 보세요&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Tokyo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Shanghai&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Jakarta&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Seoul&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Guangzhou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Beijing&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Karachi&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Shenzhen&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Delhi&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;citylst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;&quot;S&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;citylst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;assignment-2&quot;&gt;Assignment 2&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;다음과 같은 도시, 인구수가 튜플의 리스트로 주어졌을때, 키가 도시, 값이 인구수인 딕셔너리를 딕셔너리 컴프리헨션을 사용한 함수를 작성해 보세요&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;population_of_city&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Tokyo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;36923000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Shanghai'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;34000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Jakarta'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Seoul'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25514000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Guangzhou'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Beijing'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24900000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Karachi'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24300000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Shenzhen'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;23300000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Delhi'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21753486&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;citydic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;population_of_city&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;citydic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;lambda-expressions&quot;&gt;Lambda expressions&lt;/h3&gt;
+
+&lt;h4 id=&quot;assignment&quot;&gt;Assignment&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;다음과 같이 비밀번호의 길이와 대문자가 포함된것을 확인하는 간단한 함수가 있습니다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;check_password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'SHORT_PASSWORD'&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'NO_CAPITAL_LETTER_PASSWORD'&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;풀이&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;lambdas&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'SHORT_PASSWORD'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'NO_CAPITAL_LETTER_PASSWORD'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;check_password_using_lambda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lambdas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_password_using_lambda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'123'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;# SHORT_PASSWORD&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_password_using_lambda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'12356789f'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;# NO_CAPITAL_LETTER_PASSWORD&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_password_using_lambda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'123456789fF'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="python" />
+      
+
+      
+        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
