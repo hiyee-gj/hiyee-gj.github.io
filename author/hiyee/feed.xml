@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/author/hiyee/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-04-08T16:53:34+09:00</updated>
+  <updated>2021-04-10T14:39:27+09:00</updated>
   <id>http://localhost:4000/author/hiyee/feed.xml</id>
 
   
@@ -30,6 +30,307 @@
   
   
 
+  
+    <entry>
+      <title type="html">009. Django - westagram 3 review</title>
+      <link href="http://localhost:4000/009-django" rel="alternate" type="text/html" title="009. Django - westagram 3 review" />
+      <published>2021-04-10T00:00:00+09:00</published>
+      <updated>2021-04-10T00:00:00+09:00</updated>
+      <id>http://localhost:4000/009-django</id>
+      <content type="html" xml:base="http://localhost:4000/009-django">&lt;h2 id=&quot;westagram-3-review&quot;&gt;westagram 3 review&lt;/h2&gt;
+
+&lt;h3 id=&quot;post게시물-등록-및-불러오기&quot;&gt;Post(게시물 등록 및 불러오기)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;새로운 앱을 만들었고, &lt;code class=&quot;highlighter-rouge&quot;&gt;settings&lt;/code&gt; 안에 &lt;code class=&quot;highlighter-rouge&quot;&gt;installed&lt;/code&gt;에 추가해 줌&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;modelspy-작성&quot;&gt;models.py 작성&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/d44f8cae-7e5f-478d-ba7e-d671fdb7c7b3/%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%86%E1%85%A9%E1%84%83%E1%85%A6%E1%86%AF.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Post&lt;/code&gt; 모델과 &lt;code class=&quot;highlighter-rouge&quot;&gt;Comment&lt;/code&gt; 모델 작성
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;comment&lt;/code&gt;의 경우 프론트엔드와 통신까지 해보진 못했으므로 이번 리뷰에서 제외합니다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;author&lt;/code&gt; 컬럼에는 &lt;code class=&quot;highlighter-rouge&quot;&gt;users&lt;/code&gt; 앱의 &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; 테이블을 참조하도록 설정
+    &lt;ul&gt;
+      &lt;li&gt;같은 프로젝트 안의 앱이라면 경로 설정해주지 않아도 테이블을 사용할 수 있음&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;image&lt;/code&gt; 필드의 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 받아야 하므로 &lt;code class=&quot;highlighter-rouge&quot;&gt;max_length&lt;/code&gt;를 길게 설정해 줌&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;decorator-작성&quot;&gt;decorator 작성&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;앞서 했던 리뷰에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt;의 특징으로 한번 수행한 내용에 대해서 기억하지 않는다는 것을 말했다 로그인 이후 사용자가 매번 어떤 작업을 수행할 때마다 재로그인할 수 없기 때문에 인증 때 발행한 &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;을 통해서 사용자가 로그인 상태임을 확인한다&lt;/li&gt;
+  &lt;li&gt;모든 로직에 인가과정을 기록하면 코드 가독성이 떨어지고, 개발하는 시간도 비효율적으로 증가할 것이다&lt;/li&gt;
+  &lt;li&gt;때문에 등장한 &lt;code class=&quot;highlighter-rouge&quot;&gt;decorator&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;decorator&lt;/code&gt;형식으로 인가하는 과정을 구현하고, 각 로직앞에 &lt;code class=&quot;highlighter-rouge&quot;&gt;decorator&lt;/code&gt;를 가져와 사용해서 인가를 하는 방식이다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/8806c7b8-2c8d-48f3-90b2-58db85d25443/%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%83%E1%85%A6%E1%84%8F%E1%85%A9%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A7%E1%86%AB.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;에 담긴 &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;을 &lt;code class=&quot;highlighter-rouge&quot;&gt;decode&lt;/code&gt; 해줘야 하기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;jwt&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;함&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;을 &lt;code class=&quot;highlighter-rouge&quot;&gt;encode&lt;/code&gt;할 때 사용했던 &lt;code class=&quot;highlighter-rouge&quot;&gt;secret_key&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;algorithm&lt;/code&gt;을 가져온다
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;여기서 주의할 점&lt;/strong&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;encode&lt;/code&gt; 할 때는 &lt;code class=&quot;highlighter-rouge&quot;&gt;algorithm=내가 설정한 알고리즘&lt;/code&gt;이었다면, &lt;code class=&quot;highlighter-rouge&quot;&gt;decode&lt;/code&gt;에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;algorithms=내가 설정한 알고리즘&lt;/code&gt;으로 작성해야 한다&lt;/li&gt;
+      &lt;li&gt;위 사진에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;headers&lt;/code&gt;에 담긴 토큰을 가져올 때, &lt;code class=&quot;highlighter-rouge&quot;&gt;Authorization&lt;/code&gt;을 사용한 것을 알 수 있다 - &lt;strong&gt;이 &lt;code class=&quot;highlighter-rouge&quot;&gt;Authorization&lt;/code&gt;은 &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.py&lt;/code&gt;의&lt;code class=&quot;highlighter-rouge&quot;&gt;corsheaders&lt;/code&gt; 설정에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;allowed headers&lt;/code&gt;안의 값이었다, 즉 임의로 바꿔서 프론트엔드와 맞춘다고 해서 작동하지 않는다!!!!&lt;/strong&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/e1d548ec-060f-4328-a7fd-da822d497c81/%E1%84%8B%E1%85%A5%E1%84%8A%E1%85%A5%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A7%E1%86%AB.png&quot; alt=&quot;&quot; /&gt; - 추가하자면, 컨벤션인 듯 하다, 따로 바꿔서 사용하려는 시도는 하지 말자&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;을 &lt;code class=&quot;highlighter-rouge&quot;&gt;decode&lt;/code&gt;하면 내가 &lt;code class=&quot;highlighter-rouge&quot;&gt;payload&lt;/code&gt;로 설정했던 &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;가 튀어나온다
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;를 사용한 이유는 토큰이 유출되어 &lt;code class=&quot;highlighter-rouge&quot;&gt;decode&lt;/code&gt; 되더라도, 사용자에게 치명적인 정보가 유출되는 것을 막을 수 있기 때문이다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;decode&lt;/code&gt;된 유저 &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt;가 내 데이터베이스에 존재한다면, &lt;code class=&quot;highlighter-rouge&quot;&gt;request.user&lt;/code&gt;를 생성해서, 해당 유저의 정보를 담아준다&lt;/li&gt;
+  &lt;li&gt;이후 다시 &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;를 잘 포장해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt;시켜주면, &lt;code class=&quot;highlighter-rouge&quot;&gt;views.py&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;decorator&lt;/code&gt;를 먼저 실행시키고, 이후 로직이 적용되게 작성하게 된다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;중간-흐름-파악&quot;&gt;중간 흐름 파악&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;지금 흐름을 파악해보자
+    &lt;ul&gt;
+      &lt;li&gt;새로운 앱 생성 ➡️ &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.py&lt;/code&gt;에 앱 등록 ➡️ 앱 안에 &lt;code class=&quot;highlighter-rouge&quot;&gt;models.py&lt;/code&gt; 작성 ➡️ &lt;code class=&quot;highlighter-rouge&quot;&gt;views.py&lt;/code&gt;에서 사용할 데코레이터 작성&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;작성하는 순서가 중구난방이 아닌 내가 개발하는 흐름에 맞게 지금 단계에서 뭘하고 있는지 알면서 하는 것이 중요하다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;viewspy-작성&quot;&gt;views.py 작성&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/3421b20b-076c-496d-85b4-ca4af074f42e/%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%87%E1%85%B2import%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;여느 &lt;code class=&quot;highlighter-rouge&quot;&gt;views.py&lt;/code&gt;와 같은 &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; 내용이다(원래는 &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; 기준으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;align&lt;/code&gt;하는게 컨벤션이지만, 시간이 부족해서 기능만 구현하고, 리팩토링을 진행하지 못했다)&lt;/li&gt;
+  &lt;li&gt;추가된 점이라면, 사용하려고 작성해둔 &lt;code class=&quot;highlighter-rouge&quot;&gt;decorator&lt;/code&gt;(&lt;code class=&quot;highlighter-rouge&quot;&gt;appropriation&lt;/code&gt;)를 &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; 해줬다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/508dc1a9-79cf-451e-b993-006db6662b6f/%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3views%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;post&lt;/code&gt; 메소드와 &lt;code class=&quot;highlighter-rouge&quot;&gt;get&lt;/code&gt; 메소드에 대한 로직이다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;decorator&lt;/code&gt; 작성단계부터 자세히 보신 분들은 알겠지만, &lt;code class=&quot;highlighter-rouge&quot;&gt;error&lt;/code&gt;에 대해서 세분화하지 않고, 통으로 처리하고 있다. 이 또한, 정해진 시간안에서 기능만 구현하려고 처리한 내용이니, 본인의 상황에 맞게 생각대로 에러를 처리해 주면 된다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;통신&quot;&gt;통신&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/4aed5f28-ed34-46d1-bd09-76082493e709/ip%20%E1%84%80%E1%85%A1%E1%84%8C%E1%85%A7%E1%84%8B%E1%85%A9%E1%84%80%E1%85%B5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;우선 내 &lt;code class=&quot;highlighter-rouge&quot;&gt;ip&lt;/code&gt;를 확인하고, 프론트엔드에 알려줘야 한다&lt;/li&gt;
+  &lt;li&gt;그리고 내 로직에 접근할 수 있도록 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;의 경로 또한 알려줘야 한다&lt;/li&gt;
+  &lt;li&gt;프론트엔드에서 경로에 맞게 &lt;code class=&quot;highlighter-rouge&quot;&gt;fetch&lt;/code&gt;하고, 올바른 메소드와 함께 &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt; 내용을 &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;한다
+    &lt;ul&gt;
+      &lt;li&gt;당연한 얘기지만, &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt;에 담을 때, &lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt; 이름에 대해서 협의를 통해서 맞춰야 한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;정확하게 통신이 됐다면, 내가 &lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt; 했던, 메세지와 상태코드가 뜰 것이고, 에러 또한 내가 컨트롤 하고 있었다면 정해진 메세지와 상태코드가 뜰 것이다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/a245c5df-211a-4bf8-ae67-2c644757a44f/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-04-07%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%204.10.50.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;로그인 시에 성공했다는 메세지와 함께, 토큰을 보내 준 모습이다&lt;/li&gt;
+  &lt;li&gt;여기서 헷갈려하는게 &lt;code class=&quot;highlighter-rouge&quot;&gt;westagram 1&lt;/code&gt;에서 진행했던 &lt;code class=&quot;highlighter-rouge&quot;&gt;hashed password&lt;/code&gt;인 부분이라고 생각한다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;hashed password&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;user&lt;/code&gt;의 정보 중 &lt;code class=&quot;highlighter-rouge&quot;&gt;password&lt;/code&gt;를 보안을 목적으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;hash&lt;/code&gt;화 해서 저장한 것이고, &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;은 유저가 로그인 상태라는 것을 지속적으로 확인하기 위해(인가) 프론트엔드와 &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;을 통해 정보를 주고 받는 용도이다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;westagram-후기&quot;&gt;westagram 후기&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;의외로 전에 연습했던 단계들이 있어서 그런지, 데이터베이스를 구성하는 단계에서는 흐름대로, 생각대로 흐름을 가지고 진행할 수 있었다&lt;/li&gt;
+  &lt;li&gt;다만, 내가 구성한 데이터베이스를 프론트엔드와 통신하면서 화면에 띄우는 것은 다른 문제였다&lt;/li&gt;
+  &lt;li&gt;대부분이 사소한 오타나, 변수명을 확인하지 못한 문제였지만, 위에서 언급한 &lt;code class=&quot;highlighter-rouge&quot;&gt;corsheader&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;allowed headers&lt;/code&gt;와 관련된 것은 알지 못한다는 이유 하나로 파트너를 고생시키며, 3시간 가량이나 시간이 소요됐다.&lt;/li&gt;
+  &lt;li&gt;어떤 기능을 한다는 것을 안다고 그 기능을 이해한 것은 아니라는 것을 알게되었다. 때문에 다음 공부는 &lt;code class=&quot;highlighter-rouge&quot;&gt;corsheader&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt;에 대한 공부가 될 것 같다&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">westagram 3 review</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">008. Django - westagram 2 review</title>
+      <link href="http://localhost:4000/008-django" rel="alternate" type="text/html" title="008. Django - westagram 2 review" />
+      <published>2021-04-08T00:00:00+09:00</published>
+      <updated>2021-04-08T00:00:00+09:00</updated>
+      <id>http://localhost:4000/008-django</id>
+      <content type="html" xml:base="http://localhost:4000/008-django">&lt;h2 id=&quot;westagram&quot;&gt;westagram&lt;/h2&gt;
+
+&lt;h3 id=&quot;loginview-review&quot;&gt;LoginView review&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/90a7cbf0-7c76-409f-8773-8cbcb5915ce3/%E1%84%8B%E1%85%B1%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7%20%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;유저 입장에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;input&lt;/code&gt; 할 수 있는 공간은 하나이므로 &lt;code class=&quot;highlighter-rouge&quot;&gt;email&lt;/code&gt;이나 &lt;code class=&quot;highlighter-rouge&quot;&gt;phone_number&lt;/code&gt; 중 하나를 입력하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;request body&lt;/code&gt;에는 &lt;code class=&quot;highlighter-rouge&quot;&gt;account&lt;/code&gt;로 담아서 받게끔 빌드함&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;password&lt;/code&gt; 부분에서 입력된 값을 &lt;code class=&quot;highlighter-rouge&quot;&gt;encode&lt;/code&gt;하고, 데이터베이스에서 가져온 값을 &lt;code class=&quot;highlighter-rouge&quot;&gt;encode&lt;/code&gt; 했을 때, 일치한다면 성공 메시지와 함께 &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;을 보내줌(인증)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;bycrypt&quot;&gt;bycrypt&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;앞서 리뷰한 &lt;code class=&quot;highlighter-rouge&quot;&gt;westagram&lt;/code&gt; 이후에 &lt;code class=&quot;highlighter-rouge&quot;&gt;password&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;hash&lt;/code&gt;화 해서 저장해서 보안을 높이는 작업을 진행했다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bcrypt&lt;/code&gt; 초기 세팅 과정은 생략하도록 한다&lt;/li&gt;
+  &lt;li&gt;회원가입 때 입력받은 값을 &lt;code class=&quot;highlighter-rouge&quot;&gt;bcrypt&lt;/code&gt;를 이용해서, &lt;code class=&quot;highlighter-rouge&quot;&gt;hash&lt;/code&gt;화 시킨다, 이 때 &lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;은 &lt;code class=&quot;highlighter-rouge&quot;&gt;byte&lt;/code&gt;가 된다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;byte&lt;/code&gt;의 형태는 &lt;code class=&quot;highlighter-rouge&quot;&gt;b'해쉬값&lt;/code&gt; 형태를 이루게 되는데 이게 데이터베이스에 들어가면, &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;byte&lt;/code&gt;의 뜻으로 인식하지 않고, 하나의 &lt;code class=&quot;highlighter-rouge&quot;&gt;str&lt;/code&gt; 값으로 인식해서 저장한다
+    &lt;ul&gt;
+      &lt;li&gt;그렇게 되면 당연히 로그인 과정에서 불러온 값을 &lt;code class=&quot;highlighter-rouge&quot;&gt;encode&lt;/code&gt; 했을 때, 입력값과 다른 값으로 출력될 것이고, 로그인이 되지 않는 문제가 발생한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;위 문제점 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;bcrypt&lt;/code&gt;로 해쉬화한 비밀번호를 저장할 때는 다시 &lt;code class=&quot;highlighter-rouge&quot;&gt;decode&lt;/code&gt;해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt;를 제거한 후에 저장해 준다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;jwt&quot;&gt;jwt&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt;의 특징 중에 하나는 담고 있던 내용에 대해서 기억하지 않는다는 것이다 때문에 로그인 이후에 로그인 했다는 기억을 가지고 있지 않게 된다&lt;/li&gt;
+  &lt;li&gt;로그인이 되어 있다는 신호를 주기 위해 사용하는 것이 &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;이다&lt;/li&gt;
+  &lt;li&gt;서버에서 최초 로그인 시에 인증을 뜻하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;을 발행해 주고, &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;을 &lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt; 받은 프론트에서 이 &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;으로 다른 작업들의 권한 승인요청을 한다(&lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt;의 저장 방식에 대해서는 추후 프로젝트에서 리뷰할 예정이다)&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">westagram</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">007. Django - westagram review 1</title>
+      <link href="http://localhost:4000/007-django" rel="alternate" type="text/html" title="007. Django - westagram review 1" />
+      <published>2021-04-06T00:00:00+09:00</published>
+      <updated>2021-04-06T00:00:00+09:00</updated>
+      <id>http://localhost:4000/007-django</id>
+      <content type="html" xml:base="http://localhost:4000/007-django">&lt;h2 id=&quot;westagram&quot;&gt;Westagram&lt;/h2&gt;
+
+&lt;h3 id=&quot;초기-세팅&quot;&gt;초기 세팅&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; 새로운 가상환경 &lt;code class=&quot;highlighter-rouge&quot;&gt;westagram&lt;/code&gt; 생성&lt;/li&gt;
+  &lt;li&gt;pip install &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;mysqlclient&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ipython&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;django-cors-headers&lt;/code&gt; 설치&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;github&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;westagram&lt;/code&gt; 클론해오고, 가이드 따라서 프로젝트 생성&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;my_settings&lt;/code&gt; 생성해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;github&lt;/code&gt;에 올라가면 안되는 설정들 옮겨놓고, &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;settings.py&lt;/code&gt;에서 주석처리할 내용들 주석처리하고, &lt;code class=&quot;highlighter-rouge&quot;&gt;installed.apps&lt;/code&gt;에 pip install 했던 &lt;code class=&quot;highlighter-rouge&quot;&gt;corsheaders&lt;/code&gt;와 middleware 설정&lt;/li&gt;
+  &lt;li&gt;프로젝트에 &lt;code class=&quot;highlighter-rouge&quot;&gt;users&lt;/code&gt; 앱 생성, &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.py&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;users&lt;/code&gt; 앱 추가&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;modelspy-작성&quot;&gt;models.py 작성&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c63fbdb2-1d11-463a-b410-d6d56cfa058e/%E1%84%8B%E1%85%B1%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%A6%E1%86%AF.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;modelspy-review&quot;&gt;models.py review&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;email&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;EmailField&lt;/code&gt;가 특별한 기능을 가지지 않아 &lt;code class=&quot;highlighter-rouge&quot;&gt;CharField&lt;/code&gt; 써도 똑같을 것 같음&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;phone&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;PhoneField&lt;/code&gt;를 사용하기 위해서 pip install 까지 했는데 &lt;code class=&quot;highlighter-rouge&quot;&gt;PhoneField&lt;/code&gt;가 하는 역할이 없어서 사용할 필요성이 없어 보임&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;validationpy-작성&quot;&gt;validation.py 작성&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/284f6676-50d3-443a-898a-67b6be63959d/%E1%84%8B%E1%85%B1%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7%20%E1%84%87%E1%85%A6%E1%86%AF%E1%84%85%E1%85%B5%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A7%E1%86%AB.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;password&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;email&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;phone&lt;/code&gt;의 유효성을 확인하기 위해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;validator&lt;/code&gt; 작성&lt;/li&gt;
+  &lt;li&gt;정규표현식으로 작성하면 더 간단하게 처리할 수 있음&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;viewspy-작성회원가입&quot;&gt;views.py 작성(회원가입)&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/f3ada5a5-d9aa-46a1-bb11-29958055b09b/%E1%84%8B%E1%85%B1%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7%20%E1%84%92%E1%85%AC%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;회원가입-review&quot;&gt;회원가입 review&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;validation.py&lt;/code&gt; 적용하기 전 모습&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;파이썬 컨벤션에 맞게 &lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;에 맞춰 정리&lt;/li&gt;
+  &lt;li&gt;성공했을 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt; 값이 해당 코드 바로 뒤에 오게 해서 가독성 높이기&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;문 &lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt; 하는데 굳이 &lt;code class=&quot;highlighter-rouge&quot;&gt;elif&lt;/code&gt; 쓰는 이유&lt;/li&gt;
+  &lt;li&gt;오류 메시지는 프론트엔드 개발자가 보는 내용이기 때문에 굳이 한글로 쓸 필요 없음&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;문 사이 빈칸 추가로 가독성 높이기&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;number&lt;/code&gt; 변수명 더 명확하게 수정하기&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt;명 회원가입의 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;SignUpView&lt;/code&gt;를 사용하는게 일반적&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;변경된-viewspy회원가입&quot;&gt;변경된 views.py(회원가입)&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/9984643f-fa32-4bf5-9140-14f401be48cb/%E1%84%8B%E1%85%B1%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7%20%E1%84%92%E1%85%AC%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8%20view.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;추가 변경사항 - &lt;code class=&quot;highlighter-rouge&quot;&gt;validation&lt;/code&gt;이 먼저 완료되고, 데이터베이스에 접근하도록 수정함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;프로젝트-urlspy와-앱-urlspy-작성&quot;&gt;프로젝트 urls.py와 앱 urls.py 작성&lt;/h3&gt;
+
+&lt;h4 id=&quot;프로젝트-urlspy&quot;&gt;프로젝트 urls.py&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/edb75e1f-0fa5-4b26-bdd2-74951082725c/%E1%84%8B%E1%85%B1%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20urls.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;앱-urlspy&quot;&gt;앱 urls.py&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/53dd42da-34e9-46cf-876f-ec03359e7b94/%E1%84%8B%E1%85%B1%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7%20%E1%84%8B%E1%85%A2%E1%86%B8%20urls.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">Westagram</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">006. Django - C.R.U.D 2 review</title>
@@ -381,66 +682,6 @@
     </entry>
   
     <entry>
-      <title type="html">004. Django - C.R.U.D 1 review</title>
-      <link href="http://localhost:4000/004-django" rel="alternate" type="text/html" title="004. Django - C.R.U.D 1 review" />
-      <published>2021-03-29T00:00:00+09:00</published>
-      <updated>2021-03-29T00:00:00+09:00</updated>
-      <id>http://localhost:4000/004-django</id>
-      <content type="html" xml:base="http://localhost:4000/004-django">&lt;h2 id=&quot;django-crud-1-review&quot;&gt;Django C.R.U.D 1 review&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Assignment
-    &lt;ul&gt;
-      &lt;li&gt;저번에 팀으로 스타벅스 모델링을 진행한 것을 바탕으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 모델을 완성하는 작업
-&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fa1e9a78-5e80-4f94-a3c5-32a947bb5bb1/modeling.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;모델링을 보면 &lt;code class=&quot;highlighter-rouge&quot;&gt;menu&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;category&lt;/code&gt;가 서로 1 대 다 관계이고, &lt;code class=&quot;highlighter-rouge&quot;&gt;category&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt; 또한 1 대 다 관계인 것을 확인했다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;field type&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;ForeignKey&lt;/code&gt;를 다의 위치에 있는 테이블에 명시하고, 1의 관계인 테이블을 연결해서 구현할 수 있었다
-&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/edad700f-5329-4b6d-b705-9675622e7661/1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;결과물 중 &lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;images&lt;/code&gt; 또한 같은 방식으로 구현함&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;allergy&lt;/code&gt; 테이블의 관계는 다 대 다 관계인 것을 확인&lt;/li&gt;
-  &lt;li&gt;다 대 다 관계를 구현하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; docs를 찾았고, &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;field&lt;/code&gt;를 확인함
-&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/d189b858-256a-4391-91db-e3e45dd3eaa6/%E1%84%83%E1%85%A1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1%E1%84%80%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A8.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt; 필드를 관계를 가진 테이블끼리 설정하면, 중간 테이블이 자동으로 생성된다&lt;/li&gt;
-  &lt;li&gt;나는 내가 원하는 테이블을 중간 테이블로 지정하고 싶어서 좀 더 찾아보니 &lt;code class=&quot;highlighter-rouge&quot;&gt;through&lt;/code&gt;를 사용해, 내가 원하는 테이블로 지정할 수 있는 것을 찾아냄&lt;/li&gt;
-  &lt;li&gt;위 사진처럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt;로 관계를 설정하고, 중간 테이블에 연결된 외래키를 설정해서 구현&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python manage.py shell&lt;/code&gt;을 통해서 테이블에 값을 입력해서 과제 제출
-&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/805331fd-50fe-43f3-ba2a-cb75ffa92492/menu.png&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fff759ee-178c-4236-8ba2-f240b7430e36/category.png&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/bbe69a3e-9d95-4c23-b340-97a07afed3ea/product.png&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/92ada7d2-cde2-46ad-a762-d2a02e50409f/allergy.png&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c1d78a4d-cea7-41e1-9942-68863b14f480/allergydrink.png&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/3e4097a0-a48b-44d6-a78e-87d7c97db54a/image.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>hiyee</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="django" />
-      
-
-      
-        <summary type="html">Django C.R.U.D 1 review</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
       <title type="html">022. 시저 암호</title>
       <link href="http://localhost:4000/022-algorithm" rel="alternate" type="text/html" title="022. 시저 암호" />
       <published>2021-03-29T00:00:00+09:00</published>
@@ -519,6 +760,66 @@
 
       
         <summary type="html">Question</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">004. Django - C.R.U.D 1 review</title>
+      <link href="http://localhost:4000/004-django" rel="alternate" type="text/html" title="004. Django - C.R.U.D 1 review" />
+      <published>2021-03-29T00:00:00+09:00</published>
+      <updated>2021-03-29T00:00:00+09:00</updated>
+      <id>http://localhost:4000/004-django</id>
+      <content type="html" xml:base="http://localhost:4000/004-django">&lt;h2 id=&quot;django-crud-1-review&quot;&gt;Django C.R.U.D 1 review&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Assignment
+    &lt;ul&gt;
+      &lt;li&gt;저번에 팀으로 스타벅스 모델링을 진행한 것을 바탕으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 모델을 완성하는 작업
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fa1e9a78-5e80-4f94-a3c5-32a947bb5bb1/modeling.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;모델링을 보면 &lt;code class=&quot;highlighter-rouge&quot;&gt;menu&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;category&lt;/code&gt;가 서로 1 대 다 관계이고, &lt;code class=&quot;highlighter-rouge&quot;&gt;category&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt; 또한 1 대 다 관계인 것을 확인했다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;field type&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;ForeignKey&lt;/code&gt;를 다의 위치에 있는 테이블에 명시하고, 1의 관계인 테이블을 연결해서 구현할 수 있었다
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/edad700f-5329-4b6d-b705-9675622e7661/1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;결과물 중 &lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;images&lt;/code&gt; 또한 같은 방식으로 구현함&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;drinks&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;allergy&lt;/code&gt; 테이블의 관계는 다 대 다 관계인 것을 확인&lt;/li&gt;
+  &lt;li&gt;다 대 다 관계를 구현하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; docs를 찾았고, &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;field&lt;/code&gt;를 확인함
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/d189b858-256a-4391-91db-e3e45dd3eaa6/%E1%84%83%E1%85%A1%E1%84%83%E1%85%A2%E1%84%83%E1%85%A1%E1%84%80%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A8.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt; 필드를 관계를 가진 테이블끼리 설정하면, 중간 테이블이 자동으로 생성된다&lt;/li&gt;
+  &lt;li&gt;나는 내가 원하는 테이블을 중간 테이블로 지정하고 싶어서 좀 더 찾아보니 &lt;code class=&quot;highlighter-rouge&quot;&gt;through&lt;/code&gt;를 사용해, 내가 원하는 테이블로 지정할 수 있는 것을 찾아냄&lt;/li&gt;
+  &lt;li&gt;위 사진처럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;ManytoMany&lt;/code&gt;로 관계를 설정하고, 중간 테이블에 연결된 외래키를 설정해서 구현&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python manage.py shell&lt;/code&gt;을 통해서 테이블에 값을 입력해서 과제 제출
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/805331fd-50fe-43f3-ba2a-cb75ffa92492/menu.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/fff759ee-178c-4236-8ba2-f240b7430e36/category.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/bbe69a3e-9d95-4c23-b340-97a07afed3ea/product.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/92ada7d2-cde2-46ad-a762-d2a02e50409f/allergy.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/c1d78a4d-cea7-41e1-9942-68863b14f480/allergydrink.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/3e4097a0-a48b-44d6-a78e-87d7c97db54a/image.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>hiyee</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="django" />
+      
+
+      
+        <summary type="html">Django C.R.U.D 1 review</summary>
       
 
       
@@ -857,386 +1158,6 @@ Body에 담는 내용이 핵심!!&lt;/p&gt;
 
       
         <summary type="html">tutorial 2 review</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">001. Django - Django의 기본 흐름과 tutorial 1 review</title>
-      <link href="http://localhost:4000/001-django" rel="alternate" type="text/html" title="001. Django - Django의 기본 흐름과 tutorial 1 review" />
-      <published>2021-03-25T00:00:00+09:00</published>
-      <updated>2021-03-25T00:00:00+09:00</updated>
-      <id>http://localhost:4000/001-django</id>
-      <content type="html" xml:base="http://localhost:4000/001-django">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;기본적으로 django, mysql이 설치되어 있는 상황 이후에 django에 대한
-흐름을 이해하기 위한 글입니다
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;django-참고영상&quot;&gt;Django &lt;a href=&quot;https://www.youtube.com/watch?v=9WctwW_Pe1o&amp;amp;list=PLi4xPOplIq7d1vDdLBAvS5PmQR-p6KwUz&amp;amp;index=2&quot;&gt;(참고영상)&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/48d6b494-94be-45d4-b6a1-33185322bb1d/django%201.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;django의-흐름&quot;&gt;django의 흐름&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;client&lt;/code&gt;가 &lt;code class=&quot;highlighter-rouge&quot;&gt;web application&lt;/code&gt;을 보기 위해서 요청&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Nginx&lt;/code&gt; 또는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Apache&lt;/code&gt;가 존재 이 둘은 흔히 &lt;strong&gt;상용 단계&lt;/strong&gt;에서 사용&lt;/li&gt;
-  &lt;li&gt;장고에서는 개발을 위해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;경량 개발 웹서버&lt;/code&gt;를 제공하고 있음&lt;/li&gt;
-  &lt;li&gt;개발할때는 &lt;code class=&quot;highlighter-rouge&quot;&gt;경량 개발 웹서버&lt;/code&gt;를 사용&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WSGI&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;웹서버&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;장고 프레임워크&lt;/code&gt;를 연결하기 위해 사용&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;가 넘어가고 사용자가 특정 주소를 요청하는데 &lt;code class=&quot;highlighter-rouge&quot;&gt;url 파일&lt;/code&gt;에서 요청한 주소를 잘게 나눠줌 이 작업을 &lt;code class=&quot;highlighter-rouge&quot;&gt;parsing&lt;/code&gt;이라고 함&lt;/li&gt;
-  &lt;li&gt;잘게 나눠진 주소들은 역할에 맞게 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;로 이동함&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt;에는 &lt;code class=&quot;highlighter-rouge&quot;&gt;웹 어플리케이션&lt;/code&gt;에 각각 맞는 작업을 하기 위한 내가 만든 코드가 존재
-    &lt;ul&gt;
-      &lt;li&gt;EX) 요청받은 데이터를 저장, 데이터베이스에서 꺼내오는 데이터베이스 작업, pdf를 생성하는 작업이라던지 등등&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 작업이 끝나면 디자인 작업인 &lt;code class=&quot;highlighter-rouge&quot;&gt;template&lt;/code&gt;으로 이동하고 사용자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt;를 받게 된다&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;프로젝트와-앱의-차이&quot;&gt;프로젝트와 앱의 차이&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;프로젝트는 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysite&lt;/code&gt;와 같은 &lt;code class=&quot;highlighter-rouge&quot;&gt;앱&lt;/code&gt;의 묶음&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;앱&lt;/code&gt;은 특정한 기능을 수행하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;웹 어플리케이션&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;EX) 아이스크림 가게를 위한 앱을 만든다고 한다면, 1. 아이스크림 관리를 위한 관리 앱 2. 주문을 위한 주문 앱 3. 이벤트를 위한 이벤트 앱
-특정 기능만 수행하는 앱을 각각 만들어서 프로젝트를 구성&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;django-tutorial-1&quot;&gt;django tutorial 1&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/eba56302-eab9-4943-b5ff-decfe3776cb2/django%202.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;라는 앱 생성(투표를 담당하는 앱)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view.py&lt;/code&gt;를 작성하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;view.py&lt;/code&gt;를 호출하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;를 만들고, 경로?? 입력&lt;/li&gt;
-  &lt;li&gt;최상위 &lt;code class=&quot;highlighter-rouge&quot;&gt;URLconf&lt;/code&gt;에 방금 만든 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 연결&lt;/li&gt;
-  &lt;li&gt;최상위 &lt;code class=&quot;highlighter-rouge&quot;&gt;URLconf&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysite&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls.py&lt;/code&gt;에 있음&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;iclude&lt;/code&gt; 함수는 다른 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 참조할 수 있게 해줌&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;여기까지-흐름&quot;&gt;여기까지 흐름&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;현재 최상위 &lt;code class=&quot;highlighter-rouge&quot;&gt;URLconf&lt;/code&gt;에 내가 만든 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt; 앱의 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 연결함&lt;/li&gt;
-  &lt;li&gt;예를 들어 &lt;code class=&quot;highlighter-rouge&quot;&gt;127.0.0.1/polls/&lt;/code&gt;라는 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;이 있다면 이 &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;을 &lt;code class=&quot;highlighter-rouge&quot;&gt;parsing&lt;/code&gt;해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls&lt;/code&gt;라는 해당 경로를 잡아내고 &lt;code class=&quot;highlighter-rouge&quot;&gt;polls.urls&lt;/code&gt;로 연결시켜줌&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/polls/&lt;/code&gt; 앱 &lt;code class=&quot;highlighter-rouge&quot;&gt;urls&lt;/code&gt;는 전달받고 이후에 아무것도 없기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 내에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;view.index&lt;/code&gt;라는 &lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 내부로 연결 시켜줌&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view&lt;/code&gt; 내부의 &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; 함수에서는 내가 작성한 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;hello world&quot;&lt;/code&gt;라는 &lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;client&lt;/code&gt;에게 전달 해줌&lt;/li&gt;
-&lt;/ol&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>hiyee</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="django" />
-      
-
-      
-        <summary type="html">기본적으로 django, mysql이 설치되어 있는 상황 이후에 django에 대한 흐름을 이해하기 위한 글입니다</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">003. MySQL programmers 1단계 리뷰</title>
-      <link href="http://localhost:4000/003-mysql" rel="alternate" type="text/html" title="003. MySQL programmers 1단계 리뷰" />
-      <published>2021-03-24T00:00:00+09:00</published>
-      <updated>2021-03-24T00:00:00+09:00</updated>
-      <id>http://localhost:4000/003-mysql</id>
-      <content type="html" xml:base="http://localhost:4000/003-mysql">&lt;h2 id=&quot;1단계-테스트-리뷰&quot;&gt;1단계 테스트 리뷰&lt;/h2&gt;
-
-&lt;h3 id=&quot;sql-문법순서&quot;&gt;SQL 문법순서&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/b8eaa497-5219-4809-bcd0-d5b841843f13/sql%20%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8%20%E1%84%89%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;sql-실행순서&quot;&gt;SQL 실행순서&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://images.velog.io/images/hiyee-gj/post/919212f9-9bf3-46f8-bda4-07ef84dc254c/sql.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt; 에서 테이블 확인 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt; 검색조건에 따라 데이터추출 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;GROUP BY&lt;/code&gt; 행의 고유값을 그룹으로 정리 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;HAVING&lt;/code&gt; 검색조건에 따라 추가로 제외 -&amp;gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; 에서 출력할 컬럼들을 확인한다 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;ORDER BY&lt;/code&gt; 정렬을 해준다음 출력&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;상위-n개-레코드&quot;&gt;상위 n개 레코드&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;이 부분은 &lt;code class=&quot;highlighter-rouge&quot;&gt;ORACLE&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;의 문법이 다르다고 한다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;의 문법으로 정리
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;의 경우 : 값을 조회하는데 가장 맨 위 행 1개만을 조회하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;LIMIT&lt;/code&gt; 구문을 사용해야 합니다.
-        &lt;ul&gt;
-          &lt;li&gt;LIMIT 1 : 맨 위에서부터 1개까지의 정보 조회&lt;/li&gt;
-          &lt;li&gt;LIMIT 3 : 맨 위에서부터 3개까지의 정보 조회&lt;/li&gt;
-          &lt;li&gt;LIMIT 2, 6 : 위에서 2번째부터 6번째까지의 정보 조회&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ORDER BY&lt;/code&gt;와 함께 활용해서 원하는 값 출력하는 문제 해결&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;sql-count&quot;&gt;SQL COUNT&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;전체 행 갯수 가져오기
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(*) FROM 테이블;&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;컬럼 데이터 갯수 가져오기
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(컬럼) FROM 테이블;&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;컬럼 네임 지정해서 가져오기
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(*) as cnt FROM hero_collection;&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cnt&lt;/code&gt;라는 이름의 컬럼명으로 자료를 가져오는 모습&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;나중에 나온 문제에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;DISTINCT&lt;/code&gt;와 함께 써서 해결하는 문제도 있었다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;null&quot;&gt;NULL&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;을 처리하기 위해선 &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt;을 사용한다
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM TEST WHERE NAME IS NULL&lt;/code&gt;
-        &lt;ul&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt; 값인 &lt;code class=&quot;highlighter-rouge&quot;&gt;NAME&lt;/code&gt;을 불러오는 예제&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM TEST WHERE NAME IS NOT NULL&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM TEST WHERE NOT NAME IS NULL&lt;/code&gt;
-        &lt;ul&gt;
-          &lt;li&gt;위의 두 경우처럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;NOT NULL&lt;/code&gt;을 이용하거나 &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE NOT&lt;/code&gt;을 이용해 조건으로 해결할 수도 있다&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;distinct중복-제거&quot;&gt;DISTINCT(중복 제거)&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;앞서 설명했던 &lt;code class=&quot;highlighter-rouge&quot;&gt;DISTINCT&lt;/code&gt; 사용법
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT DISTINCT * FROM TEST&lt;/code&gt;
-        &lt;ul&gt;
-          &lt;li&gt;중복 값만 해결하고 값을 가져오는 예제&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(DISTINCT *) FROM TEST&lt;/code&gt;
-        &lt;ul&gt;
-          &lt;li&gt;중복 값을 해결하고 값을 &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt; 하는 예제(&lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt;와 함께 쓸 때 문법이 헷갈려 예제로 넣어봅니다)&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>hiyee</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="database" />
-      
-
-      
-        <summary type="html">1단계 테스트 리뷰</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">016. Python - list comprehensions, lambda expressions</title>
-      <link href="http://localhost:4000/016-python" rel="alternate" type="text/html" title="016. Python - list comprehensions, lambda expressions" />
-      <published>2021-03-24T00:00:00+09:00</published>
-      <updated>2021-03-24T00:00:00+09:00</updated>
-      <id>http://localhost:4000/016-python</id>
-      <content type="html" xml:base="http://localhost:4000/016-python">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python Basic &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./001-python&quot;&gt;001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./002-python&quot;&gt;002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./003-python&quot;&gt;003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./004-python&quot;&gt;004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./005-python&quot;&gt;005. Python - if, for, while, continue와 break, 한 줄 for&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./006-python&quot;&gt;006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자,
-      지역변수와 전역변수&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./007-python&quot;&gt;007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./008-python&quot;&gt;008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드
-      오버라이딩, pass, super&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./009-python&quot;&gt;009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./010-python&quot;&gt;010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치,
-      pip install, 내장함수, 외장함수&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./011-python&quot;&gt;011. Python - hash&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./012-python&quot;&gt;012. Python - Argument&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./013-python&quot;&gt;013. Python - Argument assignment&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./014-python&quot;&gt;014. Python - sys.modules, sys.path / absolute path, relative path /
-      package&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./015-python&quot;&gt;015. Python - Assignment 49-58&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;./016-python&quot;&gt;016. Python - list comprehensions, lambda expressions&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;python-advanced&quot;&gt;Python Advanced&lt;/h2&gt;
-
-&lt;h3 id=&quot;list-comprehension&quot;&gt;list comprehension&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[ 표현식 for 원소 in 반복 가능한 객체 ]&lt;/li&gt;
-  &lt;li&gt;[ 표현식 for 원소 in 반복 가능한 객체 if문 ]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;assignment-1&quot;&gt;Assignment 1&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;다음과 같은 도시목록의 리스트가 주어졌을때, 도시이름이 S로 시작하지 않는 도시만 리스트로 만들 때 리스트 컴프리헨션을 사용하여 함수를 작성해 보세요&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Tokyo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Shanghai&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Jakarta&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Seoul&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Guangzhou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Beijing&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Karachi&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Shenzhen&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Delhi&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;citylst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;&quot;S&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;citylst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;assignment-2&quot;&gt;Assignment 2&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;다음과 같은 도시, 인구수가 튜플의 리스트로 주어졌을때, 키가 도시, 값이 인구수인 딕셔너리를 딕셔너리 컴프리헨션을 사용한 함수를 작성해 보세요&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;population_of_city&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Tokyo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;36923000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Shanghai'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;34000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Jakarta'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Seoul'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25514000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Guangzhou'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Beijing'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24900000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Karachi'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24300000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Shenzhen'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;23300000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Delhi'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21753486&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;citydic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;population_of_city&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;citydic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;lambda-expressions&quot;&gt;Lambda expressions&lt;/h3&gt;
-
-&lt;h4 id=&quot;assignment&quot;&gt;Assignment&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;다음과 같이 비밀번호의 길이와 대문자가 포함된것을 확인하는 간단한 함수가 있습니다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;check_password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'SHORT_PASSWORD'&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'NO_CAPITAL_LETTER_PASSWORD'&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;풀이&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;lambdas&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'SHORT_PASSWORD'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'NO_CAPITAL_LETTER_PASSWORD'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;check_password_using_lambda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lambdas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_password_using_lambda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'123'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;# SHORT_PASSWORD&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_password_using_lambda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'12356789f'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;# NO_CAPITAL_LETTER_PASSWORD&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_password_using_lambda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'123456789fF'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# True&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>hiyee</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="python" />
-      
-
-      
-        <summary type="html">Python Basic 001. Python - 숫자 자료형, 문자열 자료형, boolean 자료형, 변수, 주석 002. Python - 연산자, 간단한 수식, 숫자처리함수, 랜덤함수 003. Python - 문자열, 슬라이싱, 문자열처리함수, 문자열포맷, 탈출문자 004. Python - 리스트, 사전, 튜플, 세트, 자료구조의 변경 005. Python - if, for, while, continue와 break, 한 줄 for 006. Python - 함수, 전달값과 반환값, 기본값, 키워드값, 가변인자, 지역변수와 전역변수 007. Python - 표준입출력, 다양한 출력포맷, 파일입출력, pickle, with 008. Python - 클래스, __init__, 멤버변수, 메소드, 상속, 다중상속, 메소드 오버라이딩, pass, super 009. Python - 예외처리, 에러 발생시키기, 사용자 정의 예외처리, finally 010. Python - 모듈, 패키지, __all__, 모듈 직접 실행, 패키지와 모듈 위치, pip install, 내장함수, 외장함수 011. Python - hash 012. Python - Argument 013. Python - Argument assignment 014. Python - sys.modules, sys.path / absolute path, relative path / package 015. Python - Assignment 49-58 016. Python - list comprehensions, lambda expressions</summary>
       
 
       

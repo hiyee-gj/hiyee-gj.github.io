@@ -11,7 +11,7 @@
 
 
     <title>
-      018. 문자열 다루기 기본
+      008. Django - westagram 2 review
     </title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,30 +65,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Developer with good Influence" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon32.png" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/018-algorithm" />
+    <link rel="canonical" href="http://localhost:4000/008-django" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Hiyee Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="018. 문자열 다루기 기본" />
-    <meta property="og:description" content="문제 내 풀이 1(오답) def solution(s): try: if len(s) == 4 or 6: if type(int(s)) == int: answer = True return answer except: answer = False return answer 의문점 : len(s) == 4 or 6 과 len(s) == 4 ro len(s) == 6의 차이점 try문과 if문의 위치 문제로 일부 오류가" />
-    <meta property="og:url" content="http://localhost:4000/018-algorithm" />
-    <meta property="og:image" content="http://localhost:4000/assets/built/images/algorithm.png" />
+    <meta property="og:title" content="008. Django - westagram 2 review" />
+    <meta property="og:description" content="westagram LoginView review 유저 입장에서 input 할 수 있는 공간은 하나이므로 email이나 phone_number 중 하나를 입력하면 request body에는 account로 담아서 받게끔 빌드함 password 부분에서 입력된 값을 encode하고, 데이터베이스에서 가져온 값을 encode 했을 때, 일치한다면 성공 메시지와 함께 token을 보내줌(인증) bycrypt 앞서 리뷰한 westagram 이후에 password를 hash화 해서 저장해서 보안을 높이는" />
+    <meta property="og:url" content="http://localhost:4000/008-django" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/django.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2021-03-11T00:00:00+09:00" />
-    <meta property="article:modified_time" content="2021-03-11T00:00:00+09:00" />
-    <meta property="article:tag" content="Algorithm" />
+    <meta property="article:published_time" content="2021-04-08T00:00:00+09:00" />
+    <meta property="article:modified_time" content="2021-04-08T00:00:00+09:00" />
+    <meta property="article:tag" content="Django" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="018. 문자열 다루기 기본" />
-    <meta name="twitter:description" content="문제 내 풀이 1(오답) def solution(s): try: if len(s) == 4 or 6: if type(int(s)) == int: answer = True return answer except: answer = False return answer 의문점 : len(s) == 4 or 6 과 len(s) == 4 ro len(s) == 6의 차이점 try문과 if문의 위치 문제로 일부 오류가" />
+    <meta name="twitter:title" content="008. Django - westagram 2 review" />
+    <meta name="twitter:description" content="westagram LoginView review 유저 입장에서 input 할 수 있는 공간은 하나이므로 email이나 phone_number 중 하나를 입력하면 request body에는 account로 담아서 받게끔 빌드함 password 부분에서 입력된 값을 encode하고, 데이터베이스에서 가져온 값을 encode 했을 때, 일치한다면 성공 메시지와 함께 token을 보내줌(인증) bycrypt 앞서 리뷰한 westagram 이후에 password를 hash화 해서 저장해서 보안을 높이는" />
     <meta name="twitter:url" content="http://localhost:4000/" />
-    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/algorithm.png" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/django.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Hiyee Blog" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Algorithm" />
+    <meta name="twitter:data2" content="Django" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -103,18 +103,18 @@
         "name": "Hiyee Blog",
         "logo": "http://localhost:4000/"
     },
-    "url": "http://localhost:4000/018-algorithm",
+    "url": "http://localhost:4000/008-django",
     "image": {
         "@type": "ImageObject",
-        "url": "http://localhost:4000/assets/built/images/algorithm.png",
+        "url": "http://localhost:4000/assets/built/images/django.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/018-algorithm"
+        "@id": "http://localhost:4000/008-django"
     },
-    "description": "문제 내 풀이 1(오답) def solution(s): try: if len(s) == 4 or 6: if type(int(s)) == int: answer = True return answer except: answer = False return answer 의문점 : len(s) == 4 or 6 과 len(s) == 4 ro len(s) == 6의 차이점 try문과 if문의 위치 문제로 일부 오류가"
+    "description": "westagram LoginView review 유저 입장에서 input 할 수 있는 공간은 하나이므로 email이나 phone_number 중 하나를 입력하면 request body에는 account로 담아서 받게끔 빌드함 password 부분에서 입력된 값을 encode하고, 데이터베이스에서 가져온 값을 encode 했을 때, 일치한다면 성공 메시지와 함께 token을 보내줌(인증) bycrypt 앞서 리뷰한 westagram 이후에 password를 hash화 해서 저장해서 보안을 높이는"
 }
     </script>
 
@@ -127,7 +127,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="018. 문자열 다루기 기본" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="008. Django - westagram 2 review" href="/feed.xml" />
 
   </head>
   <body
@@ -206,82 +206,61 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-algorithm post ">
+        <article class="post-full  tag-django post ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="11 March 2021">11 March 2021</time>
+                    <time class="post-full-meta-date" datetime=" 8 April 2021"> 8 April 2021</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/algorithm/'>ALGORITHM</a>
+                               <a href='/tag/django/'>DJANGO</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">018. 문자열 다루기 기본</h1>
+                <h1 class="post-full-title">008. Django - westagram 2 review</h1>
             </header>
 <!--
             
-            <figure class="post-full-image" style="background-image: url(/assets/built/images/algorithm.png)">
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/django.png)">
             </figure>
             
 -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <h2 id="문제">문제</h2>
+                    <h2 id="westagram">westagram</h2>
 
-<h2 id="내-풀이-1오답">내 풀이 1(오답)</h2>
+<h3 id="loginview-review">LoginView review</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">or</span> <span class="mi">6</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
-                <span class="n">answer</span> <span class="o">=</span> <span class="bp">True</span>
-        <span class="k">return</span> <span class="n">answer</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">answer</span> <span class="o">=</span> <span class="bp">False</span>
-        <span class="k">return</span> <span class="n">answer</span>
-</code></pre></div></div>
+<p><img src="https://images.velog.io/images/hiyee-gj/post/90a7cbf0-7c76-409f-8773-8cbcb5915ce3/%E1%84%8B%E1%85%B1%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7%20%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B2.png" alt="" /></p>
 
 <ul>
-  <li>의문점 : <code class="highlighter-rouge">len(s) == 4 or 6</code> 과 <code class="highlighter-rouge">len(s) == 4 ro len(s) == 6</code>의 차이점</li>
-  <li><code class="highlighter-rouge">try</code>문과 <code class="highlighter-rouge">if</code>문의 위치 문제로 일부 오류가 났다고 해서 고침</li>
+  <li>유저 입장에서 <code class="highlighter-rouge">input</code> 할 수 있는 공간은 하나이므로 <code class="highlighter-rouge">email</code>이나 <code class="highlighter-rouge">phone_number</code> 중 하나를 입력하면 <code class="highlighter-rouge">request body</code>에는 <code class="highlighter-rouge">account</code>로 담아서 받게끔 빌드함</li>
+  <li><code class="highlighter-rouge">password</code> 부분에서 입력된 값을 <code class="highlighter-rouge">encode</code>하고, 데이터베이스에서 가져온 값을 <code class="highlighter-rouge">encode</code> 했을 때, 일치한다면 성공 메시지와 함께 <code class="highlighter-rouge">token</code>을 보내줌(인증)</li>
 </ul>
 
-<h2 id="내-풀이-2정답">내 풀이 2(정답)</h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span> <span class="c"># s의 길이 조건</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">==</span> <span class="nb">int</span>
-            <span class="n">answer</span> <span class="o">=</span> <span class="bp">True</span> <span class="c"># type이 int로 전환된거면 안에 문자열이 없었다는 뜻</span>
-
-        <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
-            <span class="n">answer</span> <span class="o">=</span> <span class="bp">False</span> <span class="c"># 오류가 났다면 안에 문자 존재</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">answer</span> <span class="o">=</span> <span class="bp">False</span> <span class="c"># 예외 처리</span>
-    <span class="k">return</span> <span class="n">answer</span>
-</code></pre></div></div>
-
-<h2 id="다른-사람-풀이">다른 사람 풀이</h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">alpha_string46</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-</code></pre></div></div>
+<h4 id="bycrypt">bycrypt</h4>
 
 <ul>
-  <li><code class="highlighter-rouge">isdigit</code>으로 해결함</li>
-  <li>의문점 <code class="highlighter-rouge">len(s) in (4, 6)</code> 여기서 <code class="highlighter-rouge">(4, 6)</code> 이 부분은 <code class="highlighter-rouge">or</code>처리를 하는건가? 하는거라면 무슨 함수? 아니면 기본 기능???</li>
+  <li>앞서 리뷰한 <code class="highlighter-rouge">westagram</code> 이후에 <code class="highlighter-rouge">password</code>를 <code class="highlighter-rouge">hash</code>화 해서 저장해서 보안을 높이는 작업을 진행했다</li>
+  <li><code class="highlighter-rouge">bcrypt</code> 초기 세팅 과정은 생략하도록 한다</li>
+  <li>회원가입 때 입력받은 값을 <code class="highlighter-rouge">bcrypt</code>를 이용해서, <code class="highlighter-rouge">hash</code>화 시킨다, 이 때 <code class="highlighter-rouge">type</code>은 <code class="highlighter-rouge">byte</code>가 된다</li>
+  <li><code class="highlighter-rouge">byte</code>의 형태는 <code class="highlighter-rouge">b'해쉬값</code> 형태를 이루게 되는데 이게 데이터베이스에 들어가면, <code class="highlighter-rouge">b</code>를 <code class="highlighter-rouge">byte</code>의 뜻으로 인식하지 않고, 하나의 <code class="highlighter-rouge">str</code> 값으로 인식해서 저장한다
+    <ul>
+      <li>그렇게 되면 당연히 로그인 과정에서 불러온 값을 <code class="highlighter-rouge">encode</code> 했을 때, 입력값과 다른 값으로 출력될 것이고, 로그인이 되지 않는 문제가 발생한다</li>
+    </ul>
+  </li>
+  <li>위 문제점 때문에 <code class="highlighter-rouge">bcrypt</code>로 해쉬화한 비밀번호를 저장할 때는 다시 <code class="highlighter-rouge">decode</code>해서 <code class="highlighter-rouge">b</code>를 제거한 후에 저장해 준다</li>
 </ul>
 
-<h3 id="isalpha-isdigit">isalpha, isdigit</h3>
+<h4 id="jwt">jwt</h4>
 
 <ul>
-  <li><code class="highlighter-rouge">isalpha</code> 함수는 문자열이 문자인지 아닌지를 True,False로 리턴해줌</li>
-  <li><code class="highlighter-rouge">isdigit</code> 함수는 문자열이 숫자인지 아닌지를 True,False로 리턴해줌</li>
+  <li><code class="highlighter-rouge">http</code>의 특징 중에 하나는 담고 있던 내용에 대해서 기억하지 않는다는 것이다 때문에 로그인 이후에 로그인 했다는 기억을 가지고 있지 않게 된다</li>
+  <li>로그인이 되어 있다는 신호를 주기 위해 사용하는 것이 <code class="highlighter-rouge">token</code>이다</li>
+  <li>서버에서 최초 로그인 시에 인증을 뜻하는 <code class="highlighter-rouge">token</code>을 발행해 주고, <code class="highlighter-rouge">token</code>을 <code class="highlighter-rouge">response</code> 받은 프론트에서 이 <code class="highlighter-rouge">token</code>으로 다른 작업들의 권한 승인요청을 한다(<code class="highlighter-rouge">token</code>의 저장 방식에 대해서는 추후 프로젝트에서 리뷰할 예정이다)</li>
 </ul>
 
                 </div>
@@ -338,9 +317,9 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'http://localhost:4000/018-algorithm';
-                            this.page.identifier = '/018-algorithm';
-                            this.page.title = '018. 문자열 다루기 기본';
+                            this.page.url = 'http://localhost:4000/008-django';
+                            this.page.identifier = '/008-django';
+                            this.page.title = '008. Django - westagram 2 review';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -374,7 +353,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Hiyee Blog &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/algorithm/">Algorithm</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/django/">Django</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
@@ -384,81 +363,10 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                     
-                                
-                                    
-                                
-                                    
-                                
-                                    
                                     
                                         
                                         
-                                            <li><a href="/022-algorithm">022. 시저 암호</a></li>
-                                        
-                                    
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                    
-                                        
-                                        
-                                            <li><a href="/021-algorithm">021. 수박수박수박수박수박수?</a></li>
-                                        
-                                    
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                    
-                                        
-                                        
-                                            <li><a href="/020-algorithm">020. 소수 찾기</a></li>
-                                        
-                                    
-                                    
-                                
-                                    
-                                    
-                                        
+                                            <li><a href="/009-django">009. Django - westagram 3 review</a></li>
                                         
                                     
                                     
@@ -470,6 +378,17 @@ into the {body} of the default.hbs template -->
                                     
                                     
                                         
+                                        
+                                            <li><a href="/007-django">007. Django - westagram review 1</a></li>
+                                        
+                                    
+                                    
+                                
+                                    
+                                    
+                                        
+                                        
+                                            <li><a href="/006-django">006. Django - C.R.U.D 2 review</a></li>
                                         
                                     
                                     
@@ -489,59 +408,7 @@ into the {body} of the default.hbs template -->
                                     
                                 
                                     
-                                    
-                                        
-                                        
-                                    
-                                    
                                 
-                                    
-                                    
-                                        
-                                        
-                                    
-                                    
-                                
-                                    
-                                    
-                                        
-                                        
-                                    
-                                    
-                                
-                                    
-                                    
-                                        
-                                        
-                                    
-                                    
-                                
-                                    
-                                    
-                                        
-                                        
-                                    
-                                    
-                                
-                                    
-                                    
-                                        
-                                        
-                                    
-                                    
-                                
-                                    
-                                    
-                                        
-                                        
-                                    
-                                    
-                                
-                                    
-                                    
-                                        
-                                        
-                                    
                                     
                                 
                                     
@@ -568,24 +435,77 @@ into the {body} of the default.hbs template -->
                                     
                                 
                                     
-                                    
-                                        
-                                        
-                                    
+                                
                                     
                                 
                                     
-                                    
-                                        
-                                        
-                                    
+                                
                                     
                                 
                                     
+                                
                                     
-                                        
-                                        
+                                
                                     
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
                                     
                                 
                                     
@@ -625,9 +545,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/algorithm/">
+                            <a href="/tag/django/">
                                 
-                                    See all 21 posts  →
+                                    See all 8 posts  →
                                 
                             </a>
                         </footer>
@@ -641,22 +561,22 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/019-algorithm">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/algorithm.png)"></div>
+            <a class="post-card-image-link" href="/009-django">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/django.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/019-algorithm">
+            <a class="post-card-content-link" href="/009-django">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Algorithm</span>
+                                <span class="post-card-tags">Django</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">019. 서울에서 김서방 찾기</h2>
+                    <h2 class="post-card-title">009. Django - westagram 3 review</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -693,22 +613,22 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/017-algorithm">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/algorithm.png)"></div>
+            <a class="post-card-image-link" href="/007-django">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/django.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/017-algorithm">
+            <a class="post-card-content-link" href="/007-django">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Algorithm</span>
+                                <span class="post-card-tags">Django</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">017. 문자열 내림차순으로 배치하기</h2>
+                    <h2 class="post-card-title">007. Django - westagram review 1</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -752,18 +672,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">018. 문자열 다루기 기본</div>
+    <div class="floating-header-title">008. Django - westagram 2 review</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=018.+%EB%AC%B8%EC%9E%90%EC%97%B4+%EB%8B%A4%EB%A3%A8%EA%B8%B0+%EA%B8%B0%EB%B3%B8&amp;url=https://hiyee-gj.github.io/018-algorithm"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=008.+Django+-+westagram+2+review&amp;url=https://hiyee-gj.github.io/008-django"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://hiyee-gj.github.io/018-algorithm"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://hiyee-gj.github.io/008-django"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
