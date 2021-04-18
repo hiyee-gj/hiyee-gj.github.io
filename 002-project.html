@@ -11,7 +11,7 @@
 
 
     <title>
-      005. CSS transition 학습 내용
+      002. Project - pagination, path variable, query parameter
     </title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,30 +65,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Developer with good Influence" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon32.png" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/005-css" />
+    <link rel="canonical" href="http://localhost:4000/002-project" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Hiyee Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="005. CSS transition 학습 내용" />
-    <meta property="og:description" content="CSS transition 동적인 움직임을 넣을 수 있음. tranform - 문자나 그림을 변형시키는 기능 https://codepen.io/vineethtrv/pen/XKKEgM 에서 transform 종류를 확인할 수 있습니다. 원하는 transform 밑의 코드를 사용하면 적용 가능. 링크는 아래 첨부 : transform link transition - 문자나 그림이 변형되는 과정을 구현하는 기능 transition-property - transition 요소 지정 transition-duration - transition 되는" />
-    <meta property="og:url" content="http://localhost:4000/005-css" />
-    <meta property="og:image" content="http://localhost:4000/assets/built/images/html.png" />
+    <meta property="og:title" content="002. Project - pagination, path variable, query parameter" />
+    <meta property="og:description" content="Pagination 객체를 한 화면에서 얼마나 보여줄 지 정하는 것을 말한다 이 과정에서 어떤 방식으로 페이지를 나눌지 담당 프론트엔드 개발자와 협의가 필요하다 흔히 offset, limit으로 기능 구현하는데, 이 방식이 좀 더 manual한 방법이라면, django는 이 기능을 지원하는 paginator라는 모듈이 존재한다 하지만, 이번 프로젝트에서는 최대한 장고가 제공하는 편의 기능들에 해당하는 수동적인 메커니즘이" />
+    <meta property="og:url" content="http://localhost:4000/002-project" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/project.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2021-03-12T00:00:00+09:00" />
-    <meta property="article:modified_time" content="2021-03-12T00:00:00+09:00" />
-    <meta property="article:tag" content="Html-css" />
+    <meta property="article:published_time" content="2021-04-18T00:00:00+09:00" />
+    <meta property="article:modified_time" content="2021-04-18T00:00:00+09:00" />
+    <meta property="article:tag" content="Project" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="005. CSS transition 학습 내용" />
-    <meta name="twitter:description" content="CSS transition 동적인 움직임을 넣을 수 있음. tranform - 문자나 그림을 변형시키는 기능 https://codepen.io/vineethtrv/pen/XKKEgM 에서 transform 종류를 확인할 수 있습니다. 원하는 transform 밑의 코드를 사용하면 적용 가능. 링크는 아래 첨부 : transform link transition - 문자나 그림이 변형되는 과정을 구현하는 기능 transition-property - transition 요소 지정 transition-duration - transition 되는" />
+    <meta name="twitter:title" content="002. Project - pagination, path variable, query parameter" />
+    <meta name="twitter:description" content="Pagination 객체를 한 화면에서 얼마나 보여줄 지 정하는 것을 말한다 이 과정에서 어떤 방식으로 페이지를 나눌지 담당 프론트엔드 개발자와 협의가 필요하다 흔히 offset, limit으로 기능 구현하는데, 이 방식이 좀 더 manual한 방법이라면, django는 이 기능을 지원하는 paginator라는 모듈이 존재한다 하지만, 이번 프로젝트에서는 최대한 장고가 제공하는 편의 기능들에 해당하는 수동적인 메커니즘이" />
     <meta name="twitter:url" content="http://localhost:4000/" />
-    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/html.png" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/project.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Hiyee Blog" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Html-css" />
+    <meta name="twitter:data2" content="Project" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -103,18 +103,18 @@
         "name": "Hiyee Blog",
         "logo": "http://localhost:4000/"
     },
-    "url": "http://localhost:4000/005-css",
+    "url": "http://localhost:4000/002-project",
     "image": {
         "@type": "ImageObject",
-        "url": "http://localhost:4000/assets/built/images/html.png",
+        "url": "http://localhost:4000/assets/built/images/project.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/005-css"
+        "@id": "http://localhost:4000/002-project"
     },
-    "description": "CSS transition 동적인 움직임을 넣을 수 있음. tranform - 문자나 그림을 변형시키는 기능 https://codepen.io/vineethtrv/pen/XKKEgM 에서 transform 종류를 확인할 수 있습니다. 원하는 transform 밑의 코드를 사용하면 적용 가능. 링크는 아래 첨부 : transform link transition - 문자나 그림이 변형되는 과정을 구현하는 기능 transition-property - transition 요소 지정 transition-duration - transition 되는"
+    "description": "Pagination 객체를 한 화면에서 얼마나 보여줄 지 정하는 것을 말한다 이 과정에서 어떤 방식으로 페이지를 나눌지 담당 프론트엔드 개발자와 협의가 필요하다 흔히 offset, limit으로 기능 구현하는데, 이 방식이 좀 더 manual한 방법이라면, django는 이 기능을 지원하는 paginator라는 모듈이 존재한다 하지만, 이번 프로젝트에서는 최대한 장고가 제공하는 편의 기능들에 해당하는 수동적인 메커니즘이"
 }
     </script>
 
@@ -127,7 +127,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="005. CSS transition 학습 내용" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="002. Project - pagination, path variable, query parameter" href="/feed.xml" />
 
   </head>
   <body
@@ -206,80 +206,116 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-html-css post ">
+        <article class="post-full  tag-project post ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="12 March 2021">12 March 2021</time>
+                    <time class="post-full-meta-date" datetime="18 April 2021">18 April 2021</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/html-css/'>HTML-CSS</a>
+                               <a href='/tag/project/'>PROJECT</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">005. CSS transition 학습 내용</h1>
+                <h1 class="post-full-title">002. Project - pagination, path variable, query parameter</h1>
             </header>
 <!--
             
-            <figure class="post-full-image" style="background-image: url(/assets/built/images/html.png)">
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/project.png)">
             </figure>
             
 -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <h3 id="css-transition">CSS transition</h3>
+                    <h2 id="pagination">Pagination</h2>
 
 <ul>
-  <li>동적인 움직임을 넣을 수 있음.</li>
-  <li>tranform - 문자나 그림을 변형시키는 기능</li>
+  <li>객체를 한 화면에서 얼마나 보여줄 지 정하는 것을 말한다</li>
+  <li>이 과정에서 어떤 방식으로 페이지를 나눌지 담당 프론트엔드 개발자와 협의가 필요하다</li>
+  <li>흔히 <code class="highlighter-rouge">offset</code>, <code class="highlighter-rouge">limit</code>으로 기능 구현하는데, 이 방식이 좀 더 manual한 방법이라면, <code class="highlighter-rouge">django</code>는 이 기능을 지원하는 <code class="highlighter-rouge">paginator</code>라는 모듈이 존재한다</li>
+  <li>하지만, 이번 프로젝트에서는 최대한 장고가 제공하는 편의 기능들에 해당하는 수동적인 메커니즘이 있다면, 공부를 위해 잠시 장고의 모듈은 배제하기로 결심했기 때문에, <code class="highlighter-rouge">paginator</code>에 대해서는 구글링을 통해 알아보기 바란다</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://codepen.io/vineethtrv/pen/XKKEgM 에서 transform 종류를 확인할 수 있습니다. 원하는 transform 밑의 코드를 사용하면 적용 가능.
-링크는 아래 첨부
-</code></pre></div></div>
-
-<p>: <a href="https://codepen.io/vineethtrv/pen/XKKEgM">transform link</a></p>
+<h3 id="원리">원리</h3>
 
 <ul>
-  <li>transition - 문자나 그림이 변형되는 과정을 구현하는 기능
-    <ol>
-      <li>transition-property - transition 요소 지정</li>
-      <li>transition-duration - transition 되는 시간</li>
-      <li>transition-delay - transition을 일정 시간 기다린 후 보여줌.</li>
-      <li>
-        <dl>
-          <dt>transition-timing-function - transition이 진행되는 속도</dt>
-          <dd><a href="https://matthewlein.com/tools/ceaser">transition 속도 링크</a></dd>
-        </dl>
-      </li>
-    </ol>
-  </li>
+  <li><code class="highlighter-rouge">pagination</code>의 원리는 놀랍도록 간단하다</li>
+  <li>백엔드에서 <code class="highlighter-rouge">response</code>할 내용이 담긴 <code class="highlighter-rouge">result</code>라는 리스트가 있다고 한다면, <code class="highlighter-rouge">pagination</code>은 일정한 기준을 가지고, 이 리스트를 <code class="highlighter-rouge">slice</code> 처리하는 것이다</li>
 </ul>
 
-<h3 id="css-filter">CSS Filter</h3>
-
-<ul>
-  <li>filter: url(“../../media/examples/shadow.svg#element-id”);</li>
-  <li>filter: blur(Npx);</li>
-  <li>filter: contrast(N%);</li>
-  <li>filter: grayscale(N%);</li>
-  <li>filter: hue-rotate(Ndeg);</li>
-  <li>filter: drop-shadow(16px 16px 20px red) invert(75%);</li>
-  <li><a href="https://developer.mozilla.org/ko/docs/Web/CSS/filter">filter 적용</a></li>
-</ul>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filter의 적용된 모습은 위의 사이트를 참조하여 확인하여 필요한 Filter를 사용하기
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">JsonResponse</span><span class="p">({</span><span class="s">'RESULT'</span><span class="p">:</span><span class="n">result</span><span class="p">[</span><span class="n">offset</span><span class="p">:</span><span class="n">limit</span><span class="p">]},</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 </code></pre></div></div>
 
 <ul>
-  <li>filter 적용 쉽게 하는 사이트
+  <li>생각보다 구현은 어렵지 않았다. 다만 <code class="highlighter-rouge">offset</code>, <code class="highlighter-rouge">limit</code>을 정할 때, 각 페이지에 보여주고 싶은 객체의 수를 정하고, 프론트에서 계산을 통해 <code class="highlighter-rouge">query parameter</code>에 <code class="highlighter-rouge">offset</code>과 <code class="highlighter-rouge">limit</code>을 보내줄지, 백엔드에서 계산을 통해 보내줄지 정해야 하는 부분이 더 고민되는 부분이었다
     <ul>
-      <li><a href="https://www.cssfiltergenerator.com">CSS filter Generator</a></li>
+      <li>우리 팀은 <code class="highlighter-rouge">query parmeter</code>에 담기는 의미가 좀 더 직관적인 것을 선호 해서 프론트에서 <code class="highlighter-rouge">page</code>에 값을 담아 주면, 백엔드에서 계산을 통해 되돌려 주는 방식을 택했다
+<img src="https://images.velog.io/images/hiyee-gj/post/944baa46-5416-4c51-99ad-fe6b4179162a/%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A7%E1%86%AB.png" alt="" /></li>
     </ul>
   </li>
+  <li><code class="highlighter-rouge">page</code>에 값이 들어 오면, 한 페이지에 보여주고 싶은 객체 수인 <code class="highlighter-rouge">page_size</code>를 통해 <code class="highlighter-rouge">offset</code>과 <code class="highlighter-rouge">limit</code>을 계산해주고, 그 값으로 <code class="highlighter-rouge">slice</code>해서 보내주는 방식이다</li>
+</ul>
+
+<h2 id="path-variable-vs-query-parameter">path variable vs query parameter</h2>
+
+<h3 id="endpoint">Endpoint</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">ENDPOINT</code>란 <code class="highlighter-rouge">API</code>가 서버에서 리소스에 접근할 수 있도록 가능하게 하는 <code class="highlighter-rouge">URL</code>이다</li>
+</ul>
+
+<h3 id="api">API</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">API</code>는 프로그램이 기능할 수 있게 명령을 정리하고, 명령을 받으면 응용프로그램과 상호작용하여 요청된 명령에 대한 값을 전달해준다</li>
+  <li><code class="highlighter-rouge">API</code>는 프로그램들이 서로 상호작용하는 것을 도와주는 매개체로 볼 수 있다</li>
+</ul>
+
+<h4 id="api의-역할">API의 역할</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">API</code>는 서버와 데이터베이스에 대한 출입구 역할을 한다
+    <ul>
+      <li>데이터베이스에는 소중한 정보들이 저장되는데, 모든 사람들이 이 데이터베이스에 접근할 수 있으면 보안에 문제가 생길 것이다 <code class="highlighter-rouge">API</code>는 이를 방지하기 위해 서버와 데이터베이스에 대한 출입구 역할을 하며, 허용된 사람들에게만 접근성을 부여해 주는 역할을 한다</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="path-vs-query">path vs query</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">Endpoint</code>를 구성하다보면, 같은 맥락인데 보여주고 싶은 내용이 다를 수 있다</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">예를</span> <span class="err">들면</span><span class="p">,</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">users</span>
+</code></pre></div></div>
+
+<p>위에서 <code class="highlighter-rouge">users</code>로 주로 표현하는 이유가 뭘까? 답은 바로 <code class="highlighter-rouge">users</code>에는 하나의 객체가 아닌 여러 객체들로 이뤄져 있기 때문이다.</p>
+
+<ul>
+  <li>상품을 보여주는 커머스 사이트를 예로 들어보자. 모든 상품을 보여주고 싶은 <code class="highlighter-rouge">/products</code>를 엔드포인트로 갖는 페이지가 있는 반면, 한 상품의 상세 내용을 보여주고 싶은 경우도 있다</li>
+  <li>이 경우에 보여주는 방법에 대해서 어떻게 표현할 것인가? 이 표현 방법이 바로 <code class="highlighter-rouge">path variable</code>과 <code class="highlighter-rouge">query parameter</code>의 방식이 존재하는 것이다</li>
+</ul>
+
+<p>그럼 이 두가지 방식 중 어떤 방식을 어떤 상황에 주로 사용하는지 정리해 보겠다</p>
+
+<ul>
+  <li>흔히 두 방식 중 <code class="highlighter-rouge">resource</code>가 달라지면, <code class="highlighter-rouge">path variable</code>을 사용하고, <code class="highlighter-rouge">filter</code>의 경우에는 <code class="highlighter-rouge">query parameter</code>를 사용한다고 말한다</li>
+  <li>원리를 살펴보자면, 우선 어떤 <code class="highlighter-rouge">resource</code>를 식별해야하는 상황을 생각해보자
+    <ul>
+      <li>쿼리의 경우, 서버에서는 어느 방식으로 넘어오던지 간에 받아온 <code class="highlighter-rouge">resource</code>의 정해진 <code class="highlighter-rouge">key</code>로 쿼리를 날리게 된다. <code class="highlighter-rouge">Query Parameter</code>는 서버로 데이터가 넘어가고 쿼리를 날리며 해당하는 데이터가 없을 경우 따로 에러 핸들링을 해줘야 하는 번거로움이 존재한다</li>
+      <li><code class="highlighter-rouge">Path Variable</code>은 저 경로의 존재하는 페이지가 없으므로 404 에러를 발생한다</li>
+    </ul>
+  </li>
+</ul>
+
+<p>즉 <code class="highlighter-rouge">resource</code>를 식별해야하는 상황에서는 <code class="highlighter-rouge">Path Variable</code>가 더 적합하다</p>
+
+<ul>
+  <li>당연히 <code class="highlighter-rouge">filter</code>의 경우 <code class="highlighter-rouge">filter</code> 되는 값이 없다고 404를 띄울 수 없기 때문에 <code class="highlighter-rouge">query</code>의 방식이 더 유연할 것이다(빈 리스트를 보여줄 것이므로)</li>
 </ul>
 
                 </div>
@@ -336,9 +372,9 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'http://localhost:4000/005-css';
-                            this.page.identifier = '/005-css';
-                            this.page.title = '005. CSS transition 학습 내용';
+                            this.page.url = 'http://localhost:4000/002-project';
+                            this.page.identifier = '/002-project';
+                            this.page.title = '002. Project - pagination, path variable, query parameter';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -372,7 +408,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Hiyee Blog &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/html-css/">Html-css</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/project/">Project</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
@@ -382,65 +418,23 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                     
-                                
+                                    
+                                        
+                                        
+                                            <li><a href="/003-project">003. Project - gi & github, products view</a></li>
+                                        
+                                    
                                     
                                 
                                     
-                                
                                     
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
-                                    
-                                
                                     
                                 
                                     
                                     
                                         
                                         
-                                            <li><a href="/008-css">008. CSS - position, inline&block 되새김과 float</a></li>
-                                        
-                                    
-                                    
-                                
-                                    
-                                
-                                    
-                                    
-                                        
-                                        
-                                            <li><a href="/007-html">007. HTML&CSS - html, css, img태그 되새김// semantic web과 semantic tag 정리// 이미지 넣는 방식에 대한 질문과 답변</a></li>
+                                            <li><a href="/001-project">001. Project - 초기세팅, mysqldump, django seed</a></li>
                                         
                                     
                                     
@@ -454,8 +448,6 @@ into the {body} of the default.hbs template -->
                                     
                                 
                                     
-                                    
-                                    
                                 
                                     
                                 
@@ -526,48 +518,65 @@ into the {body} of the default.hbs template -->
                                     
                                 
                                     
-                                    
-                                        
-                                        
-                                            <li><a href="/006-css">006. CSS Flexbox 학습내용</a></li>
-                                        
-                                    
+                                
                                     
                                 
                                     
-                                    
-                                        
-                                        
-                                    
+                                
                                     
                                 
                                     
-                                    
-                                        
-                                        
-                                    
+                                
                                     
                                 
                                     
-                                    
-                                        
-                                        
-                                    
+                                
                                     
                                 
                                     
+                                
                                     
-                                        
-                                        
+                                
                                     
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
                                     
                                 
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/html-css/">
+                            <a href="/tag/project/">
                                 
-                                    See all 7 posts  →
+                                    See all 2 posts  →
                                 
                             </a>
                         </footer>
@@ -581,22 +590,22 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/001-web">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/web.png)"></div>
+            <a class="post-card-image-link" href="/003-project">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/project.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/001-web">
+            <a class="post-card-content-link" href="/003-project">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Web</span>
+                                <span class="post-card-tags">Project</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">001. Web - internet과 web</h2>
+                    <h2 class="post-card-title">003. Project - gi & github, products view</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -633,22 +642,22 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/001-database">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/database.png)"></div>
+            <a class="post-card-image-link" href="/001-project">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/project.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/001-database">
+            <a class="post-card-content-link" href="/001-project">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Database</span>
+                                <span class="post-card-tags">Project</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">001. Database - 기본 이론들과 스타벅스 모델링 리뷰</h2>
+                    <h2 class="post-card-title">001. Project - 초기세팅, mysqldump, django seed</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -692,18 +701,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">005. CSS transition 학습 내용</div>
+    <div class="floating-header-title">002. Project - pagination, path variable, query parameter</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=005.+CSS+transition+%ED%95%99%EC%8A%B5+%EB%82%B4%EC%9A%A9&amp;url=https://hiyee-gj.github.io/005-css"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=002.+Project+-+pagination%2C+path+variable%2C+query+parameter&amp;url=https://hiyee-gj.github.io/002-project"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://hiyee-gj.github.io/005-css"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://hiyee-gj.github.io/002-project"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

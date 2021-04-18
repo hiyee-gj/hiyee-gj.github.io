@@ -8,6 +8,51 @@
     
       
       <item>
+        <title>003. Project - gi &amp; github, products view</title>
+        
+          <description>&lt;h2 id=&quot;git--github&quot;&gt;Git &amp;amp; Github&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Sun, 18 Apr 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/003-project</link>
+        <guid isPermaLink="true">http://localhost:4000/003-project</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>002. Project - pagination, path variable, query parameter</title>
+        
+          <description>&lt;h2 id=&quot;pagination&quot;&gt;Pagination&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Sun, 18 Apr 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/002-project</link>
+        <guid isPermaLink="true">http://localhost:4000/002-project</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>001. Project - 초기세팅, mysqldump, django seed</title>
+        
+          <description>&lt;h2 id=&quot;projectgreatingdor&quot;&gt;project(greatingdor)&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Wed, 14 Apr 2021 00:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/001-project</link>
+        <guid isPermaLink="true">http://localhost:4000/001-project</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>009. Django - westagram 3 review</title>
         
           <description>&lt;h2 id=&quot;westagram-3-review&quot;&gt;westagram 3 review&lt;/h2&gt;
